@@ -243,6 +243,41 @@
           </div>
           <div class="dialog-bubble">完璧な背理法だ。これで「2ⁿ行の表」が本物になる条件が分かったね。<strong>もつれがあるとき、表全体は、各量子ビットの情報をばらばらに集めても再現できない</strong>。300個の量子ビットがしっかりもつれた状態を、ふつうのコンピュータで正直に記録しようとすれば、10⁹⁰個の数字を書き留めることになる。だからこそ、量子コンピュータのシミュレーションは50個あたりでもう手に負えなくなるんだ。<strong>もつれこそが、量子コンピュータをふつうのコンピュータで真似できなくしている当のもの</strong>だよ。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+        <svg class="qc-svg" viewBox="0 0 372 268" width="100%" role="img" aria-label="ベル状態が積状態で書けないことを示す掛け算の表。1番目の見出しをaとb、2番目の見出しをcとdとすると、4行はa×c、a×d、b×c、b×dになる。ベル状態にはa×cとb×dが0.71、a×dとb×cが0であることが必要だが、条件を順にたどると矛盾する">
+          <text class="strong" x="186" y="16" text-anchor="middle">ベル状態は「見出しの掛け算」で書けるか？</text>
+          <text class="label" x="70" y="52" text-anchor="middle">見出し</text>
+          <rect x="132" y="34" width="104" height="30" rx="5" fill="var(--paper2)" stroke="var(--line)"/>
+          <text class="label" x="184" y="53" text-anchor="middle">2番目 |0⟩：c</text>
+          <rect x="248" y="34" width="104" height="30" rx="5" fill="var(--paper2)" stroke="var(--line)"/>
+          <text class="label" x="300" y="53" text-anchor="middle">2番目 |1⟩：d</text>
+          <rect x="14" y="72" width="104" height="44" rx="5" fill="var(--paper2)" stroke="var(--line)"/>
+          <text class="label" x="66" y="98" text-anchor="middle">1番目 |0⟩：a</text>
+          <rect x="14" y="124" width="104" height="44" rx="5" fill="var(--paper2)" stroke="var(--line)"/>
+          <text class="label" x="66" y="150" text-anchor="middle">1番目 |1⟩：b</text>
+          <rect x="132" y="72" width="104" height="44" rx="5" fill="#efe9f9" stroke="#5b3fa6" stroke-width="1.5"/>
+          <text class="strong" x="184" y="90" text-anchor="middle">|00⟩ ＝ a×c</text>
+          <text class="accent" x="184" y="107" text-anchor="middle">0.71 にしたい</text>
+          <rect x="248" y="72" width="104" height="44" rx="5" fill="var(--paper2)" stroke="var(--line)"/>
+          <text class="strong" x="300" y="90" text-anchor="middle">|01⟩ ＝ a×d</text>
+          <text class="label" x="300" y="107" text-anchor="middle">0 にしたい</text>
+          <rect x="132" y="124" width="104" height="44" rx="5" fill="var(--paper2)" stroke="var(--line)"/>
+          <text class="strong" x="184" y="142" text-anchor="middle">|10⟩ ＝ b×c</text>
+          <text class="label" x="184" y="159" text-anchor="middle">0 にしたい</text>
+          <rect x="248" y="124" width="104" height="44" rx="5" fill="#efe9f9" stroke="#5b3fa6" stroke-width="1.5"/>
+          <text class="strong" x="300" y="142" text-anchor="middle">|11⟩ ＝ b×d</text>
+          <text class="accent" x="300" y="159" text-anchor="middle">0.71 にしたい</text>
+          <text class="label" x="186" y="192" text-anchor="middle">|00⟩ のために a×c＝0.71 → a も c も 0 ではない</text>
+          <text class="label" x="186" y="211" text-anchor="middle">|01⟩ のために a×d＝0 → a≠0 なので d＝0 のはず</text>
+          <text class="label" x="186" y="230" text-anchor="middle">すると |11⟩ の b×d は必ず 0 ―― 0.71 にできない</text>
+          <text class="accent" x="186" y="254" text-anchor="middle" style="fill:#b5504a">矛盾！ どんな a, b, c, d でも書けない ＝ もつれ</text>
+        </svg>
+        <div class="diagram-caption">積状態なら、4行は必ずこの掛け算の表の形になる（九九の表と同じ）。ベル状態にするには4マスの条件が同時に成り立つ必要があるが、上から順にたどると連鎖して行き詰まる。<strong>見出しに戻せない表が存在する</strong>――それがもつれであり、この4行は正真正銘4個ぶんの独立した情報になっている。</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
