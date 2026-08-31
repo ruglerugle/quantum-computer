@@ -219,18 +219,6 @@
         </div>
       </div>
 
-      <div class="diagram-box">
-        <svg id="hh-svg" class="qc-svg" viewBox="0 0 372 258" width="100%" role="img" aria-label="アダマールゲートを2回当てたときの道筋の図。|0⟩から出発し、途中で|0⟩を経由する道筋と|1⟩を経由する道筋の2本が、最後の|1⟩で正反対の向きの矢印になって打ち消し合い、|0⟩では同じ向きで強め合う様子を示す。途中で測定する版では、くじで決まった結果に応じて|+⟩か|−⟩に至り、どちらも読み出しは五分五分になる">
-          <text class="strong" x="186" y="16" text-anchor="middle">H を2回：道筋の矢印を足すと、|1⟩ が消える</text>
-          <g id="hh-body"></g>
-        </svg>
-        <div class="anim-ctrl">
-          <button type="button" class="btn" id="hh-play">⏸ 一時停止</button>
-          <button type="button" class="btn" id="hh-mode">🔬 途中で測定する版に切替</button>
-        </div>
-        <div class="diagram-caption">左から右へ、|0⟩ を出発した状態が2回の H を通る。中央が1回目の H のあとの状態、右端が2回目のあと。<strong>右端の |1⟩ には2本の道筋が届き、その矢印は正反対を向いている</strong>ので、足すと長さゼロ――確率0で、絶対に1は出ない。|0⟩ には同じ向きの矢印が2本届いて強め合い、確率100%になる。「途中で測定する版」に切り替えると、測定のたびに五分五分のくじで0か1が決まり、片方の道筋だけが残る。結果が0なら2回目の H は |+⟩ を、1なら |−⟩（|1⟩ の矢印だけ正反対）を作る――たどり着く状態は出た目で違うが、向きは2乗すると消えるから、どちらも読み出しは50%対50%。打ち消し合いはもう起きない。<strong>同じ2回のHでも、干渉が使えるかどうかで結果がまるで違う</strong>。</div>
-      </div>
-
       <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
@@ -246,6 +234,21 @@
           </div>
           <div class="dialog-bubble">その通りになる。1回目の H のあとで測ると、五分五分だから0か1が出る。仮に0が出たとしよう。状態は |0⟩ になり、2回目の H は |+⟩ を作る。1が出た場合は状態が |1⟩ になり、2回目の H が作るのは |−⟩ ――|1⟩ の矢印が正反対を向いた、あの状態だ。たどり着く状態は違う。でも前回確かめた通り、<strong>向きは2乗すると消える</strong>から、どちらを読んでも五分五分。だから最終結果は<strong>50%対50%</strong>。測らずに通したときは<strong>100%で0</strong>だったのに、途中で覗いただけで結果が変わる。この差こそが、量子コンピュータが計算の途中でぜったいに中身を覗けない理由であり、同時に、<strong>速さの源</strong>でもあるんだ。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+        <svg id="hh-svg" class="qc-svg" viewBox="0 0 372 258" width="100%" role="img" aria-label="アダマールゲートを2回当てたときの道筋の図。|0⟩から出発し、途中で|0⟩を経由する道筋と|1⟩を経由する道筋の2本が、最後の|1⟩で正反対の向きの矢印になって打ち消し合い、|0⟩では同じ向きで強め合う様子を示す。途中で測定する版では、くじで決まった結果に応じて|+⟩か|−⟩に至り、どちらも読み出しは五分五分になる">
+          <text class="strong" x="186" y="16" text-anchor="middle">H を2回：道筋の矢印を足すと、|1⟩ が消える</text>
+          <g id="hh-body"></g>
+        </svg>
+        <div class="anim-ctrl">
+          <button type="button" class="btn" id="hh-play">⏸ 一時停止</button>
+          <button type="button" class="btn" id="hh-mode">🔬 途中で測定する版に切替</button>
+        </div>
+        <div class="diagram-caption">左から右へ、|0⟩ を出発した状態が2回の H を通る。中央が1回目の H のあとの状態、右端が2回目のあと。<strong>右端の |1⟩ には2本の道筋が届き、その矢印は正反対を向いている</strong>ので、足すと長さゼロ――確率0で、絶対に1は出ない。|0⟩ には同じ向きの矢印が2本届いて強め合い、確率100%になる。「途中で測定する版」に切り替えると、測定のたびに五分五分のくじで0か1が決まり、片方の道筋だけが残る。結果が0なら2回目の H は |+⟩ を、1なら |−⟩（|1⟩ の矢印だけ正反対）を作る――たどり着く状態は出た目で違うが、向きは2乗すると消えるから、どちらも読み出しは50%対50%。打ち消し合いはもう起きない。<strong>同じ2回のHでも、干渉が使えるかどうかで結果がまるで違う</strong>。</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
