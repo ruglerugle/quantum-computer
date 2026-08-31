@@ -220,7 +220,7 @@
       </div>
 
       <div class="diagram-box">
-        <svg id="hh-svg" class="qc-svg" viewBox="0 0 372 258" width="100%" role="img" aria-label="アダマールゲートを2回当てたときの道筋の図。|0⟩から出発し、途中で|0⟩を経由する道筋と|1⟩を経由する道筋の2本が、最後の|1⟩で正反対の向きの矢印になって打ち消し合い、|0⟩では同じ向きで強め合う様子を示す">
+        <svg id="hh-svg" class="qc-svg" viewBox="0 0 372 258" width="100%" role="img" aria-label="アダマールゲートを2回当てたときの道筋の図。|0⟩から出発し、途中で|0⟩を経由する道筋と|1⟩を経由する道筋の2本が、最後の|1⟩で正反対の向きの矢印になって打ち消し合い、|0⟩では同じ向きで強め合う様子を示す。途中で測定する版では、くじで決まった結果に応じて|+⟩か|−⟩に至り、どちらも読み出しは五分五分になる">
           <text class="strong" x="186" y="16" text-anchor="middle">H を2回：道筋の矢印を足すと、|1⟩ が消える</text>
           <g id="hh-body"></g>
         </svg>
@@ -228,7 +228,7 @@
           <button type="button" class="btn" id="hh-play">⏸ 一時停止</button>
           <button type="button" class="btn" id="hh-mode">🔬 途中で測定する版に切替</button>
         </div>
-        <div class="diagram-caption">左から右へ、|0⟩ を出発した状態が2回の H を通る。中央が1回目の H のあとの状態、右端が2回目のあと。<strong>右端の |1⟩ には2本の道筋が届き、その矢印は正反対を向いている</strong>ので、足すと長さゼロ――確率0で、絶対に1は出ない。|0⟩ には同じ向きの矢印が2本届いて強め合い、確率100%になる。「途中で測定する版」に切り替えると、中央で手がかりが残るために2本の道筋が干渉できなくなり、確率をそのまま足すことになって、右端は50%対50%になる。<strong>同じ2回のHでも、干渉が使えるかどうかで結果がまるで違う</strong>。</div>
+        <div class="diagram-caption">左から右へ、|0⟩ を出発した状態が2回の H を通る。中央が1回目の H のあとの状態、右端が2回目のあと。<strong>右端の |1⟩ には2本の道筋が届き、その矢印は正反対を向いている</strong>ので、足すと長さゼロ――確率0で、絶対に1は出ない。|0⟩ には同じ向きの矢印が2本届いて強め合い、確率100%になる。「途中で測定する版」に切り替えると、測定のたびに五分五分のくじで0か1が決まり、片方の道筋だけが残る。結果が0なら2回目の H は |+⟩ を、1なら |−⟩（|1⟩ の矢印だけ正反対）を作る――たどり着く状態は出た目で違うが、向きは2乗すると消えるから、どちらも読み出しは50%対50%。打ち消し合いはもう起きない。<strong>同じ2回のHでも、干渉が使えるかどうかで結果がまるで違う</strong>。</div>
       </div>
 
       <div class="dialogue-scene">
@@ -528,26 +528,42 @@
   var t = 0, running = false, raf = null, auto = true;
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduced) auto = false;
+  // 途中測定モードの測定結果。周回ごとに五分五分のくじで引き直す
+  var outcome = Math.random() < 0.5 ? 0 : 1;
+  var lastCycle = -1;
 
   function draw(phase) {
     setNode(0, 0, 1, true);
     setNode(0, 1, 0, true);
     var showMid = phase >= 1;
-    setNode(1, 0, R2, showMid);
-    setNode(1, 1, R2, showMid);
     var showEnd = phase >= 3;
-    links.forEach(function (k) { k.line.setAttribute('opacity', phase >= 2 ? .85 : .18); });
     if (mode === 'interfere') {
+      setNode(1, 0, R2, showMid);
+      setNode(1, 1, R2, showMid);
+      links.forEach(function (k) { k.line.setAttribute('opacity', phase >= 2 ? .85 : .18); });
       setNode(2, 0, 1, showEnd);
       setNode(2, 1, 0, showEnd);
       sumTxt.textContent = phase >= 2 ? '|0⟩へ 0.50 と 0.50 → 足して 1.00（強め合い）／ |1⟩へ 0.50 と −0.50 → 足して 0（打ち消し）' : '';
       modeTxt.textContent = '干渉あり：結果は 0 が100%、1 は絶対に出ない';
       modeTxt.style.fill = CG;
     } else {
+      // 測定で状態が1つに決まり、残った道筋だけが2回目の H を通る
+      var collapsed = phase >= 2;
+      setNode(1, 0, collapsed ? (outcome === 0 ? 1 : 0) : R2, showMid);
+      setNode(1, 1, collapsed ? (outcome === 1 ? 1 : 0) : R2, showMid);
+      links.forEach(function (k) {
+        k.line.setAttribute('opacity', collapsed ? (k.m === outcome ? .85 : .08) : .18);
+      });
       setNode(2, 0, showEnd ? R2 : 0, showEnd);
-      setNode(2, 1, showEnd ? R2 : 0, showEnd);
-      sumTxt.textContent = phase >= 2 ? '測定で手がかりが残る → 確率を足す：|0⟩へ 0.25＋0.25＝0.50 ／ |1⟩へ 0.25＋0.25＝0.50' : '';
-      modeTxt.textContent = '途中で測定：打ち消し合いが起きず、0 と 1 が50%ずつ';
+      setNode(2, 1, showEnd ? (outcome === 1 ? -R2 : R2) : 0, showEnd);
+      sumTxt.textContent = phase === 2
+        ? '測定：五分五分のくじで ' + outcome + ' が出た → 状態は |' + outcome + '⟩ に決まる'
+        : phase >= 3
+          ? (outcome === 0
+            ? '結果0 → 2回目の H は |+⟩ を作る → 読めば 0 と 1 が50%ずつ'
+            : '結果1 → 2回目の H は |−⟩（|1⟩ が正反対）→ 読めば 0 と 1 が50%ずつ')
+          : '';
+      modeTxt.textContent = '途中で測定：どちらが出ても、読み出しは 0 と 1 が50%ずつ';
       modeTxt.style.fill = C1;
     }
     measMark.setAttribute('opacity', (mode === 'measure' && phase >= 1) ? 1 : 0);
@@ -557,6 +573,8 @@
     if (!running) return;
     if (auto) {
       t += 0.016;
+      var cyc = Math.floor(t / 4.8);
+      if (cyc !== lastCycle) { lastCycle = cyc; outcome = Math.random() < 0.5 ? 0 : 1; }
       draw(Math.floor((t % 4.8) / 1.2));
     }
     raf = requestAnimationFrame(loop);
