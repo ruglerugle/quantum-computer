@@ -176,14 +176,21 @@
             <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">なるほど、<strong>当たりだけが平均からうんと離れている</strong>から、折り返すと当たりだけが大きく動くんですね。<br>小さい例で確かめます。候補が4個、当たりが1個。最初はみんな0.5です（0.5の2乗が0.25で、4個足して1）。<br><strong>第1手</strong>：当たりだけ反転して、−0.5、0.5、0.5、0.5。<br><strong>平均</strong>：(−0.5＋0.5＋0.5＋0.5)÷4 ＝ 0.25。<br><strong>第2手</strong>：当たりは 2×0.25 −(−0.5)＝<strong>1.0</strong>。他は 2×0.25 − 0.5 ＝<strong>0</strong>。<br>……できてしまいました。<strong>当たりの矢印が1.0、他は全部ゼロ</strong>。測れば100%当たりが出ます。4個の中から、箱への質問<strong>1回</strong>で確実に。</div>
+          <div class="dialog-bubble">なるほど、<strong>当たりだけが平均からうんと離れている</strong>から、折り返すと当たりだけが大きく動くんですね。<br>小さい例で確かめます。候補が4個なら量子ビットは2個――表は |00⟩ |01⟩ |10⟩ |11⟩ の4行です。当たりを |10⟩ としましょう。最初はみんな0.5（0.5の2乗が0.25で、4行足して1）。<br><strong>第1手</strong>：|10⟩ だけ反転して、0.5、0.5、−0.5、0.5。<br><strong>平均</strong>：(0.5＋0.5−0.5＋0.5)÷4 ＝ 0.25。<br><strong>第2手</strong>：|10⟩ は 2×0.25 −(−0.5)＝<strong>1.0</strong>。他の行は 2×0.25 − 0.5 ＝<strong>0</strong>。<br>……できてしまいました。<strong>|10⟩ の矢印が1.0、他は全部ゼロ</strong>。測れば100%で「10」が出ます。4個の中から、箱への質問<strong>1回</strong>で確実に。<br>……ここまで書いて、引っかかりました。箱は、4行のそれぞれについて「この行は当たりか」に応じて反転する・しないを決めていますよね。それは、<strong>内部で候補を1個ずつ判定しているのと何が違うんですか？</strong> それなら、質問は1回ではなく実質4回では。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">その通り、候補が4個のときだけは1回で完璧に決まる。きれいだね。<br>候補がもっと多いときは、1回では届かない。当たりの矢印は少しだけ伸び、外れの矢印は少しだけ縮む。だから<strong>2手を繰り返す</strong>。反転して折り返し、反転して折り返し……そのたびに当たりが伸びていく。</div>
+          <div class="dialog-bubble">いい問いだ、そこが「同時に計算」の正確な中身だよ。違いは、<strong>箱は固定された回路で、通すのは1回だけ</strong>という点にある。STAGE2 の H を思い出してごらん。|+⟩ に H を当てるとき、H は |0⟩ と |1⟩ を順番に処理したりしない。<strong>1回のパルスで、表の2行がまとめて書き換わる</strong>。ゲートとは表全体への書き換え規則で、行が4行でも100万行でも、適用は1回、かかる時間も1回ぶんだ。箱も同じ回路仕掛けだから、1個ずつ順に試すときのように<strong>候補の数だけ時間が積み上がることはない</strong>。ただし、その1回の結果は1枚の表に閉じ込められていて、出口は狭い――だから干渉で搾り出している、というわけだね。<br>なお、候補が4個のときだけは、きみの計算の通り1回で完璧に決まる。もっと多いと1回では届かず、当たりは少しずつしか伸びない。<strong>候補8個（量子ビット3個）ではどうなるか、続けて確かめてごらん。</strong></div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">やってみます。候補8個だと、最初は全部 √8分の1＝約0.354です。<br><strong>1回目</strong>：当たりを反転して折り返すと、当たりは<strong>0.884</strong>――2乗して約78%。1回では届きませんでした。<br><strong>2回目</strong>：もう一度繰り返すと<strong>0.972</strong>、約95%。ほぼ確実です。<br><strong>3回目</strong>：欲張ってさらに繰り返すと……<strong>0.575、33%まで落ちました</strong>。回しすぎると、せっかく育てた矢印が縮んでいく。……変な感じがします。ふつうの探索なら、探し続けても損はしないのに。</div>
         </div>
       </div>
 
@@ -212,19 +219,12 @@
       </div>
 
       <div class="dialogue-scene">
-        <div class="dialog-row right">
-          <div class="dialog-character">
-            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name student">うさ美</div>
-          </div>
-          <div class="dialog-bubble">「行き過ぎると縮む」というのが気になります。当たりが育ちきったあとも繰り返したら、せっかく伸びた矢印が減ってしまうということですか。それは変な感じがします。ふつうの探索なら、探し続けても損はしないのに。</div>
-        </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">そこが、この方法が「探索」ではなく<strong>干渉</strong>である証拠だよ。反転と折り返しは、どちらも矢印を回す操作だ。回転を続ければ、いつか行き過ぎて戻ってくる。ちょうど、ブランコを押すタイミングを間違えると勢いが落ちるのと同じでね。<br>回数の目安は決まっていて、<strong>約 0.785×√N 回</strong>――円周率πの4分の1が0.785だ。N が100万なら785回くらい。この回数で当たりの確率がほぼ1になり、それを過ぎると下がり始める。</div>
+          <div class="dialog-bubble">そこが、この方法が「探索」ではなく<strong>干渉</strong>である証拠だよ。反転と折り返しは、どちらも矢印を回す操作だ。回転を続ければ、いつか行き過ぎて戻ってくる。ちょうど、ブランコを押すタイミングを間違えると勢いが落ちるのと同じでね。<br>回数の目安は決まっていて、<strong>約 0.785×√N 回</strong>――円周率πの4分の1が0.785だ。N が100万なら785回くらい。この回数で当たりの確率がほぼ1になり、それを過ぎると下がり始める。きみの候補8個で2回がちょうどよかったのも、0.785×√8 ≒ 2.2 の通りだ。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
