@@ -423,7 +423,7 @@
   [1, 4, 7, 10].forEach(function (e) {
     var x = X0 + (X1 - X0) * (e - EMIN) / (EMAX - EMIN);
     el('line', {x1: x, y1: Y0, x2: x, y2: Y0 + 4, stroke: 'var(--ink)'});
-    txt(x, Y0 + 16, 'label', '10' + sup(-e));
+    txt(x, Y0 + 18, 'label', '10' + sup(-e));
   });
   txt((X0 + X1) / 2, Y0 + 32, 'label', 'ゲート1回あたりの誤り率（右ほど高精度）');
   [0, 0.5, 1].forEach(function (p) {
@@ -452,7 +452,7 @@
   var xa = X0 + (X1 - X0) * (2 - EMIN) / (EMAX - EMIN);
   var xb = X0 + (X1 - X0) * (3 - EMIN) / (EMAX - EMIN);
   el('rect', {x: Math.min(xa, xb), y: Y1, width: Math.abs(xb - xa), height: Y0 - Y1, fill: '#3f6191', opacity: .10});
-  var nowT = txt((xa + xb) / 2, Y1 - 6, 'accent', 'いまの実機');
+  var nowT = txt((xa + xb) / 2, Y1 - 3, 'accent', 'いまの実機');
   nowT.style.fill = '#3f6191';
   var marker = el('line', {stroke: '#3f6191', 'stroke-width': 1.6, 'stroke-dasharray': '4 3'});
   var slider = document.getElementById('e-slider');

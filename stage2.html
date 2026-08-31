@@ -237,7 +237,7 @@
       </div>
 
       <div class="diagram-box">
-        <svg id="hh-svg" class="qc-svg" viewBox="0 0 372 258" width="100%" role="img" aria-label="アダマールゲートを2回当てたときの道筋の図。|0⟩から出発し、途中で|0⟩を経由する道筋と|1⟩を経由する道筋の2本が、最後の|1⟩で正反対の向きの矢印になって打ち消し合い、|0⟩では同じ向きで強め合う様子を示す。途中で測定する版では、くじで決まった結果に応じて|+⟩か|−⟩に至り、どちらも読み出しは五分五分になる">
+        <svg id="hh-svg" class="qc-svg" viewBox="0 0 372 288" width="100%" role="img" aria-label="アダマールゲートを2回当てたときの道筋の図。|0⟩から出発し、途中で|0⟩を経由する道筋と|1⟩を経由する道筋の2本が、最後の|1⟩で正反対の向きの矢印になって打ち消し合い、|0⟩では同じ向きで強め合う様子を示す。途中で測定する版では、くじで決まった結果に応じて|+⟩か|−⟩に至り、どちらも読み出しは五分五分になる">
           <text class="strong" x="186" y="16" text-anchor="middle">H を2回：道筋の矢印を足すと、|1⟩ が消える</text>
           <g id="hh-body"></g>
         </svg>
@@ -510,10 +510,11 @@
     var t = txt(14, Y[i] + 4, 'strong', i === 0 ? '|0⟩' : '|1⟩', 'start');
     t.style.fill = i === 0 ? C0 : C1;
   });
-  var measMark = txt(X[1], 212, 'strong', '📏 ここで測定');
+  var measMark = txt(X[1], 220, 'strong', '📏 ここで測定');
   measMark.setAttribute('opacity', 0);
-  var sumTxt = txt(186, 234, 'label', '');
-  var modeTxt = txt(186, 250, 'strong', '');
+  var sumTxt = txt(186, 236, 'label', '');
+  var sumTxt2 = txt(186, 252, 'label', '');
+  var modeTxt = txt(186, 268, 'strong', '');
 
   function setNode(c, r, v, show) {
     var n = nodes[c * 2 + r];
@@ -546,7 +547,8 @@
       links.forEach(function (k) { k.line.setAttribute('opacity', phase >= 2 ? .85 : .18); });
       setNode(2, 0, 1, showEnd);
       setNode(2, 1, 0, showEnd);
-      sumTxt.textContent = phase >= 2 ? '|0⟩へ 0.50 と 0.50 → 足して 1.00（強め合い）／ |1⟩へ 0.50 と −0.50 → 足して 0（打ち消し）' : '';
+      sumTxt.textContent = phase >= 2 ? '|0⟩へ 0.50 と 0.50 → 足して 1.00（強め合い）' : '';
+      sumTxt2.textContent = phase >= 2 ? '|1⟩へ 0.50 と −0.50 → 足して 0（打ち消し合い）' : '';
       modeTxt.textContent = '干渉あり：結果は 0 が100%、1 は絶対に出ない';
       modeTxt.style.fill = CG;
     } else {
@@ -560,12 +562,15 @@
       setNode(2, 0, showEnd ? R2 : 0, showEnd);
       setNode(2, 1, showEnd ? (outcome === 1 ? -R2 : R2) : 0, showEnd);
       sumTxt.textContent = phase === 2
-        ? '測定：五分五分のくじで ' + outcome + ' が出た → 状態は |' + outcome + '⟩ に決まる'
+        ? '測定：五分五分のくじで ' + outcome + ' が出た'
         : phase >= 3
           ? (outcome === 0
-            ? '結果0 → 2回目の H は |+⟩ を作る → 読めば 0 と 1 が50%ずつ'
-            : '結果1 → 2回目の H は |−⟩（|1⟩ が正反対）→ 読めば 0 と 1 が50%ずつ')
+            ? '結果0 → 2回目の H は |+⟩ を作る'
+            : '結果1 → 2回目の H は |−⟩（|1⟩ が正反対）')
           : '';
+      sumTxt2.textContent = phase === 2
+        ? '状態は |' + outcome + '⟩ に決まり、もう一方の道筋は消える'
+        : phase >= 3 ? '読み出しは 0 と 1 が50%ずつ' : '';
       modeTxt.textContent = '途中で測定：どちらが出ても、読み出しは 0 と 1 が50%ずつ';
       modeTxt.style.fill = C1;
     }
