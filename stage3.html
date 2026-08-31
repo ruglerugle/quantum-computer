@@ -96,7 +96,7 @@
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">その通り、先回りできたね。書き方も決めておこう。左の桁を1番目の量子ビット、右の桁を2番目として、<strong>|00⟩ |01⟩ |10⟩ |11⟩</strong> の4行に矢印が1本ずつ。規格化の約束は変わらない――4本の矢印の長さの2乗を全部足すと1だ。読み出せば、この4通りのうちどれか1つが出る。<br>そして、ここからが量子コンピュータの人を驚かせる部分だよ。<strong>量子ビットがn個なら、表は2ⁿ行になる</strong>。10個で1024行、20個で約100万行、50個で約1000兆行。</div>
+          <div class="dialog-bubble">その通り、先回りできたね。書き方も決めておこう。2個の値を |00⟩ のように並べて書き、<strong>左の桁を1桁目、右の桁を2桁目</strong>と呼ぶことにして、<strong>|00⟩ |01⟩ |10⟩ |11⟩</strong> の4行に矢印が1本ずつ。規格化の約束は変わらない――4本の矢印の長さの2乗を全部足すと1だ。読み出せば、この4通りのうちどれか1つが出る。<br>そして、ここからが量子コンピュータの人を驚かせる部分だよ。<strong>量子ビットがn個なら、表は2ⁿ行になる</strong>。10個で1024行、20個で約100万行、50個で約1000兆行。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
@@ -158,7 +158,7 @@
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">鋭い聞き返しだ。例で示そう。量子ビットを2個用意して、<strong>それぞれ別々に</strong> H を当てたとする。1個目は |0⟩ と |1⟩ が0.71ずつ、2個目も0.71ずつ。このとき全体の4行の表はどうなるか、計算してみてほしい。「1番目が |0⟩ で2番目も |0⟩」という候補 |00⟩ の矢印は、どれくらいの長さになるかな。</div>
+          <div class="dialog-bubble">鋭い聞き返しだ。例で示そう。量子ビットを2個用意して、<strong>それぞれ別々に</strong> H を当てたとする。1桁目は |0⟩ と |1⟩ が0.71ずつ、2桁目も0.71ずつ。このとき全体の4行の表はどうなるか、計算してみてほしい。「1桁目が |0⟩ で2桁目も |0⟩」という候補 |00⟩ の矢印は、どれくらいの長さになるかな。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
@@ -172,7 +172,7 @@
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">いまの計算の手順に、答えが出ているんだよ。きみは4本の矢印を1本ずつ調べたわけではなく、<strong>1番目の2個と2番目の2個を、掛け算しただけ</strong>だ。九九の表と同じ構造だね。九九は81マスあるけれど、覚えるのは縦と横の見出しだけで、マスの中身はいつでも掛け算で再現できる。この表も同じで、<strong>「2＋2」の見出しさえ控えておけば、4行を丸ごと再現できる</strong>――つまり、<strong>ふつうのコンピュータでも簡単に真似できてしまう</strong>。こういう「別々の表の掛け算で書ける状態」を<strong>積状態</strong>という。量子ビットをn個持ってきて、それぞれ勝手に操作しているだけなら、状態はずっと積状態のままで、表の行数は2ⁿでも、覚えておくべき数字は1個あたり2個ずつ、合わせて2×n個しかない。300個なら600個――10⁹⁰行の表が、たった600個の見出しで書けてしまう。<br>本物の2ⁿは、<strong>積状態では書けない状態</strong>を作ったときに初めて現れる。そして実は、その状態にきみはもう出会っている。ベルの不等式の旅で調べた、<strong>もつれ</strong>だ。</div>
+          <div class="dialog-bubble">いまの計算の手順に、答えが出ているんだよ。きみは4本の矢印を1本ずつ調べたわけではなく、<strong>1桁目の2個と2桁目の2個を、掛け算しただけ</strong>だ。九九の表と同じ構造だね。九九は81マスあるけれど、覚えるのは縦と横の見出しだけで、マスの中身はいつでも掛け算で再現できる。この表も同じで、<strong>「2＋2」の見出しさえ控えておけば、4行を丸ごと再現できる</strong>――つまり、<strong>ふつうのコンピュータでも簡単に真似できてしまう</strong>。こういう「別々の表の掛け算で書ける状態」を<strong>積状態</strong>という。量子ビットをn個持ってきて、それぞれ勝手に操作しているだけなら、状態はずっと積状態のままで、表の行数は2ⁿでも、覚えておくべき数字は1個あたり2個ずつ、合わせて2×n個しかない。300個なら600個――10⁹⁰行の表が、たった600個の見出しで書けてしまう。<br>本物の2ⁿは、<strong>積状態では書けない状態</strong>を作ったときに初めて現れる。そして実は、その状態にきみはもう出会っている。ベルの不等式の旅で調べた、<strong>もつれ</strong>だ。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
@@ -186,7 +186,7 @@
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">同じものなんだ。それを言葉ではなく計算で確かめるために、今日はもつれを<strong>自分の手で作る</strong>。必要なのは新しいゲート1つだけ――<strong>CNOTゲート</strong>だ。名前は「制御つきNOT」の略で、2つの量子ビットを使う。役割を持たせて、1番目を<strong>制御ビット</strong>、2番目を<strong>標的ビット</strong>と呼ぶ。動きはこうだ。<strong>制御ビットが1の行だけ、標的ビットをひっくり返す。制御ビットが0の行は何もしない。</strong><br>表で言えば、|10⟩ の矢印と |11⟩ の矢印を入れ替えるだけ。|00⟩ と |01⟩ には触らない。とても素朴な操作だね。</div>
+          <div class="dialog-bubble">同じものなんだ。それを言葉ではなく計算で確かめるために、今日はもつれを<strong>自分の手で作る</strong>。必要なのは新しいゲート1つだけ――<strong>CNOTゲート</strong>だ。名前は「制御つきNOT」の略で、2つの量子ビットを使う。役割を持たせて、1桁目（左の桁）を<strong>制御ビット</strong>、2桁目（右の桁）を<strong>標的ビット</strong>と呼ぶ。動きはこうだ。<strong>制御ビットが1の行だけ、標的ビットをひっくり返す。制御ビットが0の行は何もしない。</strong><br>表で言えば、|10⟩ の矢印と |11⟩ の矢印を入れ替えるだけ。|00⟩ と |01⟩ には触らない。とても素朴な操作だね。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
@@ -205,20 +205,20 @@
       </div>
 
       <div class="diagram-box">
-        <svg id="two-svg" class="qc-svg" viewBox="0 0 372 236" width="100%" role="img" aria-label="2量子ビットの状態シミュレータ。00、01、10、11の4行の矢印の表に、1番目や2番目へのアダマールゲート、Xゲート、CNOTゲートを当てて、表がどう変わるかを見る">
+        <svg id="two-svg" class="qc-svg" viewBox="0 0 372 236" width="100%" role="img" aria-label="2量子ビットの状態シミュレータ。00、01、10、11の4行の矢印の表に、1桁目や2桁目へのアダマールゲート、Xゲート、CNOTゲートを当てて、表がどう変わるかを見る">
           <text class="strong" x="186" y="16" text-anchor="middle">2量子ビット＝4行の矢印の表</text>
           <g id="two-body"></g>
         </svg>
         <div class="anim-ctrl">
-          <button type="button" class="btn" id="t-h1">H（1番目）</button>
-          <button type="button" class="btn" id="t-h2">H（2番目）</button>
-          <button type="button" class="btn" id="t-x1">X（1番目）</button>
+          <button type="button" class="btn" id="t-h1">H（1桁目）</button>
+          <button type="button" class="btn" id="t-h2">H（2桁目）</button>
+          <button type="button" class="btn" id="t-x1">X（1桁目）</button>
           <button type="button" class="btn" id="t-cnot">CNOT</button>
           <button type="button" class="btn" id="t-measure">📏 測定</button>
           <button type="button" class="btn" id="t-reset">↺ |00⟩に戻す</button>
         </div>
         <div class="gate-log" id="t-log"></div>
-        <div class="diagram-caption">4行それぞれに矢印が1本。右向きが「そのままの向き」、左向きが「正反対の向き」。棒グラフは長さの2乗＝その答えが出る確率。<strong>もつれの作り方は2手だけ</strong>：「H（1番目）」→「CNOT」。すると |00⟩ と |11⟩ にだけ矢印が立ち、|01⟩ と |10⟩ はゼロになる。この状態を測ると、00 か 11 しか出ない――<strong>2つの量子ビットは必ず同じ値になる</strong>。判定欄には、その表が「別々の表の掛け算で書けるか（積状態）」「書けないか（もつれ）」が表示される。</div>
+        <div class="diagram-caption">4行それぞれに矢印が1本。右向きが「そのままの向き」、左向きが「正反対の向き」。棒グラフは長さの2乗＝その答えが出る確率。<strong>もつれの作り方は2手だけ</strong>：「H（1桁目）」→「CNOT」。すると |00⟩ と |11⟩ にだけ矢印が立ち、|01⟩ と |10⟩ はゼロになる。この状態を測ると、00 か 11 しか出ない――<strong>2つの量子ビットは必ず同じ値になる</strong>。判定欄には、その表が「別々の表の掛け算で書けるか（積状態）」「書けないか（もつれ）」が表示される。</div>
       </div>
 
       <div class="dialogue-scene">
@@ -227,14 +227,14 @@
             <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">できました。目標の表では <strong>|11⟩ に矢印が要ります</strong>。CNOT は |10⟩ と |11⟩ の入れ替えですから、<strong>先に |10⟩ に矢印を立てておいて、CNOT で |11⟩ へ運べばいい</strong>。そして |10⟩ に矢印を立てるのは、1番目に H を当てればできます。<br>やってみます。|00⟩ に H（1番目）を当てると、表は <strong>|00⟩ が0.71、|10⟩ が0.71</strong>、残り2行はゼロ。次に CNOT。|00⟩ の行は制御が0だからそのまま、|10⟩ の行は制御が1だから標的がひっくり返って <strong>|11⟩</strong> に移る。<br>結果は <strong>|00⟩ が0.71、|11⟩ が0.71、他はゼロ</strong>――お題の表になりました。</div>
+          <div class="dialog-bubble">できました。目標の表では <strong>|11⟩ に矢印が要ります</strong>。CNOT は |10⟩ と |11⟩ の入れ替えですから、<strong>先に |10⟩ に矢印を立てておいて、CNOT で |11⟩ へ運べばいい</strong>。そして |10⟩ に矢印を立てるのは、1桁目に H を当てればできます。<br>やってみます。|00⟩ に H（1桁目）を当てると、表は <strong>|00⟩ が0.71、|10⟩ が0.71</strong>、残り2行はゼロ。次に CNOT。|00⟩ の行は制御が0だからそのまま、|10⟩ の行は制御が1だから標的がひっくり返って <strong>|11⟩</strong> に移る。<br>結果は <strong>|00⟩ が0.71、|11⟩ が0.71、他はゼロ</strong>――お題の表になりました。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">では、いま作った表が本当に<strong>積状態ではない</strong>――別々の表の掛け算では書けないことを、確かめよう。もし掛け算で書けるとしたら、1番目の表を「|0⟩ に a、|1⟩ に b」、2番目を「|0⟩ に c、|1⟩ に d」と置ける。このとき4行の矢印はどうなるかな。</div>
+          <div class="dialog-bubble">では、いま作った表が本当に<strong>積状態ではない</strong>――別々の表の掛け算では書けないことを、確かめよう。もし掛け算で書けるとしたら、1桁目の表を「|0⟩ に a、|1⟩ に b」、2桁目を「|0⟩ に c、|1⟩ に d」と置ける。このとき4行の矢印はどうなるかな。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
@@ -246,17 +246,17 @@
       </div>
 
       <div class="diagram-box">
-        <svg class="qc-svg" viewBox="0 0 372 268" width="100%" role="img" aria-label="作った表が積状態で書けないことを示す掛け算の表。1番目の見出しをaとb、2番目の見出しをcとdとすると、4行はa×c、a×d、b×c、b×dになる。作った表にはa×cとb×dが0.71、a×dとb×cが0であることが必要だが、条件を順にたどると矛盾する">
+        <svg class="qc-svg" viewBox="0 0 372 268" width="100%" role="img" aria-label="作った表が積状態で書けないことを示す掛け算の表。1桁目の見出しをaとb、2桁目の見出しをcとdとすると、4行はa×c、a×d、b×c、b×dになる。作った表にはa×cとb×dが0.71、a×dとb×cが0であることが必要だが、条件を順にたどると矛盾する">
           <text class="strong" x="186" y="16" text-anchor="middle">作った表は「見出しの掛け算」で書けるか？</text>
           <text class="label" x="70" y="52" text-anchor="middle">見出し</text>
           <rect x="132" y="34" width="104" height="30" rx="5" fill="var(--paper2)" stroke="var(--line)"/>
-          <text class="label" x="184" y="53" text-anchor="middle">2番目 |0⟩：c</text>
+          <text class="label" x="184" y="53" text-anchor="middle">2桁目 |0⟩：c</text>
           <rect x="248" y="34" width="104" height="30" rx="5" fill="var(--paper2)" stroke="var(--line)"/>
-          <text class="label" x="300" y="53" text-anchor="middle">2番目 |1⟩：d</text>
+          <text class="label" x="300" y="53" text-anchor="middle">2桁目 |1⟩：d</text>
           <rect x="14" y="72" width="104" height="44" rx="5" fill="var(--paper2)" stroke="var(--line)"/>
-          <text class="label" x="66" y="98" text-anchor="middle">1番目 |0⟩：a</text>
+          <text class="label" x="66" y="98" text-anchor="middle">1桁目 |0⟩：a</text>
           <rect x="14" y="124" width="104" height="44" rx="5" fill="var(--paper2)" stroke="var(--line)"/>
-          <text class="label" x="66" y="150" text-anchor="middle">1番目 |1⟩：b</text>
+          <text class="label" x="66" y="150" text-anchor="middle">1桁目 |1⟩：b</text>
           <rect x="132" y="72" width="104" height="44" rx="5" fill="#efe9f9" stroke="#5b3fa6" stroke-width="1.5"/>
           <text class="strong" x="184" y="90" text-anchor="middle">|00⟩ ＝ a×c</text>
           <text class="accent" x="184" y="107" text-anchor="middle">0.71 にしたい</text>
@@ -299,7 +299,7 @@
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">自分で立てた疑問を自分で潰したね、その通りだ。もつれは「超光速の電話線」ではない。量子コンピュータの中でのもつれの役目も、通信ではなく<strong>計算</strong>にある。CNOT が効くのは、こういう場面だよ。2番目の量子ビットに「1番目についての何らかの計算結果」を書き込むと、<strong>1番目のすべての候補について、その計算結果が同時に表に書き込まれる</strong>。しかも書き込みは矢印の付け替えだから、あとで干渉させることができる。<br>――ここまでで、道具はすべてそろった。矢印の表、それを混ぜる H、そして候補ごとに計算結果を結びつける CNOT。次のステージでは、この3つを組み合わせて<strong>世界最小の量子アルゴリズム</strong>を作り、「並列計算だから速い」という説明のどこが間違っているのかを、はっきりさせる。</div>
+          <div class="dialog-bubble">自分で立てた疑問を自分で潰したね、その通りだ。もつれは「超光速の電話線」ではない。量子コンピュータの中でのもつれの役目も、通信ではなく<strong>計算</strong>にある。CNOT が効くのは、こういう場面だよ。2桁目の量子ビットに「1桁目についての何らかの計算結果」を書き込むと、<strong>1桁目のすべての候補について、その計算結果が同時に表に書き込まれる</strong>。しかも書き込みは矢印の付け替えだから、あとで干渉させることができる。<br>――ここまでで、道具はすべてそろった。矢印の表、それを混ぜる H、そして候補ごとに計算結果を結びつける CNOT。次のステージでは、この3つを組み合わせて<strong>世界最小の量子アルゴリズム</strong>を作り、「並列計算だから速い」という説明のどこが間違っているのかを、はっきりさせる。</div>
         </div>
       </div>
 
@@ -309,7 +309,7 @@
         <span class="step">・ただし<strong>読み出せるのは1回に1行だけ</strong>。表が巨大でも取り出せる情報は増えない</span>
         <span class="step">・<strong>積状態</strong>：各量子ビットの表の掛け算で書ける状態（例: |00⟩ |01⟩ |10⟩ |11⟩ が全部0.5）。見出し2×n個で丸ごと再現できる（九九の表と同じ）</span>
         <span class="step">・<strong>CNOT</strong>：制御ビットが1の行だけ、標的ビットを反転（＝|10⟩ 行と |11⟩ 行の矢印を入れ替える）</span>
-        <span class="step">・<strong>もつれの作り方</strong>：|00⟩ → H（1番目） → CNOT → |00⟩ と |11⟩ に0.71ずつ（ベル状態）。掛け算では書けないことが背理法で示せる</span>
+        <span class="step">・<strong>もつれの作り方</strong>：|00⟩ → H（1桁目） → CNOT → |00⟩ と |11⟩ に0.71ずつ（ベル状態）。掛け算では書けないことが背理法で示せる</span>
         <span class="step">・もつれがあって初めて2ⁿの表は本物になる。ふつうのコンピュータで真似できなくなる原因はここにある。ただし<span class="nw">もつれで通信はできない</span></span>
       </div>
 
@@ -325,13 +325,13 @@
       </div>
 
       <div class="quiz-card" data-quiz>
-        <p class="quiz-q">Q2. |00⟩ から出発して、1番目の量子ビットに H を当ててから CNOT をかけた。できあがる表は？</p>
+        <p class="quiz-q">Q2. |00⟩ から出発して、1桁目の量子ビットに H を当ててから CNOT をかけた。できあがる表は？</p>
         <div class="choice-list">
           <button class="choice-btn">|00⟩ と |11⟩ に0.71ずつ、|01⟩ と |10⟩ はゼロ</button>
           <button class="choice-btn">4行とも0.5ずつ</button>
           <button class="choice-btn">|01⟩ と |10⟩ に0.71ずつ、|00⟩ と |11⟩ はゼロ</button>
         </div>
-        <div class="quiz-explain" hidden>正解！ H で |00⟩ と |10⟩ が0.71ずつになり、CNOT は制御（1番目）が1の行だけ標的を反転するので |10⟩ が |11⟩ に移る。測れば 00 か 11 しか出ない、値が必ず一致するもつれ状態（ベル状態）だ。</div>
+        <div class="quiz-explain" hidden>正解！ H で |00⟩ と |10⟩ が0.71ずつになり、CNOT は制御（1桁目）が1の行だけ標的を反転するので |10⟩ が |11⟩ に移る。測れば 00 か 11 しか出ない、値が必ず一致するもつれ状態（ベル状態）だ。</div>
       </div>
 
       <div class="quiz-card" data-quiz>
@@ -504,7 +504,7 @@
     }
   }
   function hOn(which) {
-    // which: 0 = 1番目（左の桁）, 1 = 2番目（右の桁）に H を当てる
+    // which: 0 = 1桁目（左の桁）, 1 = 2桁目（右の桁）に H を当てる
     // H: |0⟩ →(|0⟩+|1⟩)/√2 ／ |1⟩ →(|0⟩−|1⟩)/√2 を、対象ビットだけに適用する
     var n = [0, 0, 0, 0];
     for (var j = 0; j < 4; j++) {
@@ -528,9 +528,9 @@
   }
   function push(label) { log.push(label); render(); }
   var b;
-  b = document.getElementById('t-h1'); if (b) b.addEventListener('click', function () { hOn(0); push('H₁'); });
-  b = document.getElementById('t-h2'); if (b) b.addEventListener('click', function () { hOn(1); push('H₂'); });
-  b = document.getElementById('t-x1'); if (b) b.addEventListener('click', function () { xOn(0); push('X₁'); });
+  b = document.getElementById('t-h1'); if (b) b.addEventListener('click', function () { hOn(0); push('H 1桁目'); });
+  b = document.getElementById('t-h2'); if (b) b.addEventListener('click', function () { hOn(1); push('H 2桁目'); });
+  b = document.getElementById('t-x1'); if (b) b.addEventListener('click', function () { xOn(0); push('X 1桁目'); });
   b = document.getElementById('t-cnot'); if (b) b.addEventListener('click', function () { cnot(); push('CNOT'); });
   b = document.getElementById('t-measure');
   if (b) b.addEventListener('click', function () {
