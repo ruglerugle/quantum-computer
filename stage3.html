@@ -35,6 +35,9 @@
   .readout b{font-weight:900;font-variant-numeric:tabular-nums;color:inherit}
   .gate-log{margin-top:8px;font-size:12.5px;font-weight:800;color:var(--ink);min-height:1.5em;word-break:break-all}
   .gate-log .g{display:inline-block;background:#eae2f7;border:1px solid #c3b0e6;border-radius:5px;padding:0 6px;margin:0 2px 3px 0}
+  .column-box{background:var(--paper2);border:1.5px dashed #b09ac8;border-radius:10px;padding:12px 15px;margin:16px 0;font-size:13.5px;line-height:1.85;color:var(--ink);font-weight:700}
+  .column-label{display:inline-block;font-size:10.5px;font-weight:900;color:#5b3fa6;border:1px solid #5b3fa6;border-radius:4px;padding:0 6px;margin-bottom:6px}
+  .column-title{font-size:14px;font-weight:900;color:#3a2a66;margin-bottom:6px}
 </style>
 </head>
 <body>
@@ -285,6 +288,13 @@
           </div>
           <div class="dialog-bubble">完璧な背理法だ。<strong>それが、もつれ状態だ</strong>。物理学者はこの表を<strong>ベル状態</strong>と呼んでいる。たった2手で作れてしまう。これで「2ⁿ行の表」が本物になる条件が分かったね。<strong>もつれがあるとき、表全体は、各量子ビットの情報をばらばらに集めても再現できない</strong>。300個の量子ビットがしっかりもつれた状態を、ふつうのコンピュータで正直に記録しようとすれば、10⁹⁰個の数字を書き留めることになる。だからこそ、量子コンピュータのシミュレーションは50個あたりでもう手に負えなくなるんだ。<strong>もつれこそが、量子コンピュータをふつうのコンピュータで真似できなくしている当のもの</strong>だよ。</div>
         </div>
+      </div>
+
+      <div class="column-box">
+        <span class="column-label">発展コラム</span>
+        <div class="column-title">積では書けない。でも、和なら書けている</div>
+        本文で示したのは、正確には「積<strong>1個</strong>では書けない」ということだ。表の各行は、それ単体なら積状態そのもの（たとえば |00⟩ は a＝1、b＝0、c＝1、d＝0 の掛け算で書ける）。だから、どんな状態も「積状態の<strong>和</strong>」としてなら必ず書ける。いま作った表も、0.71×|00⟩ ＋ 0.71×|11⟩ という<strong>積2個の和</strong>だ。もつれとは、和の形にしたとき、<strong>どう工夫しても2項以上の積が必要になる</strong>状態のこと――そして「最低で何項の積が要るか」は、もつれの強さを測る物差しとして実際に使われている。<br>
+        おまけをもうひとつ。2項目の符号だけを変えた 0.71×|00⟩ <strong>−</strong> 0.71×|11⟩ も積2個の和で、読み出せば「00 か 11 が半々で、必ず一致」という同じ結果を与える。でもこれは、元の表とは<strong>別のもつれ状態</strong>だ。STAGE1 で見た |+⟩ と |−⟩ の関係――符号の違いは読み出しには現れないが、干渉させると区別できる――が、もつれた2量子ビットの世界でもそのまま生きている。
       </div>
       <div class="dialogue-scene">
         <div class="dialog-row right">
