@@ -200,21 +200,23 @@
           </div>
           <div class="dialog-bubble">分かりました。では計算します。<br>さきほどの「0.71倍を配る」というのは、<strong>拡大コピー機と同じ</strong>ですね。0.71倍のコピー機に2回通したら、倍率は足し算ではなく<strong>掛け算</strong>で0.71×0.71＝0.5倍になる。<br>1回目の H のあと、|0⟩ の矢印も |1⟩ の矢印も長さ0.71で同じ向き。ここから2回目です。<br>まず<strong>途中 |0⟩ を経由した道筋</strong>。長さ0.71の矢印に0.71倍がかかるので、|0⟩ 行にも |1⟩ 行にも<strong>0.5</strong>ずつ、どちらもそのままの向きで届きます。<br>次に<strong>途中 |1⟩ を経由した道筋</strong>。同じく0.5ずつですが、こちらは入り口が |1⟩ なので、|1⟩ 行に届く分だけが<strong>正反対の向き</strong>になる。<br>最後に、行き先が同じものどうしを足します。|0⟩ 行に届いたのは0.5と0.5で、どちらも同じ向きだから 0.5＋0.5＝<strong>1</strong>。|1⟩ 行に届いたのは0.5と、正反対の0.5……<strong>足すとゼロ</strong>！ 消えました。つまり2回の H で、状態はぴったり |0⟩ に戻る。</div>
         </div>
-        <div class="dialog-row">
-          <div class="dialog-character">
-            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name mentor">ねこ博士</div>
-          </div>
-          <div class="dialog-bubble">見事だ。いま、きみは量子コンピュータの心臓部をその手で動かした。この計算の中で決定的だったのは、<strong>|1⟩ にたどり着く2本の道筋の矢印が、正反対を向いていて打ち消し合った</strong>こと。もし矢印に向きがなくて確率だけの世界だったら、「途中0を通って最後に1になる確率0.25」と「途中1を通って最後に1になる確率0.25」を足して0.5、つまり五分五分にしかならない。<strong>ゼロにはできない</strong>んだ。打ち消し合いは、確率の世界には存在しない、矢印の世界だけの技だよ。</div>
-        </div>
       </div>
-
       <div class="diagram-box">
         <svg id="path-svg" class="qc-svg" viewBox="0 0 372 370" width="100%" role="img" aria-label="アダマールゲートを2回当てたときの4本の道筋を1本ずつ数えた表。Hは0.71倍を配る装置で、マイナスがつくのは|1⟩に当てたときの|1⟩行だけ。4本の道筋の値はいずれも0.71かける0.71で0.5になり、|1⟩行へ向かう2本のうち1本だけが正反対の向きになるため、足すとゼロになる">
           <text class="strong" x="186" y="16" text-anchor="middle">4本の道筋を、かけ算で1本ずつ数える</text>
           <g id="path-body"></g>
         </svg>
         <div class="diagram-caption">上段が H のルール。H は<strong>「入ってきた矢印の0.71倍を、それぞれの行に配る」倍率の装置</strong>で、<strong>マイナスがつくのは |1⟩ に当てたときの |1⟩ 行、この1か所だけ</strong>。<br>中段は、|0⟩ から H を2回通したときの4本の道筋。倍率は続けて通すと<strong>掛け算</strong>になるので（0.71倍のコピー機を2回通すのと同じ）、どの道筋も 0.71×0.71＝<strong>0.5</strong>。ただし4本目だけは、上段の「1か所のマイナス」を拾うので<strong>正反対の向き</strong>になる。右端の矢印がその向きだ。<br>下段は、行き先が同じものどうしの足し算。|0⟩ 行には同じ向きが2本届いて<strong>強め合って1.00</strong>、|1⟩ 行には正反対が2本届いて<strong>打ち消し合ってゼロ</strong>。マイナス1個の置き場所だけが、この結果を作っている。</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">見事だ。いま、きみは量子コンピュータの心臓部をその手で動かした。決定的だったのは、<strong>|1⟩ にたどり着く2本の矢印が正反対を向いていて、打ち消し合った</strong>ことだね。<br>あのマイナス1個は飾りではないよ。もし向きがなくて長さだけを足していたら、|0⟩ 行も |1⟩ 行も 0.5＋0.5＝1 になる。確率は長さの2乗だから、合計は 1＋1＝2 ――読み出せば必ずどちらか一方が出るのだから、これは起こりえない。<strong>打ち消し合いは H のおまけの性質ではなく、H がユニタリであるための条件そのもの</strong>なんだ。確率だけを足していく世界には、決して作れない技だよ。</div>
+        </div>
       </div>
 
       <div class="diagram-box">
