@@ -200,7 +200,7 @@
             <div class="dialog-avatar mentor"><img src="images/catThink.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">その素朴さが、いい落とし穴でね。では、お題を出そう。<strong>|00⟩ から出発して、まず1番目に H を当て、それから CNOT を通す</strong>。制御ビットが重ね合わせのときに「1の行だけ反転」がどう働くのか――表の4行がどうなるか、自分の手で計算してごらん。</div>
+          <div class="dialog-bubble">その素朴さで何ができるか、お題で試してみよう。作ってほしいのは、<strong>|00⟩ に0.71、|11⟩ に0.71、残り2行はゼロ</strong>という表だ。使える道具は H と CNOT、出発点は |00⟩。さて、どんな順番で当てればいいかな。</div>
         </div>
       </div>
 
@@ -227,7 +227,7 @@
             <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">計算しました。まず |00⟩ から出発して、1番目に H を当てます。1番目が0.71ずつの重ね合わせになるので、表は <strong>|00⟩ が0.71、|10⟩ が0.71</strong>、残り2行はゼロ。<br>次に CNOT。制御は1番目です。|00⟩ の行は制御が0だから、そのまま。|10⟩ の行は制御が1だから、標的をひっくり返して <strong>|11⟩</strong> になる。<br>結果は <strong>|00⟩ が0.71、|11⟩ が0.71、他はゼロ</strong>。……測ったら、00 か 11 しか出ない。2つの量子ビットの値が必ず一致する状態です！</div>
+          <div class="dialog-bubble">できました。目標の表では <strong>|11⟩ に矢印が要ります</strong>。CNOT は |10⟩ と |11⟩ の入れ替えですから、<strong>先に |10⟩ に矢印を立てておいて、CNOT で |11⟩ へ運べばいい</strong>。そして |10⟩ に矢印を立てるのは、1番目に H を当てればできます。<br>やってみます。|00⟩ に H（1番目）を当てると、表は <strong>|00⟩ が0.71、|10⟩ が0.71</strong>、残り2行はゼロ。次に CNOT。|00⟩ の行は制御が0だからそのまま、|10⟩ の行は制御が1だから標的がひっくり返って <strong>|11⟩</strong> に移る。<br>結果は <strong>|00⟩ が0.71、|11⟩ が0.71、他はゼロ</strong>――お題の表になりました。……あれ、この状態を測ったら、00 か 11 しか出ません。<strong>2つの量子ビットの値が、必ず一致する</strong>！</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
