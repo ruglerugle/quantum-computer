@@ -183,7 +183,21 @@
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">いい問いだ、そこが「同時に計算」の正確な中身だよ。違いは、<strong>箱は固定された回路で、通すのは1回だけ</strong>という点にある。STAGE2 の H を思い出してごらん。|+⟩ に H を当てるとき、H は |0⟩ と |1⟩ を順番に処理したりしない。<strong>1回のパルスで、表の2行がまとめて書き換わる</strong>。ゲートとは表全体への書き換え規則で、行が4行でも100万行でも、適用は1回、かかる時間も1回ぶんだ。箱も同じ回路仕掛けだから、1個ずつ順に試すときのように<strong>候補の数だけ時間が積み上がることはない</strong>。ただし、その1回の結果は1枚の表に閉じ込められていて、出口は狭い――だから干渉で搾り出している、というわけだね。<br>なお、候補が4個のときだけは、きみの計算の通り1回で完璧に決まる。もっと多いと1回では届かず、当たりは少しずつしか伸びない。<strong>候補8個（量子ビット3個）ではどうなるか、続けて確かめてごらん。</strong></div>
+          <div class="dialog-bubble">いい問いだ、そこが「同時に計算」の正確な中身だよ。違いは、<strong>箱は固定された回路で、通すのは1回だけ</strong>という点にある。STAGE2 の H を思い出してごらん。|+⟩ に H を当てるとき、H は |0⟩ と |1⟩ を順番に処理したりしない。<strong>1回のパルスで、表の2行がまとめて書き換わる</strong>。ゲートとは表全体への書き換え規則で、行が4行でも100万行でも適用は1回。かかる時間は<strong>照合の手順の複雑さぶんだけ</strong>で、候補の数には比例しないんだ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">まだ腑に落ちません。ふつうのコンピュータでも、<strong>候補の数だけCPUを並べて、いっせいに判定させれば</strong>「1回で全候補を処理」になりますよね。それと何が違うんですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その比較を自分で持ち出せたのは見事だ。違いは3つある。<br>第一に、<strong>設備の数</strong>。CPU並列は候補の数だけ物理的な機械が要る。候補が2¹²⁸個なら、宇宙の原子を全部使ってもコアが足りない。量子の側は、候補が2倍になっても量子ビットが<strong>1個増えるだけ</strong>。なぜそんなに安いのか――候補たちが「N台の機械」ではなく、<strong>1つの波のN個の成分</strong>だからだ。二重スリットを思い出してごらん。電子1個がスリット板を1回通ると、左の道筋と右の道筋の<strong>両方</strong>が変換された。板の中に「左担当」「右担当」の部品はない。箱は、いわば<strong>2ⁿ本スリットの板</strong>なんだ。1つの波が1回通れば、全成分が各自の照合結果どおりに変換される。成分ごとの処理を装置がやっているのではなく、<strong>波に働く自然法則が勝手に分配してくれる</strong>。<br>第二に、<strong>読み出し</strong>。ここはCPU並列の圧勝だ。N台のコアは全結果を全部読める。量子の表は1行しか読めない。<br>第三に、<strong>干渉</strong>。コアたちの結果は独立で、打ち消し合えない。波の成分は打ち消し合える。読み出しで負けているぶんを、この唯一の武器で取り返す――それが第2手の反復だった、というわけだ。<br>さて、候補が4個のときだけは、きみの計算の通り1回で完璧に決まる。もっと多いと1回では届かない。<strong>候補8個（量子ビット3個）ではどうなるか、続けて確かめてごらん。</strong></div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
@@ -269,6 +283,7 @@
         <span class="step">・問題：構造のない N 個の候補から当たり1個を探す。ふつうのコンピュータは平均 N/2 回、最悪 N 回の質問が必要（これが限界であることも証明済み）</span>
         <span class="step">・準備：全候補に H を当て、すべての矢印を長さ <span class="nw">√N分の1</span> にそろえる</span>
         <span class="step">・<strong>第1手（反転）</strong>：オラクルで<strong>当たりの行の矢印だけ正反対の向き</strong>にする（位相キックバック）。長さは変わらず、目印が付くだけ</span>
+        <span class="step">・1パスで全行に効くのは<strong>波の並列</strong>（二重スリットで両道筋が同時に変換されたのと同じ）。<br class="wbr">コアN個の並列と違い設備は量子ビット log₂N 個。ただし<span class="nw">読み出せるのは1行だけ</span></span>
         <span class="step">・<strong>第2手（平均のまわりの折り返し）</strong>：新しい値＝<strong>2×平均 − 元の値</strong>。平均から大きく外れた当たりだけが大きく伸び、外れは少しずつ縮む</span>
         <span class="step">・くり返す回数は<strong>約 0.785×√N 回</strong>（πの4分の1×√N）。<span class="nw">行き過ぎると確率は下がる</span>――回転だから</span>
         <span class="step">・加速は<strong>2次まで</strong>（N → √N）で、指数加速ではない。128ビット鍵の総当たりは実質64ビット分になるが、<span class="nw">鍵長を2倍にすれば対策できる</span></span>
