@@ -1,7 +1,7 @@
 # このリポジトリについて
 
 「量子コンピュータはなぜ速いのか」を、中身の計算の仕組みから理解する学習クエストサイト。
-量子ビット（矢印の一覧表）→ 量子ゲート（矢印の回し方・混ぜ方）→ もつれとCNOT → ドイチュのアルゴリズム → グローバーの探索 → ショアの因数分解 → デコヒーレンスと誤り訂正、の全7ステージ。
+量子ビット（矢印の一覧表）→ 量子ゲート（矢印の回し方・混ぜ方）→ 実機の中身（超伝導量子ビット）→ もつれとCNOT → ドイチュのアルゴリズム → グローバーの探索 → ショアの因数分解 → デコヒーレンスと誤り訂正、の全8ステージ。
 公開URL（予定）: https://ruglerugle.github.io/quantum-computer/
 
 **このサイトの主役は「速さの正体＝干渉の設計、を自分の手で確かめること」**。
@@ -86,8 +86,8 @@
 
 # ファイル構成
 - `design-system.css` — quest-template由来の共通デザイン。配色は `:root` の変数で管理（回路基板の紺×金）
-- `js/progress.js` — 進捗管理・クイズ判定。**クイズの正解は `ANSWERS`**。localStorageキーは `quantumComputerQuestProgress`、グローバルは `QC`
-- `stage1.html` 〜 `stage7.html` — 各ステージ。`index.html`（表紙）、`complete.html`（クリア画面）
+- `js/progress.js` — 進捗管理・クイズ判定。**クイズの正解は `ANSWERS`**。localStorageキーは `quantumComputerQuestProgress_v2`、グローバルは `QC`
+- `stage1.html` 〜 `stage8.html` — 各ステージ。`index.html`（表紙）、`complete.html`（クリア画面）
 - `images/` — キャラ画像はWebP（幅300px程度、decoherence-questから流用）。`<img>` には `width`/`height` 属性を必ず付ける。
   favicon.png は流用。ogp.png は未作成
 - 図はSVGで手書きし、JSでアニメーションさせる場合は IntersectionObserver でビューポート内のみ再生し、
