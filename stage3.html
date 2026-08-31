@@ -234,20 +234,20 @@
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">それがもつれ状態だ。物理学者はこれを<strong>ベル状態</strong>と呼んでいる。たった2手で作れてしまう。では、これが本当に積状態ではないことを確かめよう。もし別々の表の掛け算で書けるとしたら、1番目の表を「|0⟩ に a、|1⟩ に b」、2番目を「|0⟩ に c、|1⟩ に d」と置ける。このとき4行の矢印はどうなるかな。</div>
+          <div class="dialog-bubble">では、いま作った表が本当に<strong>積状態ではない</strong>――別々の表の掛け算では書けないことを、確かめよう。もし掛け算で書けるとしたら、1番目の表を「|0⟩ に a、|1⟩ に b」、2番目を「|0⟩ に c、|1⟩ に d」と置ける。このとき4行の矢印はどうなるかな。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">さっきと同じで掛け算です。|00⟩ は a×c、|01⟩ は a×d、|10⟩ は b×c、|11⟩ は b×d。<br>これがベル状態と一致するには、<strong>a×d＝0</strong> かつ <strong>b×c＝0</strong>、そして <strong>a×c＝0.71</strong>、<strong>b×d＝0.71</strong> でなければいけません。<br>……矛盾します！ a×c が0でないなら、a も c も0ではない。b×d が0でないなら、b も d も0ではない。すると a×d も b×c も0にならないはずです。<strong>そんな a, b, c, d は存在しない</strong>。だからベル状態は、どうやっても2つの表の掛け算では書けない――正真正銘のもつれです。</div>
+          <div class="dialog-bubble">さっきと同じで掛け算です。|00⟩ は a×c、|01⟩ は a×d、|10⟩ は b×c、|11⟩ は b×d。<br>これがいま作った表と一致するには、<strong>a×d＝0</strong> かつ <strong>b×c＝0</strong>、そして <strong>a×c＝0.71</strong>、<strong>b×d＝0.71</strong> でなければいけません。<br>……矛盾します！ a×c が0でないなら、a も c も0ではない。b×d が0でないなら、b も d も0ではない。すると a×d も b×c も0にならないはずです。<strong>そんな a, b, c, d は存在しない</strong>。この表は、どうやっても2つの表の掛け算では書けません。</div>
         </div>
       </div>
 
       <div class="diagram-box">
-        <svg class="qc-svg" viewBox="0 0 372 268" width="100%" role="img" aria-label="ベル状態が積状態で書けないことを示す掛け算の表。1番目の見出しをaとb、2番目の見出しをcとdとすると、4行はa×c、a×d、b×c、b×dになる。ベル状態にはa×cとb×dが0.71、a×dとb×cが0であることが必要だが、条件を順にたどると矛盾する">
-          <text class="strong" x="186" y="16" text-anchor="middle">ベル状態は「見出しの掛け算」で書けるか？</text>
+        <svg class="qc-svg" viewBox="0 0 372 268" width="100%" role="img" aria-label="作った表が積状態で書けないことを示す掛け算の表。1番目の見出しをaとb、2番目の見出しをcとdとすると、4行はa×c、a×d、b×c、b×dになる。作った表にはa×cとb×dが0.71、a×dとb×cが0であることが必要だが、条件を順にたどると矛盾する">
+          <text class="strong" x="186" y="16" text-anchor="middle">作った表は「見出しの掛け算」で書けるか？</text>
           <text class="label" x="70" y="52" text-anchor="middle">見出し</text>
           <rect x="132" y="34" width="104" height="30" rx="5" fill="var(--paper2)" stroke="var(--line)"/>
           <text class="label" x="184" y="53" text-anchor="middle">2番目 |0⟩：c</text>
@@ -274,7 +274,7 @@
           <text class="label" x="186" y="230" text-anchor="middle">すると |11⟩ の b×d は必ず 0 ―― 0.71 にできない</text>
           <text class="accent" x="186" y="254" text-anchor="middle" style="fill:#b5504a">矛盾！ どんな a, b, c, d でも書けない ＝ もつれ</text>
         </svg>
-        <div class="diagram-caption">積状態なら、4行は必ずこの掛け算の表の形になる（九九の表と同じ）。ベル状態にするには4マスの条件が同時に成り立つ必要があるが、上から順にたどると連鎖して行き詰まる。<strong>見出しに戻せない表が存在する</strong>――それがもつれであり、この4行は正真正銘4個ぶんの独立した情報になっている。</div>
+        <div class="diagram-caption">積状態なら、4行は必ずこの掛け算の表の形になる（九九の表と同じ）。いま作った表（|00⟩ と |11⟩ に0.71）にするには4マスの条件が同時に成り立つ必要があるが、上から順にたどると連鎖して行き詰まる。<strong>見出しに戻せない表が存在する</strong>――それがもつれであり、この4行は正真正銘4個ぶんの独立した情報になっている。</div>
       </div>
 
       <div class="dialogue-scene">
@@ -283,7 +283,7 @@
             <div class="dialog-avatar mentor"><img src="images/catThink.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">完璧な背理法だ。これで「2ⁿ行の表」が本物になる条件が分かったね。<strong>もつれがあるとき、表全体は、各量子ビットの情報をばらばらに集めても再現できない</strong>。300個の量子ビットがしっかりもつれた状態を、ふつうのコンピュータで正直に記録しようとすれば、10⁹⁰個の数字を書き留めることになる。だからこそ、量子コンピュータのシミュレーションは50個あたりでもう手に負えなくなるんだ。<strong>もつれこそが、量子コンピュータをふつうのコンピュータで真似できなくしている当のもの</strong>だよ。</div>
+          <div class="dialog-bubble">完璧な背理法だ。<strong>それが、もつれ状態だ</strong>。物理学者はこの表を<strong>ベル状態</strong>と呼んでいる。たった2手で作れてしまう。これで「2ⁿ行の表」が本物になる条件が分かったね。<strong>もつれがあるとき、表全体は、各量子ビットの情報をばらばらに集めても再現できない</strong>。300個の量子ビットがしっかりもつれた状態を、ふつうのコンピュータで正直に記録しようとすれば、10⁹⁰個の数字を書き留めることになる。だからこそ、量子コンピュータのシミュレーションは50個あたりでもう手に負えなくなるんだ。<strong>もつれこそが、量子コンピュータをふつうのコンピュータで真似できなくしている当のもの</strong>だよ。</div>
         </div>
       </div>
       <div class="dialogue-scene">
