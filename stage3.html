@@ -172,21 +172,21 @@
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">いまの計算の手順に、答えが出ているんだよ。きみは4本の矢印を1本ずつ調べたわけではなく、<strong>1番目の2個と2番目の2個を、掛け算しただけ</strong>だ。九九の表と同じ構造だね。九九は81マスあるけれど、覚えるのは縦と横の見出しだけで、マスの中身はいつでも掛け算で再現できる。この表も同じで、<strong>「2＋2」の見出しさえ控えておけば、4行を丸ごと再現できる</strong>――つまり、<strong>ふつうのコンピュータでも簡単に真似できてしまう</strong>。こういう「別々の表の掛け算で書ける状態」を<strong>積状態</strong>という。量子ビットをn個持ってきて、それぞれ勝手に操作しているだけなら、状態はずっと積状態のままで、表の行数は2ⁿでも、覚えておくべき数字は1個あたり2個ずつ、合わせて2×n個しかない。300個なら600個――10⁹⁰行の表が、たった600個の見出しで書けてしまう。<br>本物の2ⁿは、<strong>積状態では書けない状態</strong>を作ったときに初めて現れる。その状態の名前は――もう知っているね。</div>
+          <div class="dialog-bubble">いまの計算の手順に、答えが出ているんだよ。きみは4本の矢印を1本ずつ調べたわけではなく、<strong>1番目の2個と2番目の2個を、掛け算しただけ</strong>だ。九九の表と同じ構造だね。九九は81マスあるけれど、覚えるのは縦と横の見出しだけで、マスの中身はいつでも掛け算で再現できる。この表も同じで、<strong>「2＋2」の見出しさえ控えておけば、4行を丸ごと再現できる</strong>――つまり、<strong>ふつうのコンピュータでも簡単に真似できてしまう</strong>。こういう「別々の表の掛け算で書ける状態」を<strong>積状態</strong>という。量子ビットをn個持ってきて、それぞれ勝手に操作しているだけなら、状態はずっと積状態のままで、表の行数は2ⁿでも、覚えておくべき数字は1個あたり2個ずつ、合わせて2×n個しかない。300個なら600個――10⁹⁰行の表が、たった600個の見出しで書けてしまう。<br>本物の2ⁿは、<strong>積状態では書けない状態</strong>を作ったときに初めて現れる。そして実は、その状態にきみはもう出会っている。ベルの不等式の旅で調べた、<strong>もつれ</strong>だ。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble"><strong>もつれ</strong>ですね。2つの粒子の測定結果が必ず一致する、あの状態。片方だけ見ればまったくのランダムなのに、2つを突き合わせると完全な相関がある。しかもその相関は「あらかじめ決めておいた答え合わせ」では説明がつかない――ベルの不等式が破れることで、それは実験で確かめられていました。</div>
+          <div class="dialog-bubble">もつれ……あの状態ですか。復習すると、2つの粒子の測定結果が必ず一致する。片方だけ見ればまったくのランダムなのに、2つを突き合わせると完全な相関がある。しかもその相関は「あらかじめ決めておいた答え合わせ」では説明がつかない――ベルの不等式が破れることで、それは実験で確かめられていました。<br>あの不思議な相関と、「掛け算で書けない表」が、同じものだと言うんですか？</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">そう。今日はその「もつれ」を、<strong>自分の手で作る</strong>。必要なのは新しいゲート1つだけ――<strong>CNOTゲート</strong>だ。名前は「制御つきNOT」の略で、2つの量子ビットを使う。役割を持たせて、1番目を<strong>制御ビット</strong>、2番目を<strong>標的ビット</strong>と呼ぶ。動きはこうだ。<strong>制御ビットが1の行だけ、標的ビットをひっくり返す。制御ビットが0の行は何もしない。</strong><br>表で言えば、|10⟩ の矢印と |11⟩ の矢印を入れ替えるだけ。|00⟩ と |01⟩ には触らない。とても素朴な操作だね。</div>
+          <div class="dialog-bubble">同じものなんだ。それを言葉ではなく計算で確かめるために、今日はもつれを<strong>自分の手で作る</strong>。必要なのは新しいゲート1つだけ――<strong>CNOTゲート</strong>だ。名前は「制御つきNOT」の略で、2つの量子ビットを使う。役割を持たせて、1番目を<strong>制御ビット</strong>、2番目を<strong>標的ビット</strong>と呼ぶ。動きはこうだ。<strong>制御ビットが1の行だけ、標的ビットをひっくり返す。制御ビットが0の行は何もしない。</strong><br>表で言えば、|10⟩ の矢印と |11⟩ の矢印を入れ替えるだけ。|00⟩ と |01⟩ には触らない。とても素朴な操作だね。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
