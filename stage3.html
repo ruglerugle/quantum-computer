@@ -12,14 +12,14 @@
   gtag('js', new Date());
   gtag('config', 'G-9RTQCP2HXM');
 </script>
-<title>STAGE3 なぜ量子はとびとびなのか ― 量子コンピュータはなぜ速いのか</title>
-<meta name="description" content="ギターの弦が決まった高さの音しか出さないのはなぜか。閉じ込められた波は、自分自身との干渉で「生き残れる振動パターン」がとびとびに限られる。電子も波である以上、閉じ込めればエネルギーの階段が現れる――「量子」の名の由来と、矢印の時計法則を、干渉の言葉だけで導く。">
+<title>STAGE3 量子ビットを組み立てる ― 量子コンピュータはなぜ速いのか</title>
+<meta name="description" content="超伝導量子ビットをゼロから組み立てる。電気の振り子回路から出発し、なぜ普通の回路では階段が見えないのか（抵抗と、熱の環境への手がかり漏れ）、なぜ振り子の等時性が邪魔になり、ジョセフソン接合がそれをどう壊すのか、ゲート＝共鳴パルスと測定＝手がかりの小窓まで、飛躍なしで積み上げる。">
 <link rel="canonical" href="https://ruglerugle.github.io/quantum-computer/stage3.html">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="量子コンピュータはなぜ速いのか">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:title" content="STAGE3 なぜ量子はとびとびなのか ― 量子コンピュータはなぜ速いのか">
-<meta property="og:description" content="ギターの弦が決まった音しか出さない理由と、エネルギーの階段は同じ仕組み。「量子」の名の由来を干渉の言葉で導く。">
+<meta property="og:title" content="STAGE3 量子ビットを組み立てる ― 量子コンピュータはなぜ速いのか">
+<meta property="og:description" content="電気の振り子回路から超伝導量子ビットまで、部品の役割を1つずつ積み上げて組み立てる。">
 <meta property="og:url" content="https://ruglerugle.github.io/quantum-computer/stage3.html">
 <meta property="og:image" content="https://ruglerugle.github.io/quantum-computer/images/ogp.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -28,11 +28,11 @@
 <style>
   .qc-svg .label{fill:var(--muted);font-size:11px;font-weight:700}
   .qc-svg .strong{fill:var(--ink);font-size:12px;font-weight:900}
-  .qc-svg .accent{fill:#b98a2e;font-size:11px;font-weight:900}
+  .qc-svg .accent{fill:#2f8a8f;font-size:11px;font-weight:900}
   .anim-ctrl{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:10px;flex-wrap:wrap}
   .anim-ctrl .btn{padding:.4rem .95rem;font-size:13px;font-weight:900}
   .anim-ctrl .ctrl-label{font-size:11px;color:var(--muted);font-weight:700}
-  .anim-ctrl input[type=range]{flex:1;max-width:280px;min-width:140px;accent-color:#b98a2e}
+  .anim-ctrl input[type=range]{flex:1;max-width:280px;min-width:140px;accent-color:#2f8a8f}
   .readout{display:flex;flex-wrap:wrap;gap:4px 16px;justify-content:center;margin-top:8px;font-size:12px;font-weight:700;color:var(--ink)}
   .readout b{font-weight:900;font-variant-numeric:tabular-nums;color:inherit}
 </style>
@@ -42,11 +42,11 @@
   <header class="game-header">
     <div class="brand">
       <div class="brand-title"><a class="head-reset home-badge" href="index.html" title="トップへ" aria-label="トップへ">💠</a> <span>量子コンピュータはなぜ速いのか</span></div>
-      <div class="brand-sub">STAGE 3 ― なぜ量子はとびとびなのか ―</div>
+      <div class="brand-sub">STAGE 3 ― 量子ビットを組み立てる ―</div>
     </div>
     <div class="head-progress-wrap">
-      <div class="head-progress-label" id="progress-label">クリア 0 / 9</div>
-      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="9" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+      <div class="head-progress-label" id="progress-label">クリア 0 / 8</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
     </div>
     <div class="header-actions">
       <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
@@ -66,13 +66,13 @@
 
     <main class="main-area">
       <div class="chapter-head">
-        <span class="chapter-badge">STAGE 3</span><span class="chapter-title">なぜ量子はとびとびなのか</span>
-        <div class="chapter-sub">波の閉じ込めとエネルギーの階段</div>
+        <span class="chapter-badge">STAGE 3</span><span class="chapter-title">量子ビットを組み立てる</span>
+        <div class="chapter-sub">実機の中身</div>
       </div>
 
       <div class="mission-box">
         <div class="mission-label">🎯 ミッション</div>
-        <div class="mission-text">「閉じ込められた波は、自分自身との干渉で、生き残れる振動パターンがとびとびに限られる」ことを、ギターの弦から導こう。そこからエネルギーの階段（＝「量子」の名の由来）と、矢印の時計法則までたどり着ければ合格。</div>
+        <div class="mission-text">量子力学の旅で手に入れた2つの法則（閉じ込め＝エネルギーの階段、矢印の時計法則）を使って、チップの上に量子ビットを組み立てよう。部品ひとつひとつが「なぜ要るのか」を、義務教育の理科とこの旅の知識だけで説明できれば合格。</div>
         <span class="mission-status" id="mission-status">未達成</span>
       </div>
 
@@ -82,78 +82,71 @@
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">ここまで、量子ビットを記号の上で操ってきた。次のステージでは実物の量子コンピュータを解剖するのだけど、その前に、どうしても手に入れておきたい物理法則が2つある。今日はその準備の回だ。<br>入り口は、意外なところから行こう。<strong>ギターの弦は、なぜ決まった高さの音しか出さないと思う？</strong> はじき方を変えても、出る音の高さは同じ。でたらめな高さの音が出てもよさそうなのにね。</div>
+          <div class="dialog-bubble">ここまでで計算のルールはそろった。今日は少し寄り道して、チップの上に量子ビットを実際に組み立ててみよう。いちばん普及している<strong>超伝導方式</strong>だ。<br>出発点は、素朴な電気回路。部品は2つで、<strong>電気をためる部品（コンデンサ）</strong>と、<strong>電流を流し続けようとする部品（コイル）</strong>を輪にする。すると、たまった電気がどっと流れ、流れすぎて反対側にたまり、また戻る――<strong>電気が行ったり来たりする振り子</strong>ができあがる。理科の振り子の、電気版だよ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">読めてきました。<a href="https://quantum-mechanics.habatakijuku.com/stage6.html" target="_blank" rel="noopener" style="color:#2f8a8f;text-decoration:underline">量子力学の旅</a>でやった話が使えますね。電子は<strong>波</strong>で、井戸に閉じ込められた波は、ちょうど収まる振動パターンしか生き残れない――だから<strong>エネルギーはとびとびの階段</strong>になるんでした（ギターの弦と同じ選別です）。この振り子回路は、電流の波を小さな輪の中に<strong>閉じ込めて</strong>いる。だったら同じことが起きて、階段が現れるはず。<br>……でも、それなら変です。スマホにもラジオにも振動する回路は入っているのに、<strong>階段の話なんて聞いたことがありません</strong>。ふつうの回路は、どう見ても連続的になめらかに動いています。なぜ実験室の回路にだけ階段が見えるんですか？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">最高の疑問だ。答えは「ふつうの回路では、階段を隠す敵が2ついる」。<br><strong>敵その1は、電気抵抗</strong>。ふつうの金属では、電子は進むたびに金属の原子にぶつかって、振動のエネルギーはあっという間に熱になって逃げる。あの階段の選別は「波が<strong>何度も往復して</strong>自分自身と干渉する」ことで起きるのだった。数回の往復で擦り切れてしまう波には、選別が働く暇がない。<br><strong>敵その2</strong>は――これは、きみが前の旅でいちばんよく知っている敵だよ。まわりの温かい世界は、飛び回る粒子と電磁波の嵐だ。それが回路に絶えずぶつかると、何が起きるか。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">音楽で、弦の長さや張り方で音の高さが決まると習いました。太い弦は低く、短く押さえると高くなる。……でも「なぜ決まった高さになるのか」は、考えたことがありませんでした。弦は自由に揺れられるはずなのに。</div>
-        </div>
-        <div class="dialog-row">
-          <div class="dialog-character">
-            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name mentor">ねこ博士</div>
-          </div>
-          <div class="dialog-bubble">実は、この旅でずっと使ってきた道具で説明がつくんだ。弦をはじくと、波が弦の上を走り、<strong>両端で跳ね返って、何度も何度も往復する</strong>。つまり弦の上の波は、同じ場所を繰り返し通る。そこで何が起きるか――きみがいちばんよく知っていることだよ。<strong>自分自身との干渉</strong>だ。<br>1往復して戻ってきた波が、いまそこにいる波と<strong>向きがそろっていれば</strong>、強め合って生き残る。少しでもずれていれば、往復のたびにずれが積み重なって、やがて<strong>自分で自分を打ち消してしまう</strong>。</div>
-        </div>
-        <div class="dialog-row right">
-          <div class="dialog-character">
-            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name student">うさ美</div>
-          </div>
-          <div class="dialog-bubble">……ということは、生き残れるのは<strong>「弦の長さにちょうど収まる波」だけ</strong>ですね。弦の中に波の山がぴったり整数個おさまる振動なら、往復してきても元の自分と向きがそろう。半端な数だと、そろわずに消えていく。<br>だから、弦が出せる振動は「山が1個」「山が2個」「山が3個」……と<strong>とびとびのパターンしかない</strong>。音の高さが決まっているのは、そういうことですか。</div>
-        </div>
-        <div class="dialog-row">
-          <div class="dialog-character">
-            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name mentor">ねこ博士</div>
-          </div>
-          <div class="dialog-bubble">その通り。この「その場に立って見える、生き残った波」を<strong>定在波</strong>と呼ぶ。笛が決まった音を出すのも、コップの縁をこすると決まった音で鳴るのも、同じ理屈だ。<strong>閉じ込められた波は、自分自身との干渉の検閲を通ったパターンしか保てない</strong>。<br>さて、ここからが本題だよ。前の旅で確かめたように、<strong>電子も、干渉する波として振る舞う</strong>――二重スリットで縞を作ったのは電子や光子だった。ならば考えてごらん。<strong>電子の波を、小さな入れ物に閉じ込めたら？</strong></div>
-        </div>
-        <div class="dialog-row right">
-          <div class="dialog-character">
-            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name student">うさ美</div>
-          </div>
-          <div class="dialog-bubble">弦と同じことが起きるはずです。閉じ込められた電子の波は入れ物の中を何度も往復するから、<strong>生き残れる波のパターンはとびとびにしかない</strong>。……でも、待ってください。予告されていたのは「<strong>エネルギー</strong>がとびとび」でした。とびとびなのは波の<strong>形</strong>のパターンですよね。パターンがとびとびだと、なぜエネルギーまでとびとびになるんですか？</div>
+          <div class="dialog-bubble"><strong>手がかり</strong>ですね。ぶつかった粒子の一つひとつが、回路の状態の手がかりを持ち去っていく。手がかりが漏れ続ければ道筋の区別がついて、干渉は死ぬ――<strong>デコヒーレンス</strong>です。階段の選別も重ね合わせも、干渉があってこそなのに、温かい環境はそれを絶え間なく壊し続ける。<br>だから<strong>冷やす</strong>んですね。冷やせば嵐そのものが静まる。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="images/catThink.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">今日いちばん大事な質問だ。パターンの番号が上がるほど――山が1個、2個、3個と増えるほど――<strong>波は細かく、速く、激しく振動する</strong>。激しく動くものほど大きなエネルギーを持つのは、弦でも電子でも同じだ。だから<strong>パターンごとに、そのパターン固有のエネルギーの値が決まる</strong>。パターンが1、2、3ととびとびなら、エネルギーも決まった値の列――<strong>階段</strong>になる。中間の値は、対応する波のパターンが存在しないのだから、取りようがない。<br>これが「量子」の名の由来だよ。エネルギーが連続ではなく<strong>とびとびのかたまり</strong>でしかやり取りされない――その「かたまり」を意味する言葉が「量子」なんだ。</div>
+          <div class="dialog-bubble">その通り。だから実機は、絶対零度よりわずか100分の1度ほど高いだけの温度（約−273.14℃）まで冷やされている。<br>そして冷やすと、敵その1にも思わぬ贈り物が届く。<strong>超伝導</strong>だ。ある種の金属は、極低温で<strong>電気抵抗が完全に、本当にゼロ</strong>になる。このとき金属の中では、電子たちが2個ずつペアを組み、全体が足並みをそろえて<strong>たった1つの波</strong>として流れるようになる。<br>――正直に断っておくと、<strong>「なぜ冷やすとペアを組むのか」は、この旅では説明しない</strong>。それだけで丸ごと一つの旅になる大学レベルの難問で、発見（1911年）から理論の完成（1957年）まで半世紀かかったほどだ。今日は「実験で完全に確立した事実」として借りてくる。借り物はこの1つだけだよ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">分かりました、そこは事実として受け取ります。<br>整理すると――冷やしたことで、②環境の嵐が静まって手がかりの漏れが止まり、①超伝導で抵抗が消えて、電流の波が擦り減らずに<strong>何億回でも往復できる</strong>ようになった。閉じ込めの選別が働く条件がそろったから、ついに<strong>電流の波の階段</strong>が現れる。ここまでは、量子力学の旅で解いた井戸の中の電子と同じ筋書きです。<br>では、その階段の<strong>間隔</strong>はどうなっていますか？ 井戸の階段は上の段ほど間隔が開いていく形でした。入れ物が違えば、並び方も違うはずです。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">痛いところを突かれた。この振り子回路の階段は、<strong>全段が同じ間隔</strong>なんだ。理由は、理科で習ったあの性質――<strong>振り子の等時性</strong>だよ。振り子は、揺れが大きくても小さくても、1往復にかかる時間が同じだった。電気の振り子も同じで、揺れの大小によらずリズムがただ1つ。リズムが1種類しかない入れ物では、階段は同じ高さで積み上がる。<br>そして、それでは困る。<strong>1段目に上げる操作が、2段目・3段目に上げる操作と同じ</strong>になってしまう。下2段だけを量子ビットとして使いたいのに、全部の段が同じ切符で乗れてしまうんだ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">なら、<strong>等時性をわざと壊せばいい</strong>のではありませんか。ブランコは、小さく揺れるときと大きく漕ぐときで1往復の感じが変わります。「揺れの大きさでリズムが変わる振り子」に作り替えれば、段差が不揃いになって、下2段だけを狙えるはずです。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">まさにそれをやる部品が、この方式の心臓部<strong>ジョセフソン接合</strong>だ。2枚の超伝導体で、ごく薄い絶縁の膜を挟んである。ふつうなら電気は絶縁膜を通れないが、超伝導の<strong>波</strong>は膜のむこうにしみ出して通り抜ける（波は壁際でぷつりとは消えない）。この通り道には妙な性質があって、<strong>流れる電流が大きいほど、通りにくくなる</strong>。<br>つまり、コイルの代わりにこれを入れた振り子は、<strong>揺れが大きいほどリズムが変わる</strong>――きみの言った「等時性を壊した振り子」そのものだ。階段の間隔は不揃いになり、いちばん下の段差にぴったりの操作は、上の段には効かない。<strong>下2段だけが選び出せる</strong>。これが |0⟩ と |1⟩、この回路の名はトランズモンだ。</div>
         </div>
       </div>
-
       <div class="diagram-box">
-        <svg id="string-svg" class="qc-svg" viewBox="0 0 372 226" width="100%" role="img" aria-label="閉じ込められた波のシミュレータ。揺すりの細かさを変えると、弦の長さに山が整数個おさまるパターンだけが大きく生き残り、半端な細かさでは自分自身との干渉で打ち消されて振幅が育たない様子を示す">
-          <text class="strong" x="186" y="16" text-anchor="middle">弦に「ちょうど収まる」波だけが生き残る</text>
-          <g id="string-body"></g>
+        <svg id="ladder-svg" class="qc-svg" viewBox="0 0 372 232" width="100%" role="img" aria-label="エネルギーの階段の比較。左はただの振動回路で段の間隔がすべて同じため、1段目を狙ったエネルギーで上の段まで抜けてしまう。右はジョセフソン接合を入れた回路で段の間隔が不揃いになり、下2段だけを選んで|0⟩と|1⟩にできる">
+          <text class="strong" x="186" y="16" text-anchor="middle">エネルギーの階段 ― 下2段だけを選べるようにする</text>
+          <g id="ladder-body"></g>
         </svg>
-        <div class="readout">
-          <span>波の細かさ <b id="st-k">1.00</b></span>
-          <span>生き残り度 <b id="st-a">100%</b></span>
-          <span>判定 <b id="st-v">生き残る（山1個のパターン）</b></span>
-        </div>
-        <div class="anim-ctrl">
-          <span class="ctrl-label">波の細かさ</span>
-          <input type="range" id="st-slider" min="50" max="350" step="1" value="100" aria-label="波の細かさを変える">
-          <button type="button" class="btn" id="st-1">山1個</button>
-          <button type="button" class="btn" id="st-2">山2個</button>
-          <button type="button" class="btn" id="st-3">山3個</button>
-        </div>
-        <div class="diagram-caption">両端が固定された弦（＝閉じ込められた波）。スライダーで波の細かさを連続的に変えられるが、<strong>大きく振動できるのは、山がちょうど整数個おさまる細かさだけ</strong>。半端な細かさでは、往復してきた波が自分自身とずれて打ち消し合い、振幅が育たない（線が薄くなる）。生き残るパターンが1個、2個、3個…ととびとびに並ぶ――これが定在波で、ギターの音の高さが決まっている理由。電子の波を閉じ込めたときも、まったく同じ選別が起きる。</div>
-      </div>
-
-      <div class="diagram-box">
-        <svg id="steps-svg" class="qc-svg" viewBox="0 0 372 216" width="100%" role="img" aria-label="生き残った波のパターンとエネルギーの階段の対応図。山1個・2個・3個のパターンがそれぞれ階段の1段目・2段目・3段目に対応し、細かいパターンほど高いエネルギーを持つ。段の間にはパターンが存在しないため中間のエネルギーは取れない">
-          <text class="strong" x="186" y="16" text-anchor="middle">パターンの番号が、エネルギーの段になる</text>
-          <g id="steps-body"></g>
-        </svg>
-        <div class="diagram-caption">左が生き残った波のパターン（下から山1個、2個、3個）、右が対応するエネルギーの段。細かいパターンほど激しく振動するのでエネルギーが高い。<strong>段と段のあいだには対応するパターンが存在しない</strong>ので、中間のエネルギーは取りようがない――エネルギーは「とびとびのかたまり（＝量子）」でしか変わらない。なお、<strong>段の間隔がどう並ぶかは「どんな入れ物か」で決まる</strong>。この事実が次のステージで効いてくる。</div>
+        <div class="diagram-caption">縦方向がエネルギー。左の「ただの振動回路」は段の間隔がすべて同じなので、1段目に上げるためのエネルギーが2段目・3段目へのはしごにもなってしまい、2つの状態を選び出せない。右はコイルの代わりに<strong>ジョセフソン接合</strong>を入れた回路（トランズモン）。段の間隔が不揃いになるため、<strong>いちばん下の段差にぴったり合わせたエネルギーは、下2段の行き来しか起こせない</strong>。こうして無限にある段の中から |0⟩ と |1⟩ の2段だけが「使える状態」として切り出される。</div>
       </div>
 
       <div class="dialogue-scene">
@@ -162,82 +155,121 @@
             <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">確かめさせてください。原子は、原子核のまわりに電子がある構造だと理科で習いました。あれも「電子の波が閉じ込められている」状態ですよね。だとすると電子の波は決まったパターンしか取れなくて――<strong>世界中の水素原子が1つ残らず同じ性質</strong>なのは、どの水素も同じ入れ物で、同じ階段を持つから、ですか？</div>
+          <div class="dialog-bubble">次はゲートです。「1段目の段差にぴったりの操作」と言いますが、その<strong>操作の実体</strong>は何ですか。段差は「エネルギーの差」で、操作は……何をどう合わせるんですか。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">見事な応用だ、その通りだよ。もし電子が波でなく、好きな軌道を回れる小さな玉だったら、原子ごとに性質がばらばらになって、化学も生命も成り立たない。<strong>世界が安定しているのは、閉じ込められた波の階段がどこでも同じだから</strong>なんだ。<br>証拠は目でも見える。ネオンサインや花火が「決まった色」で光るのは、電子が階段を1段降りるとき、<strong>段差ぶんのエネルギーがそのまま決まった色の光</strong>になって出てくるからだ。階段がとびとびだから、色もとびとびになる。</div>
+          <div class="dialog-bubble">ここで、量子力学の旅のもうひとつの収穫――<strong>矢印の時計法則</strong>（状態の矢印は、そのエネルギーに比例した速さで回る。シュレーディンガー方程式の心臓部だったね）が主役になる。|0⟩ の矢印と |1⟩ の矢印は、エネルギーが違うぶん<strong>回る速さが違う</strong>のだった。だから2つの状態のあいだには、「段差に比例した<strong>リズムの差</strong>」がある。この回路では、そのリズムは1秒に数十億回――スマホの電波に近い<strong>マイクロ波</strong>の速さだ。<br>そこで、<strong>そのリズムとぴったり同じ周波数で振動する電波</strong>を回路に当てる。すると、電波の押しのタイミングが、2つの矢印のリズムの差と毎回そろう――ブランコを、揺れに合わせて押すのと同じだ。押しが積み重なって、|0⟩ と |1⟩ のあいだの乗り移りがどんどん進む。<strong>共鳴</strong>だね。<br>逆にリズムがずれた電波は、押すたびに向きが食い違って、押しが<strong>自分どうしで打ち消し合う</strong>。効かない。――「ぴったりだけが効く」の正体も、結局は干渉なんだ。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">いまの一言が気になります。「段差ぶんのエネルギーが<strong>決まった色の光</strong>になる」――色とは、光の波の<strong>振動の速さ（周波数）</strong>のことですよね。エネルギーの差が、なぜ振動の速さに化けるんですか？ エネルギーと速さは、別の種類の量に見えます。</div>
+          <div class="dialog-bubble">「乗り移りが<strong>進む</strong>」なら、進み具合は当てた時間で変わるはずです。……ということは、<strong>電波を当てる時間の長さで、矢印の混ざり具合を自由に選べる</strong>。途中で止めれば |0⟩ と |1⟩ が五分五分（H の混ぜ方）、ちょうど乗り移り切るまで当てれば入れ替え（X）。ゲートの正体は、<strong>長さを精密に決めた電波パルスを1発撃つこと</strong>ですか。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="images/catThink.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">そこが、今日手に入れる<strong>2つめの法則</strong>だ。これは導出ではなく、量子力学の土台にある基本法則として受け取ってほしい。名前をつけて<strong>「矢印の時計法則」</strong>と呼ぼう。<br><strong>状態の矢印は、止まっていない。その状態のエネルギーに比例した速さで、常にくるくる回り続けている。</strong>エネルギーが高い状態ほど、矢印の時計は速く回る。<br>実はきみは、この法則の片鱗にもう出会っている。前の旅で「矢印は波長1つぶん進むごとに1回転する」と学んだね。飛んでいる粒子の矢印が回るのは、動くもの（エネルギーを持つもの）の時計が回るからだ。この法則は、あらゆる実験と矛盾なく確かめられている。</div>
+          <div class="dialog-bubble">その通り、自力でゲートの設計思想までたどり着いたね。実機ではパルス1発が数十ナノ秒（1億分の数秒）。H と X は、同じつまみの<strong>止め位置の違い</strong>にすぎない。CNOT のような2量子ビットのゲートは、隣り合う2つの回路を配線でつないで、結合を一瞬だけ働かせるパルスを撃つ。<br>そして、ここが大事な点だ。<strong>パルスは回路の波全体に働く</strong>。矢印の表は波の成分帳簿だから、|0⟩ 成分と |1⟩ 成分を「順番に」処理する余地は、そもそも存在しない。装置に「成分を1つずつ触るボタン」は無いんだ。あとのステージで効いてくるから、覚えておいてほしい。</div>
         </div>
+      </div>
+      <div class="diagram-box">
+        <svg id="rabi-svg" class="qc-svg" viewBox="0 0 372 216" width="100%" role="img" aria-label="マイクロ波パルスの長さと矢印の混ざり具合の関係を示すシミュレータ。パルスを当てる時間を伸ばすと、|0⟩の矢印が縮み|1⟩の矢印が伸びて、五分五分を経て完全に入れ替わる">
+          <text class="strong" x="186" y="16" text-anchor="middle">パルスを当てる時間が、矢印の混ざり具合を決める</text>
+          <g id="rabi-body"></g>
+        </svg>
+        <div class="readout">
+          <span style="color:#2f5a9e">|0⟩の矢印 <b id="rb-a0">1.00</b></span>
+          <span style="color:#b5504a">|1⟩の矢印 <b id="rb-a1">0.00</b></span>
+          <span>0が出る確率 <b id="rb-p0">100%</b></span>
+          <span>1が出る確率 <b id="rb-p1">0%</b></span>
+        </div>
+        <div class="anim-ctrl">
+          <span class="ctrl-label">パルスの時間</span>
+          <input type="range" id="rb-slider" min="0" max="100" step="1" value="0" aria-label="マイクロ波パルスを当てる時間を変える">
+          <button type="button" class="btn" id="rb-h">Hの長さ</button>
+          <button type="button" class="btn" id="rb-x">Xの長さ</button>
+        </div>
+        <div class="diagram-caption">スライダーが「段差にぴったりの周波数のマイクロ波を当て続けた時間」。|0⟩ から出発して、当てるほど波は上の段へ移っていき、矢印の表が連続的に書き換わる。<strong>途中（4分の1周）で止めれば五分五分＝Hにあたる混ぜ方、半周ぶん当てれば完全な入れ替え＝X</strong>。さらに当て続けると1周して元に戻る。ゲートの正体は「パルスの長さの設計」であり、H と X は同じつまみの止め位置の違いにすぎない。実機ではこの1周が数十ナノ秒で回る。</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">その法則を認めると、さっきの疑問が解けます。階段の下の段と上の段では、エネルギーが違うから<strong>矢印の回る速さが違う</strong>。2つの段の「回転の速さの差」は、段差に比例した決まった値になる。電子が段を降りるときに出る光が決まった周波数（＝色）を持つのは、<strong>段差がそのまま「回転のリズムの差」だから</strong>――エネルギーと振動の速さは、時計法則で最初からつながっていたんですね。</div>
+          <div class="dialog-bubble">最後は測定です。「読み出すと0か1が出る」の実物は、何をしているんですか。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">完璧だ。そして逆向きも成り立つ。段差にぴったり対応するリズムで外から揺すってやれば、段の<strong>上り下り</strong>を起こせる――このことが、次のステージで「ゲートの実体」そのものになる。<br>今日の収穫を確認しよう。<strong>法則1：閉じ込められた波は、自分自身との干渉で、とびとびのパターン＝エネルギーの階段しか持てない。法則2：矢印はエネルギーに比例した速さで回る時計である。</strong>この2つを持って、次回はいよいよ、チップの上に量子ビットを組み立てる。</div>
+          <div class="dialog-bubble">量子ビットの隣に、読み出し専用の<strong>小さなマイクロ波の空洞</strong>を付けておく。空洞は「決まった音程で鳴る笛」のようなもので、決まった周波数の電波だけがよく響く。<br>ここで面白いのは、<strong>隣の量子ビットが |0⟩ か |1⟩ かで、この笛の音程がごくわずかに変わる</strong>ことだ。コップに水を注ぐと、量で音程が変わるのと似ている――空洞の波と量子ビットの波は隣どうしで押し合っていて、相手の状態が「入れ物の事情」を少し変えるからだ。<br>そこで弱い電波を空洞に通して、音程の変化を読み取れば0か1かが分かる。そして――前の旅の言葉で言えば、その電波に<strong>手がかり</strong>が乗って外の世界へ出た瞬間、道筋の区別がついて、状態は出た方に確定する。測定装置とは、<strong>手がかりの漏れ口を、わざと1か所だけ作ってある小窓</strong>なんだよ。ふだんは全力で密閉している箱の、読みたいときだけ開ける窓だ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">組み立ての全体を、部品の「なぜ」ごとにまとめます。<br>①<strong>振り子回路</strong>――電流の波の入れ物。<br>②<strong>冷却</strong>――環境の嵐を静めて手がかりの漏れを止め（前の旅のデコヒーレンス対策）、超伝導で抵抗を消して波が何億回も往復できるようにする。これで法則1が働き、<strong>階段</strong>が現れる。<br>③<strong>ジョセフソン接合</strong>――等時性を壊して段差を不揃いにし、<strong>下2段だけ</strong>を |0⟩ |1⟩ として切り出す。<br>④<strong>ゲート</strong>――法則2より、段差＝リズムの差。ぴったりのリズムの電波パルスで乗り移りを起こし、<strong>当てる時間</strong>で混ざり具合を決める。<br>⑤<strong>測定</strong>――隣の笛の音程の変化として、手がかりをわざと1か所から外に出す。<br>……ぜんぶ、波と干渉と手がかりの言葉だけで組み上がりました。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">見事な組み立てだ。方式は超伝導だけではないことも添えておこう。電磁場の罠に浮かべた<strong>イオン</strong>のエネルギーの段を使い、レーザー光のパルスで操る方式。レーザーのピンセットで原子を1個ずつ並べる<strong>中性原子</strong>方式。光そのものを使う方式。役者は違っても、<strong>「とびとびの2段を選ぶ・波の重ね合わせを保つ・共鳴パルスで操る」</strong>という骨組みはぜんぶ同じだ。<br>そして気づいているね――この機械は、何十億個の電子の波を、光子1個にも乱されないよう守り続けなければならない。その戦いの全貌は旅の最後に。次のステージでは量子ビットを2個に増やして、この旅の主役級の現象を作ってもらう。</div>
         </div>
       </div>
 
       <div class="formula-box">
-        <span class="step">【今日手に入れた2つの法則】</span>
-        <span class="step">・<strong>閉じ込め＝階段</strong>：閉じ込められた波は同じ場所を何度も往復し、<span class="nw">自分自身と干渉</span>する。1往復で向きがそろうパターン（山が整数個）だけが生き残る＝<strong>定在波</strong>。ギター・笛と同じ</span>
-        <span class="step">・細かいパターンほど激しく振動しエネルギーが高い → パターンがとびとびなら<strong>エネルギーも階段</strong>になる。中間の値は対応するパターンが無いので取れない（＝<strong>「量子」の名の由来</strong>）</span>
-        <span class="step">・原子が全部同じ性質なのも、ネオンや花火の色が決まっているのも、この階段のせい。<br class="wbr">段差はそのまま「決まった色（周波数）の光」として見える</span>
-        <span class="step">・<strong>矢印の時計法則</strong>：状態の矢印は<span class="nw">エネルギーに比例した速さ</span>で常に回る（基本法則として導入）。<br class="wbr">2つの段の回転リズムの差＝段差に対応する周波数。ぴったりのリズムで揺すれば段の上り下りが起こせる（→次ステージのゲート）</span>
+        <span class="step">【量子ビットの組み立て ― 部品と「なぜ」の対応表】</span>
+        <span class="step">・<strong>振り子回路</strong>（電気をためる部品＋流し続ける部品）＝電流の波の入れ物</span>
+        <span class="step">・<strong>冷却（約−273.14℃）</strong>：①環境の嵐を静めて<span class="nw">手がかりの漏れ（デコヒーレンス）</span>を止める ②<strong>超伝導</strong>で抵抗ゼロに（電子がペアを組み1つの波になる――理由は大学レベルのため事実として借用）。波が何億回も往復でき、<span class="nw">閉じ込め＝階段</span>の選別が働く</span>
+        <span class="step">・振り子の<strong>等時性</strong>のせいで階段は等間隔になり、下2段を選べない → <strong>ジョセフソン接合</strong>（電流が大きいほど通りにくい）が等時性を壊し、段差を不揃いに → 下2段が |0⟩ |1⟩（トランズモン）</span>
+        <span class="step">・<strong>ゲート</strong>＝時計法則より段差はリズムの差（数ギガヘルツ）。ぴったりのリズムのマイクロ波パルスで共鳴させ、<strong>当てる時間</strong>で混ざり具合を設計（H と X は止め位置の違い、1発数十ナノ秒）。ずれたリズムは押しが打ち消し合って効かない</span>
+        <span class="step">・パルスは<strong>波全体</strong>に働く。成分を1つずつ触る手段は存在しない</span>
+        <span class="step">・<strong>測定</strong>＝隣の空洞（決まった音程の笛）の音程が量子ビットの状態でわずかに変わる。その変化として<strong>手がかりをわざと1か所から外へ出す</strong>小窓</span>
+        <span class="step">・他方式（イオン・中性原子・光）も骨組みは同じ：とびとびの2段＋波の重ね合わせ＋共鳴パルス</span>
       </div>
 
       <div class="quiz-head">確認クイズ</div>
       <div class="quiz-card" data-quiz>
-        <p class="quiz-q">Q1. 閉じ込められた波（弦や、入れ物の中の電子）が、とびとびの振動パターンしか保てないのはなぜ？</p>
+        <p class="quiz-q">Q1. 量子ビットを絶対零度近くまで冷やす理由として正しいのは？</p>
         <div class="choice-list">
-          <button class="choice-btn">入れ物の壁が波の一部を吸収してしまうから</button>
-          <button class="choice-btn">波のエネルギーが小さすぎて中間のパターンを作れないから</button>
-          <button class="choice-btn">波が同じ場所を何度も往復するため、1往復で自分と向きがそろうパターン以外は、自分自身との干渉で打ち消されるから</button>
+          <button class="choice-btn">環境の嵐を静めて手がかりの漏れ（デコヒーレンス）を止め、さらに超伝導で抵抗を消して、波が何億回も往復して自分と干渉できるようにするため</button>
+          <button class="choice-btn">冷たいほど電子の動きが遅くなり、計算を観察しやすくなるため</button>
+          <button class="choice-btn">回路が熱で溶けるのを防ぐため</button>
         </div>
-        <div class="quiz-explain" hidden>正解！ 生き残りの条件は「弦の長さに山がちょうど整数個おさまる」こと。それ以外はずれが積み重なって自滅する。ギターが決まった音しか出さないのも、原子のエネルギーが階段になるのも、この同じ選別だ。</div>
+        <div class="quiz-explain" hidden>正解！ 温かい環境は粒子と電磁波の嵐で、ぶつかるたびに手がかりを持ち去って干渉を殺す。また、ふつうの金属では抵抗が波をすぐ擦り減らしてしまい、閉じ込めの選別（＝階段）が働く暇がない。冷却はこの2つの敵を同時に黙らせる。</div>
       </div>
 
       <div class="quiz-card" data-quiz>
-        <p class="quiz-q">Q2. 「量子」という言葉の由来は？</p>
+        <p class="quiz-q">Q2. ジョセフソン接合が果たしている役割は？</p>
         <div class="choice-list">
-          <button class="choice-btn">エネルギーが連続ではなく「とびとびのかたまり」でしかやり取りされないこと</button>
-          <button class="choice-btn">とても小さいものを扱う学問だから</button>
-          <button class="choice-btn">計算の速さが飛躍的に上がること</button>
+          <button class="choice-btn">回路の電気抵抗をゼロにする</button>
+          <button class="choice-btn">回路を外の雑音から遮断する</button>
+          <button class="choice-btn">振り子の等時性を壊して階段の間隔を不揃いにし、下2段だけを選び出せるようにする</button>
         </div>
-        <div class="quiz-explain" hidden>正解！ 量子＝「かたまり」の意味。閉じ込められた波のパターンがとびとびだから、エネルギーもとびとびの決まった値しか取れない。「小さいもの」の学問という印象は結果であって、名前の由来はこの階段にある。</div>
+        <div class="quiz-explain" hidden>正解！ 等時性のままだと階段が等間隔で、1段目に上げる操作が上の段への操作と同じになってしまう。接合は「電流が大きいほど通りにくい」性質でリズムを揺れの大きさに依存させ、いちばん下の段差だけを固有のものにする。抵抗ゼロは超伝導の仕事だ。</div>
       </div>
 
       <div class="quiz-card" data-quiz>
-        <p class="quiz-q">Q3. 矢印の時計法則が言っていることは？</p>
+        <p class="quiz-q">Q3. 測定（読み出し）の実物は？</p>
         <div class="choice-list">
-          <button class="choice-btn">矢印は測定するたびに1回転する</button>
-          <button class="choice-btn">状態の矢印はエネルギーに比例した速さで常に回り続ける。だから2つの段の回転リズムの差は、段差に対応する決まった周波数になる</button>
-          <button class="choice-btn">矢印は時間がたつと自然に短くなっていく</button>
+          <button class="choice-btn">回路に電流計をつないで、流れる電流を直接読む</button>
+          <button class="choice-btn">隣の空洞（決まった音程の笛）の音程が状態でわずかに変わるのを、弱い電波で読み、手がかりをわざと外へ出す</button>
+          <button class="choice-btn">回路を常温に戻して、状態を確認する</button>
         </div>
-        <div class="quiz-explain" hidden>正解！ エネルギーの高い状態ほど矢印の時計は速く回る。電子が段を降りるとき決まった色の光が出るのも、段差ぴったりのリズムの電波で段の上り下りを起こせる（次ステージのゲート）のも、すべてこの法則から出てくる。</div>
+        <div class="quiz-explain" hidden>正解！ 空洞の波と量子ビットの波は押し合っていて、相手が|0⟩か|1⟩かで笛の音程がわずかにずれる。その変化を乗せた電波が外に出た瞬間、手がかりが漏れて状態は確定する。測定装置は「手がかりの漏れ口を1か所だけわざと作った小窓」だ。</div>
       </div>
 
       <div class="stage-nav">
@@ -255,12 +287,11 @@
 
 <script>
 (function(){
-  // 図1: 閉じ込められた波の生き残りシミュレータ
-  var svg = document.getElementById('string-svg');
-  var g = document.getElementById('string-body');
-  if (!svg || !g) return;
+  // 図1: エネルギーの階段（等間隔 vs トランズモン）静的
+  var g = document.getElementById('ladder-body');
+  if (!g) return;
   var ns = 'http://www.w3.org/2000/svg';
-  var CA = '#b98a2e', CN = '#b5504a', CB = '#2f7a6b';
+  var CA = '#2f8a8f', CN = '#b5504a', C0 = '#2f5a9e';
   function el(name, attrs) {
     var e = document.createElementNS(ns, name);
     for (var k in attrs) e.setAttribute(k, attrs[k]);
@@ -272,83 +303,52 @@
     t.textContent = content;
     return t;
   }
-  var X0 = 46, X1 = 326, MID = 108, AMP = 56;
-  // 固定端
-  el('line', {x1: X0, y1: MID - 70, x2: X0, y2: MID + 70, stroke: 'var(--ink)', 'stroke-width': 4});
-  el('line', {x1: X1, y1: MID - 70, x2: X1, y2: MID + 70, stroke: 'var(--ink)', 'stroke-width': 4});
-  txt(X0, MID + 90, 'label', '固定端');
-  txt(X1, MID + 90, 'label', '固定端');
-  el('line', {x1: X0, y1: MID, x2: X1, y2: MID, stroke: 'var(--line)', 'stroke-dasharray': '3 4'});
-  var wavePos = el('path', {fill: 'none', stroke: CB, 'stroke-width': 2.6});
-  var waveNeg = el('path', {fill: 'none', stroke: CB, 'stroke-width': 2.6, opacity: .35});
-  var verdictTxt = txt(186, 34, 'strong', '');
-
-  var slider = document.getElementById('st-slider');
-  var kEl = document.getElementById('st-k'), aEl = document.getElementById('st-a'), vEl = document.getElementById('st-v');
-  var t = 0, running = false, raf = null;
-  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function survival(k) {
-    // 整数からの離れ具合で生き残り度を決める（共鳴の鋭さの模式）
-    var d = Math.abs(k - Math.round(k));
-    return 1 / (1 + Math.pow(d / 0.12, 2));
-  }
-  function draw(phase) {
-    var k = (slider ? parseFloat(slider.value) : 100) / 100;
-    var s = survival(k);
-    var envelope = 0.15 + 0.85 * s;
-    var dPos = '', dNeg = '';
-    for (var i = 0; i <= 100; i++) {
-      var x = X0 + (X1 - X0) * i / 100;
-      var shape = Math.sin(Math.PI * k * i / 100);
-      var yP = MID - shape * AMP * envelope * Math.cos(phase);
-      var yN = MID + shape * AMP * envelope * Math.cos(phase);
-      dPos += (i === 0 ? 'M ' : 'L ') + x.toFixed(1) + ' ' + yP.toFixed(1) + ' ';
-      dNeg += (i === 0 ? 'M ' : 'L ') + x.toFixed(1) + ' ' + yN.toFixed(1) + ' ';
-    }
-    wavePos.setAttribute('d', dPos);
-    waveNeg.setAttribute('d', dNeg);
-    var alive = s > 0.6;
-    wavePos.setAttribute('stroke', alive ? CB : CN);
-    waveNeg.setAttribute('stroke', alive ? CB : CN);
-    verdictTxt.textContent = alive ? '生き残る（自分とそろって強め合う）' : '打ち消し合って育たない';
-    verdictTxt.style.fill = alive ? CB : CN;
-    if (kEl) kEl.textContent = k.toFixed(2);
-    if (aEl) aEl.textContent = Math.round(s * 100) + '%';
-    if (vEl) vEl.textContent = alive ? '生き残る（山' + Math.round(k) + '個のパターン）' : '打ち消される';
-  }
-  if (slider) slider.addEventListener('input', function () { draw(t); });
-  [['st-1', 100], ['st-2', 200], ['st-3', 300]].forEach(function (p) {
-    var b = document.getElementById(p[0]);
-    if (b) b.addEventListener('click', function () { slider.value = p[1]; draw(t); });
+  var LX = 96, RX = 276, W = 110, BOT = 190;
+  txt(LX, 40, 'strong', 'ただの振動回路');
+  txt(LX, 56, 'label', '段の間隔がすべて同じ');
+  var stepsL = [0, 34, 68, 102];
+  stepsL.forEach(function (dy, i) {
+    var y = BOT - dy;
+    el('line', {x1: LX - W / 2, y1: y, x2: LX + W / 2, y2: y, stroke: i < 2 ? C0 : 'var(--muted)', 'stroke-width': i < 2 ? 2.4 : 1.6});
   });
-  function loop() {
-    if (!running) return;
-    t += 0.09;
-    draw(t);
-    raf = requestAnimationFrame(loop);
+  for (var i = 0; i < 3; i++) {
+    var y1 = BOT - stepsL[i] - 4, y2 = BOT - stepsL[i + 1] + 4;
+    el('line', {x1: LX + W / 2 - 14, y1: y1, x2: LX + W / 2 - 14, y2: y2, stroke: CN, 'stroke-width': 1.8});
+    el('path', {d: 'M ' + (LX + W / 2 - 18) + ' ' + (y2 + 6) + ' L ' + (LX + W / 2 - 14) + ' ' + y2 + ' L ' + (LX + W / 2 - 10) + ' ' + (y2 + 6), fill: 'none', stroke: CN, 'stroke-width': 1.8});
   }
-  draw(0);
-  if (!reduced && 'IntersectionObserver' in window) {
-    new IntersectionObserver(function (es) {
-      if (es[0].isIntersecting && !running) { running = true; loop(); }
-      else if (!es[0].isIntersecting && running) { running = false; if (raf) cancelAnimationFrame(raf); }
-    }, {threshold: 0.15}).observe(svg);
-  }
+  var w1 = txt(LX, 72, 'label', '同じ段差で上まで抜けてしまう');
+  w1.style.fill = CN; w1.style.fontWeight = '900';
+
+  txt(RX, 40, 'strong', 'ジョセフソン接合入り');
+  txt(RX, 56, 'label', '段の間隔が不揃い');
+  var stepsR = [0, 40, 72, 98, 118];
+  stepsR.forEach(function (dy, i) {
+    var y = BOT - dy;
+    el('line', {x1: RX - W / 2, y1: y, x2: RX + W / 2, y2: y, stroke: i < 2 ? C0 : 'var(--muted)', 'stroke-width': i < 2 ? 2.6 : 1.6});
+  });
+  txt(RX - W / 2 - 8, BOT + 4, 'strong', '|0⟩', 'end');
+  txt(RX - W / 2 - 8, BOT - stepsR[1] + 4, 'strong', '|1⟩', 'end');
+  el('line', {x1: RX, y1: BOT - 6, x2: RX, y2: BOT - stepsR[1] + 6, stroke: CA, 'stroke-width': 2.6});
+  el('path', {d: 'M ' + (RX - 5) + ' ' + (BOT - stepsR[1] + 12) + ' L ' + RX + ' ' + (BOT - stepsR[1] + 6) + ' L ' + (RX + 5) + ' ' + (BOT - stepsR[1] + 12), fill: 'none', stroke: CA, 'stroke-width': 2.2});
+  el('path', {d: 'M ' + (RX - 5) + ' ' + (BOT - 12) + ' L ' + RX + ' ' + (BOT - 6) + ' L ' + (RX + 5) + ' ' + (BOT - 12), fill: 'none', stroke: CA, 'stroke-width': 2.2});
+  txt(RX + 8, BOT - stepsR[1] / 2 + 4, 'accent', 'この段差に共鳴', 'start');
+  var xm = txt(RX + W / 2 - 22, BOT - (stepsR[1] + stepsR[2]) / 2, 'label', '×届かない');
+  xm.style.fill = CN; xm.style.fontWeight = '900';
+  txt(186, BOT + 26, 'label', '縦方向＝エネルギー。太い2本が「使う段」');
 })();
 </script>
 
 <script>
 (function(){
-  // 図2: パターンとエネルギー階段の対応（静的）
-  var g = document.getElementById('steps-body');
+  // 図2: パルス時間と矢印の混ざり（共鳴）インタラクティブ
+  var g = document.getElementById('rabi-body');
   if (!g) return;
   var ns = 'http://www.w3.org/2000/svg';
-  var CB = '#2f7a6b', CA = '#b98a2e';
-  function el(name, attrs) {
+  var C0 = '#2f5a9e', C1 = '#b5504a', CA = '#2f8a8f';
+  function el(name, attrs, parent) {
     var e = document.createElementNS(ns, name);
     for (var k in attrs) e.setAttribute(k, attrs[k]);
-    g.appendChild(e);
+    (parent || g).appendChild(e);
     return e;
   }
   function txt(x, y, cls, content, anchor) {
@@ -356,34 +356,72 @@
     t.textContent = content;
     return t;
   }
-  txt(100, 38, 'label', '生き残ったパターン');
-  txt(285, 38, 'label', 'エネルギーの段');
-  var rows = [1, 2, 3];
-  var BOT = 186, GAP = 48;
-  rows.forEach(function (n, i) {
-    var cy = BOT - i * GAP - 14;
-    // 左: 波形
-    var x0 = 40, x1 = 170;
-    el('line', {x1: x0, y1: cy - 18, x2: x0, y2: cy + 18, stroke: 'var(--ink)', 'stroke-width': 3});
-    el('line', {x1: x1, y1: cy - 18, x2: x1, y2: cy + 18, stroke: 'var(--ink)', 'stroke-width': 3});
-    var d = '';
-    for (var j = 0; j <= 60; j++) {
-      var x = x0 + (x1 - x0) * j / 60;
-      var y = cy - Math.sin(Math.PI * n * j / 60) * 14;
-      d += (j === 0 ? 'M ' : 'L ') + x.toFixed(1) + ' ' + y.toFixed(1) + ' ';
-    }
-    el('path', {d: d, fill: 'none', stroke: CB, 'stroke-width': 2.2});
-    txt(x0 - 8, cy + 4, 'label', '山' + n, 'end');
-    // 中央の対応線
-    el('line', {x1: x1 + 10, y1: cy, x2: 230, y2: cy, stroke: 'var(--muted)', 'stroke-width': 1.2, 'stroke-dasharray': '4 3'});
-    // 右: 段
-    el('line', {x1: 238, y1: cy, x2: 330, y2: cy, stroke: CA, 'stroke-width': 3});
-    txt(338, cy + 4, 'accent', String(i + 1) + '段目', 'start');
+  var defs = el('defs', {});
+  [['rb-a0m', C0], ['rb-a1m', C1]].forEach(function (p) {
+    var m = el('marker', {id: p[0], viewBox: '0 0 8 8', refX: 7, refY: 4, markerWidth: 5.5, markerHeight: 5.5, markerUnits: 'userSpaceOnUse', orient: 'auto'}, defs);
+    el('path', {d: 'M0 0 L8 4 L0 8 z', fill: p[1]}, m);
   });
-  // 段間の×
-  var xg = txt(284, BOT - GAP - 14 + GAP / 2 + 4, 'label', '中間の段は存在しない');
-  xg.style.fill = '#b5504a'; xg.style.fontWeight = '900';
-  txt(186, 210, 'label', '細かいパターンほど激しく振動 → エネルギーが高い');
+  var px0 = 24, pw = 120, py = 84;
+  txt(px0 + pw / 2, 44, 'label', 'マイクロ波パルス');
+  var pulseBox = el('rect', {x: px0, y: py - 26, height: 52, width: 4, fill: '#2f8a8f', opacity: .08});
+  var pulse = el('path', {fill: 'none', stroke: CA, 'stroke-width': 1.8});
+  var durTxt = txt(px0 + pw / 2, py + 46, 'accent', '当てた時間: 0');
+  var cx = 210, R = 26, rowY = [68, 132];
+  [0, 1].forEach(function (i) {
+    el('circle', {cx: cx, cy: rowY[i], r: R, fill: 'var(--paper2)', stroke: 'var(--line)'});
+    var t = txt(cx - R - 8, rowY[i] + 4, 'strong', i === 0 ? '|0⟩' : '|1⟩', 'end');
+    t.style.fill = i === 0 ? C0 : C1;
+  });
+  var ar0 = el('line', {stroke: C0, 'stroke-width': 3, 'marker-end': 'url(#rb-a0m)'});
+  var ar1 = el('line', {stroke: C1, 'stroke-width': 3, 'marker-end': 'url(#rb-a1m)'});
+  var bx = 286, bw = 30, bh = 96, by = 160;
+  [0, 1].forEach(function (i) {
+    el('rect', {x: bx + i * 44, y: by - bh, width: bw, height: bh, fill: 'none', stroke: 'var(--line)'});
+    txt(bx + i * 44 + bw / 2, by + 14, 'label', i === 0 ? '0' : '1');
+  });
+  var bar0 = el('rect', {x: bx + 1, width: bw - 2, fill: C0, opacity: .85});
+  var bar1 = el('rect', {x: bx + 45, width: bw - 2, fill: C1, opacity: .85});
+  txt(bx + 37, 44, 'label', '長さの2乗＝確率');
+  txt(186, 200, 'label', '25＝Hの止め位置（五分五分）／ 50＝X（入れ替え）／ 100＝1周して元通り');
+
+  var slider = document.getElementById('rb-slider');
+  var roA0 = document.getElementById('rb-a0'), roA1 = document.getElementById('rb-a1');
+  var roP0 = document.getElementById('rb-p0'), roP1 = document.getElementById('rb-p1');
+
+  function draw() {
+    var t = slider ? parseFloat(slider.value) : 0;
+    var th = t / 100 * 2 * Math.PI;
+    var a0 = Math.cos(th / 2), a1 = Math.sin(th / 2);
+    var L = R - 5;
+    ar0.setAttribute('x1', cx); ar0.setAttribute('y1', rowY[0]);
+    ar0.setAttribute('x2', cx + a0 * L); ar0.setAttribute('y2', rowY[0]);
+    ar0.setAttribute('opacity', Math.abs(a0) < 0.03 ? 0 : 1);
+    ar1.setAttribute('x1', cx); ar1.setAttribute('y1', rowY[1]);
+    ar1.setAttribute('x2', cx + a1 * L); ar1.setAttribute('y2', rowY[1]);
+    ar1.setAttribute('opacity', Math.abs(a1) < 0.03 ? 0 : 1);
+    var p0 = a0 * a0, p1 = a1 * a1;
+    bar0.setAttribute('y', by - bh * p0); bar0.setAttribute('height', Math.max(bh * p0, 0.5));
+    bar1.setAttribute('y', by - bh * p1); bar1.setAttribute('height', Math.max(bh * p1, 0.5));
+    var len = Math.max(4, pw * t / 100);
+    pulseBox.setAttribute('width', len);
+    var d = '';
+    for (var x = 0; x <= len; x += 2) {
+      var y = py - Math.sin(x / 4.2) * 18;
+      d += (x === 0 ? 'M ' : 'L ') + (px0 + x).toFixed(1) + ' ' + y.toFixed(1) + ' ';
+    }
+    pulse.setAttribute('d', d);
+    durTxt.textContent = '当てた時間: ' + Math.round(t);
+    if (roA0) roA0.textContent = (a0 < -0.001 ? '−' : '') + Math.abs(a0).toFixed(2);
+    if (roA1) roA1.textContent = (a1 < -0.001 ? '−' : '') + Math.abs(a1).toFixed(2);
+    if (roP0) roP0.textContent = Math.round(p0 * 100) + '%';
+    if (roP1) roP1.textContent = Math.round(p1 * 100) + '%';
+  }
+  if (slider) slider.addEventListener('input', draw);
+  var bh1 = document.getElementById('rb-h');
+  if (bh1) bh1.addEventListener('click', function () { slider.value = 25; draw(); });
+  var bx1 = document.getElementById('rb-x');
+  if (bx1) bx1.addEventListener('click', function () { slider.value = 50; draw(); });
+  draw();
 })();
 </script>
 </body>

@@ -1,7 +1,7 @@
 # このリポジトリについて
 
 「量子コンピュータはなぜ速いのか」を、中身の計算の仕組みから理解する学習クエストサイト。
-量子ビット（矢印の一覧表）→ 量子ゲート（矢印の回し方・混ぜ方）→ なぜ量子はとびとびなのか（波の閉じ込め）→ 量子ビットを組み立てる（超伝導実機）→ もつれとCNOT → ドイチュのアルゴリズム → グローバーの探索 → ショアの因数分解 → デコヒーレンスと誤り訂正、の全9ステージ。
+量子ビット（矢印の一覧表）→ 量子ゲート（矢印の回し方・混ぜ方）→ 量子ビットを組み立てる（超伝導実機）→ もつれとCNOT → ドイチュのアルゴリズム → グローバーの探索 → ショアの因数分解 → デコヒーレンスと誤り訂正、の全8ステージ。
 公開URL（予定）: https://ruglerugle.github.io/quantum-computer/
 
 **このサイトの主役は「速さの正体＝干渉の設計、を自分の手で確かめること」**。
@@ -52,7 +52,7 @@
   アナロジーを自作する、が彼女の見せ場。「ということは……」で先回りして正しく推論するのは大いに可
 - 卑屈・無知アピールはキャラ崩壊。分からないことは堂々と質問する
 - 例外: 以下は学習済みという設定。ただし復習として自分で整理し直す形にし、未読の読者にも完結した説明にする
-  - quantum-quest: 二重スリット・光子・測定結果が確率で決まること
+  - quantum-quest（ https://quantum-mechanics.habatakijuku.com/ ）: 二重スリット・光子・測定結果が確率で決まること・波動関数・不確定性原理・シュレーディンガー方程式（井戸型によるエネルギー量子化＝定在波の選別・矢印の時計法則）
   - complex-quest: 複素数（矢印としての掛け算・回転）
   - bell-inequality: もつれ・完全相関・部分系の単独のランダムさ・ベルの不等式と局所実在論の否定
   - decoherence-quest: 足し算ルール（区別がつかない道筋は矢印を足してから2乗）・手がかり・直交・デコヒーレンス
@@ -87,8 +87,8 @@
 
 # ファイル構成
 - `design-system.css` — quest-template由来の共通デザイン。配色は `:root` の変数で管理（回路基板の紺×金）
-- `js/progress.js` — 進捗管理・クイズ判定。**クイズの正解は `ANSWERS`**。localStorageキーは `quantumComputerQuestProgress_v3`、グローバルは `QC`
-- `stage1.html` 〜 `stage9.html` — 各ステージ。`index.html`（表紙）、`complete.html`（クリア画面）
+- `js/progress.js` — 進捗管理・クイズ判定。**クイズの正解は `ANSWERS`**。localStorageキーは `quantumComputerQuestProgress_v4`、グローバルは `QC`
+- `stage1.html` 〜 `stage8.html` — 各ステージ。`index.html`（表紙）、`complete.html`（クリア画面）
 - `images/` — キャラ画像はWebP（幅300px程度、decoherence-questから流用）。`<img>` には `width`/`height` 属性を必ず付ける。
   favicon.png は流用。ogp.png は未作成
 - 図はSVGで手書きし、JSでアニメーションさせる場合は IntersectionObserver でビューポート内のみ再生し、
