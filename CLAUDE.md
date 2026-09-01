@@ -56,6 +56,7 @@
   - complex-quest: 複素数（矢印としての掛け算・回転）
   - bell-inequality: もつれ・完全相関・部分系の単独のランダムさ・ベルの不等式と局所実在論の否定
   - decoherence-quest: 足し算ルール（区別がつかない道筋は矢印を足してから2乗）・手がかり・直交・デコヒーレンス
+  - cpu_game（論理回路の旅 https://informatics.habatakijuku.com/cpu-logic-game/ ）: 論理回路（AND/OR/NOT）、ゲートを組み合わせて計算を作ること
 
 **ねこ博士**
 - 柔らかい先生口調（「〜ね」「〜なんだ」「〜だよ」「〜かな？」「〜してごらん」）
