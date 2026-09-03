@@ -143,46 +143,6 @@
           </div>
           <div class="dialog-bubble">その通りの準備でいい。ここから2手を繰り返す。<br><strong>【第1手・反転】</strong>オラクルに聞いて、<strong>当たりの行の矢印だけを正反対の向きにする</strong>。前回の位相キックバックがそのまま使える。当たりを名指しできなくても、<strong>重ね合わせの全候補を箱に通せば、照合に引っかかった行だけが反転する</strong>――照合の手順さえあれば、この操作は組めるんだ。</div>
         </div>
-      </div>
-
-      <div class="diagram-box">
-        <svg id="kb-svg" class="qc-svg" viewBox="0 0 372 378" width="100%" role="img" aria-label="当たりを知らないまま当たりの行だけにマイナス1を付ける仕組みの図。上段は補助ビットの仕掛けで、0と1を入れ替えると全部の矢印が正反対になり、その行にマイナス1が掛かることを示す。下段では、箱を通るのは4つの行ではなく1つの状態だけで、その状態が持つ4行の表を抱えたまま回路を1回だけ通り、出てくると当たりの行の符号だけがマイナスに書き換わっている。4つが別々に通るのではないことを注記している">
-          <text class="strong" x="186" y="14" text-anchor="middle">当たりを知らないまま、当たりだけに −1 を付ける</text>
-          <text class="label" x="186" y="32" text-anchor="middle">探す番号は分かっている。分からないのは「<tspan class="accent">どの行がそれを持つか</tspan>」</text>
-          <!-- ① 補助ビットの仕掛け -->
-          <text class="strong" x="186" y="54" text-anchor="middle">① 補助ビットの仕掛け ― 入れ替えると符号が変わる</text>
-          <text class="label" x="80" y="72" text-anchor="middle">補助ビット |−⟩</text>
-          <line x1="46" y1="112" x2="114" y2="112" stroke="var(--line)" stroke-width="1.2"/>
-          <rect x="56" y="86" width="16" height="26" fill="#2f7a6b"/>
-          <rect x="88" y="112" width="16" height="26" fill="#b5504a"/>
-          <text class="label" x="46" y="152" text-anchor="start">|0⟩上</text>
-          <text class="label" x="114" y="152" text-anchor="end">|1⟩下</text>
-          <path d="M 130 108 L 176 108 M 168 103 L 176 108 L 168 113" stroke="#6b7480" stroke-width="1.8" fill="none"/>
-          <text class="label" x="153" y="98" text-anchor="middle">0と1を</text>
-          <text class="label" x="153" y="128" text-anchor="middle">入れ替える</text>
-          <text class="label" x="256" y="72" text-anchor="middle">入れ替えた後 ＝ −|−⟩</text>
-          <line x1="222" y1="112" x2="290" y2="112" stroke="var(--line)" stroke-width="1.2"/>
-          <rect x="232" y="112" width="16" height="26" fill="#b5504a"/>
-          <rect x="264" y="86" width="16" height="26" fill="#2f7a6b"/>
-          <text class="label" x="222" y="152" text-anchor="start">|0⟩下</text>
-          <text class="label" x="290" y="152" text-anchor="end">|1⟩上</text>
-          <text class="accent" x="186" y="170" text-anchor="middle">全部の矢印が正反対 ＝ その行に −1 が掛かる（入れ替えなければ何も起きない）</text>
-          <line x1="16" y1="182" x2="356" y2="182" stroke="var(--line)" stroke-width="1"/>
-          <!-- ② 通るのは1つだけ -->
-          <text class="strong" x="186" y="200" text-anchor="middle">② 通るのは「1つの状態」。通る回数も1回</text>
-          <g id="kb-token"></g>
-          <rect x="146" y="212" width="98" height="128" rx="8" fill="#eef2f7" stroke="var(--line)" stroke-width="1.6"/>
-          <text class="label" x="195" y="250" text-anchor="middle">照合の回路</text>
-          <text class="label" x="195" y="266" text-anchor="middle">電話帳と</text>
-          <text class="label" x="195" y="280" text-anchor="middle">探す番号が</text>
-          <text class="label" x="195" y="294" text-anchor="middle">入っている</text>
-          <text id="kb-count" class="accent" x="186" y="356" text-anchor="middle">箱を通った回数 0</text>
-          <text class="label" x="186" y="372" text-anchor="middle">4つが別々に通るのではない。持ち物の表が書き換わるだけ</text>
-        </svg>
-        <div class="diagram-caption">当たりが「どれ」か分からないまま、当たりの行だけに −1 を付ける仕組み。①補助ビットを1個だけ足して |−⟩――|0⟩ が上向き、|1⟩ が下向き――にしておくと、<strong>0と1を入れ替えたとたん、全部の矢印が正反対</strong>になる。これは「その行全体に −1 が掛かった」ことと同じで、入れ替えなければ何も起きない。②あとは、照合に引っかかった行だけが補助ビットを入れ替えるように回路を組めばいい。<br>ここが肝心なところで、<strong>箱を通るのは4つの行ではなく、たった1つの状態</strong>だ。4行の表は、その1つが持っている<strong>持ち物</strong>にすぎない。だから通る回数も1回きりで、照合が4回行われるわけではない。出てきたとき、持ち物の表のうち<strong>照合に引っかかった行の符号だけ</strong>が書き換わっている。<br>回路の中身は<strong>電話帳と探す番号</strong>であって、当たりの行の名前ではない。「3番を反転せよ」と書いた場所はどこにもなく、それでも当たりの行だけが −1 を受け取る――これが<strong>位相キックバック</strong>だ。ちなみに、あらかじめ当たりが |11⟩ だと分かっている場合にこれを組み立てると、ちょうど「両方が1のときだけ半回転させる」という一手に化ける。</div>
-      </div>
-
-      <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
@@ -268,10 +228,6 @@
           </div>
           <div class="dialog-bubble">いい比較だね。違いは3つある。<br>第一に、<strong>設備の数</strong>。CPU並列は候補の数だけ物理的な機械が要る。候補が2¹²⁸個なら、宇宙の原子を全部使ってもコアが足りない。量子の側は、候補が2倍になっても量子ビットが<strong>1個増えるだけ</strong>。なぜそんなに安いのか――候補たちが「N台の機械」ではなく、<strong>1つの波のN個の成分</strong>だからだ。さっき言ったとおり、成分ごとの処理を装置がやっているのではなく、法則のほうが勝手に分配してくれるからね。<br>第二に、<strong>読み出し</strong>。ここはCPU並列の圧勝だ。N台のコアは全結果を全部読める。量子の表は1行しか読めない。<br>第三に、<strong>干渉</strong>。コアたちの結果は独立で、打ち消し合えない。波の成分は打ち消し合える。読み出しで負けているぶんを、この唯一の武器で取り返す――それが第2手の反復だった、というわけだ。<br>さて、4個のときは1回で決まったが、多くなると1回では届かない。<strong>候補8個（量子ビット3個）ではどうなるか、続けて確かめてごらん。</strong></div>
         </div>
-      </div>
-
-
-      <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
@@ -722,72 +678,6 @@
     if (raf) cancelAnimationFrame(raf);
   }
   draw(reduced ? startAll + T_ONE : 0);
-  if (!reduced && 'IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (es) {
-      es.forEach(function (e) { e.isIntersecting ? start() : stop(); });
-    }, {threshold: 0.2});
-    io.observe(svg);
-  }
-})();
-</script>
-<script>
-(function(){
-  // 図: 位相キックバック（通るのは1つの状態、通る回数も1回）
-  var svg = document.getElementById('kb-svg');
-  var g = document.getElementById('kb-token');
-  if (!svg || !g) return;
-  var ns = 'http://www.w3.org/2000/svg';
-  var CA = '#2f7a6b', CR = '#b5504a';
-  var NAMES = ['|00⟩', '|01⟩', '|10⟩', '|11⟩'];
-  var HIT = 3;
-  var TW = 92, TH = 116, TY = 218;
-  var X0 = 8, X1 = 272, XOUT = 244;
-  function el(name, attrs, parent) {
-    var e = document.createElementNS(ns, name);
-    for (var k in attrs) e.setAttribute(k, attrs[k]);
-    (parent || g).appendChild(e);
-    return e;
-  }
-  var box = el('g', {});
-  el('rect', {x: 0, y: 0, width: TW, height: TH, rx: 8, fill: '#fdfaf3', stroke: '#6b7480', 'stroke-width': 1.6}, box);
-  var ttl = el('text', {x: TW / 2, y: 16, 'class': 'strong', 'text-anchor': 'middle', 'font-size': 11}, box);
-  ttl.textContent = '1つの状態';
-  var sub = el('text', {x: TW / 2, y: 30, 'class': 'label', 'text-anchor': 'middle', 'font-size': 9.5}, box);
-  sub.textContent = '（持ち物の表）';
-  var vals = [];
-  for (var i = 0; i < 4; i++) {
-    var n = el('text', {x: 12, y: 48 + i * 17, 'class': 'label', 'text-anchor': 'start', 'font-size': 10}, box);
-    n.textContent = NAMES[i];
-    vals.push(el('text', {x: TW - 12, y: 48 + i * 17, 'class': 'label', 'text-anchor': 'end', 'font-size': 10}, box));
-  }
-  var count = document.getElementById('kb-count');
-  function setVals(flipped) {
-    for (var i = 0; i < 4; i++) {
-      var hit = (i === HIT) && flipped;
-      vals[i].textContent = (hit ? '−' : '＋') + '0.5';
-      vals[i].setAttribute('fill', hit ? CR : CA);
-      vals[i].setAttribute('font-weight', hit ? '900' : '700');
-    }
-  }
-  var T_MOVE = 3.2, T_HOLD = 2.0, TOTAL = T_MOVE + T_HOLD;
-  function draw(t) {
-    var u = Math.min(1, t / T_MOVE);
-    var x = X0 + (X1 - X0) * u;
-    box.setAttribute('transform', 'translate(' + x.toFixed(1) + ',' + TY + ')');
-    var passed = x > XOUT;
-    setVals(passed);
-    count.textContent = '箱を通った回数 ' + (passed ? '1' : '0');
-  }
-  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var raf = null, running = false, t0 = null;
-  function tick(ts) {
-    if (t0 === null) t0 = ts;
-    draw(((ts - t0) / 1000) % TOTAL);
-    if (running) raf = requestAnimationFrame(tick);
-  }
-  function start() { if (running || reduced) return; running = true; raf = requestAnimationFrame(tick); }
-  function stop() { running = false; if (raf) cancelAnimationFrame(raf); }
-  draw(reduced ? T_MOVE : 0);
   if (!reduced && 'IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (e) { e.isIntersecting ? start() : stop(); });
