@@ -401,6 +401,62 @@
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">さっきから引っかかっていることがあります。「板には電話帳が刻まれている」とおっしゃいましたが、それは<strong>実際にはどうやる</strong>んですか。100万件なら、板のほうに100万件ぶんを刻むことになりませんか。だとしたら、その刻む手間はどこへ行ったんでしょう。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そこを見逃さないのが大事だ。まず素朴なやり方から言うと、問い合わせのたびに<strong>電話帳ぜんぶを回路に焼き直す</strong>ことになる。100万件なら100万件ぶんの部品だ。しかもグローバーは√N回くり返すから、合計すると<strong>ふつうの総当たりより高くつく</strong>。「量子コンピュータはデータベース検索が速い」がほとんど神話だと言われるのは、この計算のせいなんだよ。<br>そこで考えられているのが <strong>QRAM</strong>（量子RAM）という装置だ。RAMというのは、ふつうのコンピュータの記憶装置のこと。「<strong>何番地の中身をくれ</strong>」と言うと、その番地に入れてある中身を出してくれる箱だと思えばいい。その量子版を作ろう、という構想だね。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">ふつうのRAMを、量子コンピュータにつなぐだけではだめなんですか。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/catThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">だめなんだ。ふつうのRAMは番地を1つ受け取って、中身を1つ返す。重ね合わせの番地を渡しても、入口で1つに決まってしまう。それでは全行ぶんが一度で済まない。<br>そこでQRAMの案はこうだ。<strong>分かれ道を段々に並べる</strong>。1段目で左か右、2段目でまた左か右――2段で4か所に届く。段を増やせば行き先は2倍ずつ増えるから、2を20回かけて約100万、つまり<strong>20段で100万か所</strong>に届く計算だ。<br>分かれ道の一つひとつは<strong>量子のスイッチ</strong>で、番地のビットが0なら左、1なら右へ進ませる。ここで番地が重ね合わせなら、スイッチは「左へ進んだ枝と、右へ進んだ枝の重ね合わせ」を作る。<strong>通り道そのものが重ね合わせになる</strong>んだ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">道が重ね合わせになったとして、その先はどうなるんですか。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">行き止まりのそれぞれに、その番地の電話番号が置いてある。そこへ<strong>運び役</strong>の量子ビットを1つだけ送り込むと、運び役は「番地ごとに違う電話番号を抱えた重ね合わせ」になって戻ってくる。<br>あとは、その運び役に<strong>比べる回路を1個だけ</strong>通す。中身が重ね合わせでも、法則が線形だから全行ぶんが一度で済む――さっきの話のとおりだ。最後に、通ってきた道と抱えた番号を<strong>逆回しして消す</strong>と、当たりの行についた −1 だけがきれいに残る。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">よくできています。……でも、手間はどこへ消えたんでしょうか。<br>いえ、消えていませんね。<strong>行き止まりは候補の数だけ要る</strong>のだから、100万件なら装置のほうに100万か所ぶんの部品が必要です。通る道が20段で済んでも、作らなければいけないものは減っていません。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">そこに気づけば十分だ。<strong>手間は消えたのではなく、装置の側へ移った</strong>。通り道は20段でも、装置ぜんたいは100万個規模になる。しかも、それだけの部品を誤りから守り続けられるのか――QRAMが実際に作れるのかどうかは、いまも決着がついていない。あくまで<strong>構想</strong>の段階だよ。<br>だから、この話を聞いても結論は変わらない。電話帳のような「並べておける相手」に対しては、量子の側にうまみは乏しいままなんだ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
