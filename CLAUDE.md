@@ -57,6 +57,7 @@
   - bell-inequality: もつれ・完全相関・部分系の単独のランダムさ・ベルの不等式と局所実在論の否定
   - decoherence-quest: 足し算ルール（区別がつかない道筋は矢印を足してから2乗）・手がかり・直交・デコヒーレンス
   - cpu_game（論理回路の旅 https://informatics.habatakijuku.com/cpu-logic-game/ ）: 論理回路（AND/OR/NOT）、ゲートを組み合わせて計算を作ること
+  - algo-quest（アルゴリズムの旅 https://informatics.habatakijuku.com/algo-quest/ ）: 線形探索（全件探索）・二分探索・バブルソート・クイックソート・ダイクストラ法・動的計画法・計算量
 
 **ねこ博士**
 - **oop-game（オブジェクト指向クエスト）のねこ先生と同一人物として口調を合わせる**。落ち着いた短い相づち（「うん」「そう」「そうだね」「その通り」）＋淡々とした説明が基本
