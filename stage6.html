@@ -185,6 +185,30 @@
           </div>
           <div class="dialog-bubble">いい問いだ、そこが「同時に計算」の正確な中身だよ。違いは、<strong>箱は固定された回路で、通すのは1回だけ</strong>という点にある。STAGE2 の H を思い出してごらん。|+⟩ に H を当てるとき、H は |0⟩ と |1⟩ を順番に処理したりしない。<strong>1回のパルスで、表の2行がまとめて書き換わる</strong>。ゲートとは表全体への書き換え規則で、行が4行でも100万行でも適用は1回。かかる時間は<strong>照合の手順の複雑さぶんだけ</strong>で、候補の数には比例しないんだ。<br>ここで言葉の整理をしておこう。「N個の候補を箱に入れる」という言い方が、いちばんの誤解のもとでね。<strong>箱に入る物は、最初から最後まで1つだけ</strong>だ。量子ビットのかたまりが1つあって、それが持っている状態が1つ。N行の表というのは、その<strong>たった1つの状態を紙に書き下したときの姿</strong>であって、N個の物が詰まっているわけではない。入り口がN本あるわけでもない。だから「一度に入れる」ことに苦労はないんだよ。STAGE4で確かめたとおり、行の名前は候補の番号そのものだったから、全行に矢印が立った状態は、それだけで「0番から最後までの候補を持っている」ことになる。<br>では、なぜ1つの状態を1回通しただけで、行ごとに違う結果が出るのか。それは量子力学の法則が<strong>線形</strong>だからだ。線形とは「AとBを足したものを入れたら、Aを入れた結果とBを入れた結果を足したものが出てくる」という性質のこと。箱は、行1つずつを入れたときに正しく照合するように組んである。あとは法則のほうが、重ね合わせを勝手に分配してくれる。<strong>こちらは場合分けを1度もしていないのに、全行ぶんの照合が済んでいる</strong>――手品の種はここなんだ。</div>
         </div>
+      </div>
+
+      <div class="diagram-box">
+        <svg id="lin-svg" class="qc-svg" viewBox="0 0 372 286" width="100%" role="img" aria-label="線形性のアニメーション。左に候補0番から3番までの4行が縦に並び、中央に照合の箱、右に出口がある。前半では4行を1行ずつ箱に通し、箱を4回通ることになる。当たりの2番の行だけ、箱を出ると矢印が下向き（反対向き）に変わる。後半では4行が重ね合わせのまま一度に箱を通り、箱を通った回数は1回のまま、出口には4行ぶんの結果が同時に並ぶ。行ごとの結果は前半とまったく同じで、当たりの行だけが下向きになる">
+          <text class="strong" x="186" y="14" text-anchor="middle">線形とは ― 1行ずつでも、まとめてでも、行ごとの結果は同じ</text>
+          <text id="lin-phase" class="accent" x="186" y="32" text-anchor="middle">① 1行ずつ通す</text>
+          <!-- 箱 -->
+          <rect x="150" y="46" width="72" height="168" rx="8" fill="#e9eef6" stroke="var(--line)" stroke-width="1.4"/>
+          <text class="strong" x="186" y="128" text-anchor="middle">照合の箱</text>
+          <text class="label" x="186" y="144" text-anchor="middle">当たりなら</text>
+          <text class="label" x="186" y="158" text-anchor="middle">向きを反転</text>
+          <!-- 入口・出口の目盛り -->
+          <line x1="120" y1="46" x2="120" y2="214" stroke="var(--line)" stroke-width="1" stroke-dasharray="3 3"/>
+          <line x1="250" y1="46" x2="250" y2="214" stroke="var(--line)" stroke-width="1" stroke-dasharray="3 3"/>
+          <text class="label" x="120" y="228" text-anchor="middle">入口</text>
+          <text class="label" x="250" y="228" text-anchor="middle">出口</text>
+          <g id="lin-rows"></g>
+          <text class="label" x="186" y="250" text-anchor="middle">箱を通した回数 <tspan id="lin-count" class="strong">0</tspan></text>
+          <text id="lin-note" class="label" x="186" y="268" text-anchor="middle">4行を順番に。4回かかる</text>
+        </svg>
+        <div class="diagram-caption">同じ箱に、①1行ずつ通した場合と、②4行を重ね合わせのまま通した場合の比べ図。<strong>行ごとの結果はどちらもまったく同じ</strong>――当たりの2番（|10⟩）だけが向きを反転され、他の3行はそのまま出てくる。違うのは<strong>箱を通した回数</strong>だけで、①は4回、②は1回。これが「法則が線形」ということの中身だ。箱は行を1つずつ入れたときに正しく照合するように組んであるだけで、<strong>重ね合わせ用の仕掛けは何も入っていない</strong>。それでも重ね合わせを入れれば、各行はそれぞれ自分の結果になって出てくる。候補が100万行でも、箱を通るのは1回のままだ。</div>
+      </div>
+
+      <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
@@ -501,6 +525,104 @@
   line(1, '#b5504a', 'ふつうのコンピュータ（N に比例）', 46);
   line(0.5, '#2f7a6b', 'グローバー（√N に比例）', 96);
   txt(X0 + 8, Y1 - 4, 'label', '必要な質問回数', 'start');
+})();
+</script>
+<script>
+(function(){
+  // 図: 線形性（1行ずつ vs 重ね合わせ）
+  var svg = document.getElementById('lin-svg');
+  var g = document.getElementById('lin-rows');
+  if (!svg || !g) return;
+  var ns = 'http://www.w3.org/2000/svg';
+  var CA = '#2f7a6b', CR = '#b5504a';
+  var NAMES = ['0番 |00⟩', '1番 |01⟩', '2番 |10⟩', '3番 |11⟩'];
+  var HIT = 2;
+  var Y = [66, 106, 146, 186];
+  var X0 = 120, X1 = 302, XIN = 150, XOUT = 222;
+  function el(name, attrs, parent) {
+    var e = document.createElementNS(ns, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    (parent || g).appendChild(e);
+    return e;
+  }
+  var rows = [];
+  for (var i = 0; i < 4; i++) {
+    var t = el('text', {x: 104, y: Y[i] + 4, 'class': 'label', 'text-anchor': 'end'});
+    t.textContent = NAMES[i];
+    var grp = el('g', {});
+    var body = el('circle', {cx: 0, cy: 0, r: 9, fill: '#dfe3e9', stroke: '#6b7480', 'stroke-width': 1.2}, grp);
+    var arw = el('path', {d: 'M 0 6 L 0 -6 M -3.5 -2.5 L 0 -6 L 3.5 -2.5', stroke: CA, 'stroke-width': 2, fill: 'none'}, grp);
+    rows.push({label: t, grp: grp, arw: arw, y: Y[i]});
+  }
+  var phase = document.getElementById('lin-phase');
+  var count = document.getElementById('lin-count');
+  var note = document.getElementById('lin-note');
+  function place(i, x, flipped) {
+    var r = rows[i];
+    r.grp.setAttribute('transform', 'translate(' + x.toFixed(1) + ',' + r.y + ')');
+    r.arw.setAttribute('d', flipped ? 'M 0 -6 L 0 6 M -3.5 2.5 L 0 6 L 3.5 2.5' : 'M 0 6 L 0 -6 M -3.5 -2.5 L 0 -6 L 3.5 -2.5');
+    r.arw.setAttribute('stroke', flipped ? CR : CA);
+  }
+  // 進行台本: t は 0..1 の通し時間
+  var T_ONE = 1.7, T_GAP = 0.25, T_HOLD = 1.1;   // 1行ぶんの所要・間・保持
+  var startAll = 4 * (T_ONE + T_GAP) + T_HOLD;
+  var total = startAll + T_ONE + T_HOLD + 0.6;
+  function draw(t) {
+    if (t < startAll) {
+      phase.textContent = '① 1行ずつ通す';
+      note.textContent = '4行を順番に。4回かかる';
+      var done = 0;
+      for (var i = 0; i < 4; i++) {
+        var s0 = i * (T_ONE + T_GAP);
+        var u = (t - s0) / T_ONE;
+        if (u <= 0) { place(i, X0, false); }
+        else if (u >= 1) { place(i, X1, i === HIT); done = i + 1; }
+        else {
+          var x = X0 + (X1 - X0) * u;
+          place(i, x, i === HIT && x > XOUT);
+          done = i;
+        }
+      }
+      count.textContent = String(done);
+    } else {
+      phase.textContent = '② 重ね合わせのまま通す';
+      note.textContent = '4行がひとかたまり。1回で済む';
+      var u2 = (t - startAll) / T_ONE;
+      for (var j = 0; j < 4; j++) {
+        if (u2 <= 0) place(j, X0, false);
+        else if (u2 >= 1) place(j, X1, j === HIT);
+        else {
+          var x2 = X0 + (X1 - X0) * u2;
+          place(j, x2, j === HIT && x2 > XOUT);
+        }
+      }
+      count.textContent = (u2 >= 1) ? '1' : (u2 > 0 ? '1' : '0');
+    }
+  }
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var raf = null, running = false, t0 = null;
+  function tick(ts) {
+    if (t0 === null) t0 = ts;
+    var t = ((ts - t0) / 1000) % total;
+    draw(t);
+    if (running) raf = requestAnimationFrame(tick);
+  }
+  function start() {
+    if (running || reduced) return;
+    running = true;
+    raf = requestAnimationFrame(tick);
+  }
+  function stop() {
+    running = false;
+    if (raf) cancelAnimationFrame(raf);
+  }
+  draw(reduced ? startAll + T_ONE : 0);
+  if (!reduced && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { e.isIntersecting ? start() : stop(); });
+    }, {threshold: 0.2});
+    io.observe(svg);
+  }
 })();
 </script>
 </body>
