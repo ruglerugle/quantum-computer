@@ -128,6 +128,45 @@
         </div>
       </div>
 
+      <div class="diagram-box">
+        <svg id="book-svg" class="qc-svg" viewBox="0 0 372 300" width="100%" role="img" aria-label="4人の電話帳を使ったグローバーの実演。上半分に4人の名前と電話番号の表があり、これは板に刻まれていて波には入っていないと注記されている。下半分は4本の棒グラフで、0番から3番までの矢印の長さを表す。準備ではすべて0.5、板を1回通すと当たりの3番だけが下向きのマイナス0.5になり、平均のまわりで折り返すと3番だけが1.0に伸びて他はゼロになり、測定すると必ず3番のランディーバースが出る">
+          <text class="strong" x="186" y="14" text-anchor="middle">4人の電話帳でやってみる ― 波になるのは「何番か」だけ</text>
+          <text class="accent" x="186" y="32" text-anchor="middle">探す番号 090-1234-5778</text>
+          <!-- 電話帳（板の中身） -->
+          <rect x="12" y="40" width="348" height="88" rx="8" fill="#eef2f7" stroke="var(--line)" stroke-width="1.2"/>
+          <text class="label" x="24" y="55" text-anchor="start">番号</text>
+          <text class="label" x="74" y="55" text-anchor="start">行の名前</text>
+          <text class="label" x="140" y="55" text-anchor="start">名前</text>
+          <text class="label" x="248" y="55" text-anchor="start">電話番号</text>
+          <line x1="20" y1="60" x2="352" y2="60" stroke="var(--line)" stroke-width="1"/>
+          <text class="label" x="24" y="75" text-anchor="start">0番</text>
+          <text class="label" x="74" y="75" text-anchor="start">|00⟩</text>
+          <text class="label" x="140" y="75" text-anchor="start">鈴木一郎</text>
+          <text class="label" x="248" y="75" text-anchor="start">090-1234-5678</text>
+          <text class="label" x="24" y="91" text-anchor="start">1番</text>
+          <text class="label" x="74" y="91" text-anchor="start">|01⟩</text>
+          <text class="label" x="140" y="91" text-anchor="start">大谷翔平</text>
+          <text class="label" x="248" y="91" text-anchor="start">080-9517-5368</text>
+          <text class="label" x="24" y="107" text-anchor="start">2番</text>
+          <text class="label" x="74" y="107" text-anchor="start">|10⟩</text>
+          <text class="label" x="140" y="107" text-anchor="start">松井秀樹</text>
+          <text class="label" x="248" y="107" text-anchor="start">070-1672-9438</text>
+          <text class="strong" x="24" y="123" text-anchor="start">3番</text>
+          <text class="strong" x="74" y="123" text-anchor="start">|11⟩</text>
+          <text class="strong" x="140" y="123" text-anchor="start">ランディーバース</text>
+          <text class="strong" x="248" y="123" text-anchor="start">090-1234-5778</text>
+          <text class="label" x="186" y="144" text-anchor="middle">↑この表は「板」に刻まれている ― 波のほうには入っていない</text>
+          <text id="book-phase" class="accent" x="186" y="164" text-anchor="middle">① 準備（Hを当てる）</text>
+          <line x1="20" y1="226" x2="352" y2="226" stroke="var(--line)" stroke-width="1.2"/>
+          <g id="book-bars"></g>
+          <text id="book-note" class="label" x="186" y="292" text-anchor="middle">4行とも同じ長さ。当たる確率は25%</text>
+        </svg>
+        <div class="diagram-caption">4人の電話帳で、実際に波がどう変わるかを追ったもの。<strong>名前も電話番号も、波にはいっさい入っていない</strong>――波が持っているのは「0番から3番まで、全部いっぺんに」という情報だけで、電話帳のほうは<strong>板（照合の箱）に刻まれている</strong>。板は番号を受け取ると、その人の電話番号を1桁ずつ探している番号とくらべ、<strong>全桁が一致したときだけ</strong>矢印を反転する（鈴木とバースは下4桁が1桁しか違わないので、ここを取りこぼす回路では当たりを間違える）。板を1回通して3番を反転し、平均のまわりで折り返すと、3番だけが1.0に伸びて他はゼロになる。測定すれば必ず「11」＝ランディーバースが出る。</div>
+      </div>
+
+      <div class="dialogue-scene">
+        </div>
+
       <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
@@ -711,6 +750,83 @@
   function start() { if (running || reduced) return; running = true; raf = requestAnimationFrame(tick); }
   function stop() { running = false; if (raf) cancelAnimationFrame(raf); }
   draw(0);
+  if (!reduced && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { e.isIntersecting ? start() : stop(); });
+    }, {threshold: 0.2});
+    io.observe(svg);
+  }
+})();
+</script>
+<script>
+(function(){
+  // 図: 4人の電話帳でグローバーを実演
+  var svg = document.getElementById('book-svg');
+  var g = document.getElementById('book-bars');
+  if (!svg || !g) return;
+  var ns = 'http://www.w3.org/2000/svg';
+  var CA = '#2f7a6b', CR = '#b5504a';
+  var ROWS = ['|00⟩', '|01⟩', '|10⟩', '|11⟩'];
+  var CX = [96, 156, 216, 276], BW = 34, Y0 = 226, SC = 40;
+  var STEPS = [
+    {v: [0.5, 0.5, 0.5, 0.5], ph: '① 準備（Hを当てる）', note: '4行とも同じ長さ。当たる確率は25%'},
+    {v: [0.5, 0.5, 0.5, -0.5], ph: '② 板を1回通す', note: '全桁が一致した3番だけ、向きが反転する'},
+    {v: [0, 0, 0, 1.0], ph: '③ 平均のまわりで折り返す', note: '平均は0.25。折り返すと3番だけが1.0に伸びる'},
+    {v: [0, 0, 0, 1.0], ph: '④ 測定する', note: '100%で「11」＝3番＝ランディーバース'}
+  ];
+  function el(name, attrs, parent) {
+    var e = document.createElementNS(ns, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    (parent || g).appendChild(e);
+    return e;
+  }
+  var bars = [], vals = [], names = [];
+  for (var i = 0; i < 4; i++) {
+    var t = el('text', {x: CX[i], y: 178, 'class': 'label', 'text-anchor': 'middle'});
+    t.textContent = ROWS[i];
+    names.push(t);
+    bars.push(el('rect', {x: CX[i] - BW / 2, y: Y0, width: BW, height: 0, fill: CA}));
+    vals.push(el('text', {x: CX[i], y: Y0, 'class': 'label', 'text-anchor': 'middle'}));
+  }
+  var phase = document.getElementById('book-phase');
+  var note = document.getElementById('book-note');
+  function render(v, si) {
+    for (var i = 0; i < 4; i++) {
+      var h = Math.abs(v[i]) * SC;
+      var up = v[i] >= 0;
+      bars[i].setAttribute('y', (up ? Y0 - h : Y0).toFixed(1));
+      bars[i].setAttribute('height', h.toFixed(1));
+      bars[i].setAttribute('fill', up ? CA : CR);
+      vals[i].textContent = (Math.abs(v[i]) < 0.005) ? '0' : v[i].toFixed(1);
+      vals[i].setAttribute('y', (up ? Y0 - h - 5 : Y0 + h + 12).toFixed(1));
+      vals[i].setAttribute('fill', up ? 'var(--muted)' : CR);
+      var hit = (si === 3 && i === 3);
+      names[i].setAttribute('fill', hit ? CR : 'var(--muted)');
+    }
+  }
+  var HOLD = 1.7, MOVE = 0.5, PER = HOLD + MOVE, TOTAL = PER * STEPS.length;
+  function draw(t) {
+    var k = Math.floor(t / PER) % STEPS.length;
+    var u = (t % PER) / PER;
+    var cur = STEPS[k], prev = STEPS[(k + STEPS.length - 1) % STEPS.length];
+    var f = Math.min(1, ((t % PER) < MOVE) ? (t % PER) / MOVE : 1);
+    var v = [];
+    for (var i = 0; i < 4; i++) v.push(prev.v[i] + (cur.v[i] - prev.v[i]) * f);
+    render(v, k);
+    phase.textContent = cur.ph;
+    note.textContent = cur.note;
+  }
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var raf = null, running = false, t0 = null;
+  function tick(ts) {
+    if (t0 === null) t0 = ts;
+    draw(((ts - t0) / 1000) % TOTAL);
+    if (running) raf = requestAnimationFrame(tick);
+  }
+  function start() { if (running || reduced) return; running = true; raf = requestAnimationFrame(tick); }
+  function stop() { running = false; if (raf) cancelAnimationFrame(raf); }
+  if (reduced) { render(STEPS[2].v, 2); phase.textContent = STEPS[2].ph; note.textContent = STEPS[2].note; }
+  else draw(0);
   if (!reduced && 'IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (e) { e.isIntersecting ? start() : stop(); });
