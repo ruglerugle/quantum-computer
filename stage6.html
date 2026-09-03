@@ -199,8 +199,9 @@
       </div>
 
 
+
       <div class="diagram-box">
-        <svg id="kb-svg" class="qc-svg" viewBox="0 0 372 364" width="100%" role="img" aria-label="当たりを知らないまま当たりの行だけにマイナス1を付ける仕組みの図。上段では補助ビットの中身を棒で表し、0と1を入れ替えると全部の矢印が正反対になり、その枝にマイナス1が掛かることを示す。下段では4つの行が同じ照合の回路をいっせいに通り、照合に引っかかった行だけが補助ビットを入れ替えるため、その行だけ符号がマイナスになる。回路には電話帳と探す番号が入っているだけで、当たりの行を名指しした場所はない">
+        <svg id="kb-svg" class="qc-svg" viewBox="0 0 372 378" width="100%" role="img" aria-label="当たりを知らないまま当たりの行だけにマイナス1を付ける仕組みの図。上段は補助ビットの仕掛けで、0と1を入れ替えると全部の矢印が正反対になり、その行にマイナス1が掛かることを示す。下段では、箱を通るのは4つの行ではなく1つの状態だけで、その状態が持つ4行の表を抱えたまま回路を1回だけ通り、出てくると当たりの行の符号だけがマイナスに書き換わっている。4つが別々に通るのではないことを注記している">
           <text class="strong" x="186" y="14" text-anchor="middle">当たりを知らないまま、当たりだけに −1 を付ける</text>
           <text class="label" x="186" y="32" text-anchor="middle">探す番号は分かっている。分からないのは「<tspan class="accent">どの行がそれを持つか</tspan>」</text>
           <!-- ① 補助ビットの仕掛け -->
@@ -222,18 +223,20 @@
           <text class="label" x="290" y="152" text-anchor="end">|1⟩上</text>
           <text class="accent" x="186" y="170" text-anchor="middle">全部の矢印が正反対 ＝ その行に −1 が掛かる（入れ替えなければ何も起きない）</text>
           <line x1="16" y1="182" x2="356" y2="182" stroke="var(--line)" stroke-width="1"/>
-          <!-- ② 4行いっせいに -->
-          <text class="strong" x="186" y="200" text-anchor="middle">② 同じ回路を、4つの行いっせいに通す</text>
-          <g id="kb-rows"></g>
-          <rect x="150" y="214" width="86" height="126" rx="8" fill="#eef2f7" stroke="var(--line)" stroke-width="1.4"/>
-          <text class="label" x="193" y="248" text-anchor="middle">照合の回路</text>
-          <text class="label" x="193" y="264" text-anchor="middle">電話帳と</text>
-          <text class="label" x="193" y="278" text-anchor="middle">探す番号が</text>
-          <text class="label" x="193" y="292" text-anchor="middle">入っている</text>
-          <text class="label" x="186" y="356" text-anchor="middle">回路はどの行にも同じ。「3番を反転せよ」と書いた場所はどこにもない</text>
+          <!-- ② 通るのは1つだけ -->
+          <text class="strong" x="186" y="200" text-anchor="middle">② 通るのは「1つの状態」。通る回数も1回</text>
+          <g id="kb-token"></g>
+          <rect x="146" y="212" width="98" height="128" rx="8" fill="#eef2f7" stroke="var(--line)" stroke-width="1.6"/>
+          <text class="label" x="195" y="250" text-anchor="middle">照合の回路</text>
+          <text class="label" x="195" y="266" text-anchor="middle">電話帳と</text>
+          <text class="label" x="195" y="280" text-anchor="middle">探す番号が</text>
+          <text class="label" x="195" y="294" text-anchor="middle">入っている</text>
+          <text id="kb-count" class="accent" x="186" y="356" text-anchor="middle">箱を通った回数 0</text>
+          <text class="label" x="186" y="372" text-anchor="middle">4つが別々に通るのではない。持ち物の表が書き換わるだけ</text>
         </svg>
-        <div class="diagram-caption">当たりが「どれ」か分からないまま、当たりの行だけに −1 を付ける仕組み。鍵は<strong>補助ビットを1個だけ足しておく</strong>ことだ。①その補助ビットを |−⟩――|0⟩ が上向き、|1⟩ が下向きの状態――にしておくと、<strong>0と1を入れ替えたとたん、全部の矢印が正反対</strong>になる。これは「その行全体に −1 が掛かった」ことと同じで、入れ替えなければ何も起きない。②あとは、照合に引っかかった行だけが補助ビットを入れ替えるように回路を組むだけ。回路の中身は<strong>電話帳と探す番号</strong>であって、当たりの行の名前ではない。<strong>「3番を反転せよ」と書いた場所はどこにもなく</strong>、どの行にもまったく同じ処理が行われる――それでも、照合に引っかかった行だけが −1 を受け取る。これが<strong>位相キックバック</strong>で、探さずに当たりへ印を付ける正体だ。ちなみに、あらかじめ当たりが |11⟩ だと分かっている場合にこれを組み立てると、ちょうど「両方が1のときだけ半回転させる」という一手に化ける。</div>
+        <div class="diagram-caption">当たりが「どれ」か分からないまま、当たりの行だけに −1 を付ける仕組み。①補助ビットを1個だけ足して |−⟩――|0⟩ が上向き、|1⟩ が下向き――にしておくと、<strong>0と1を入れ替えたとたん、全部の矢印が正反対</strong>になる。これは「その行全体に −1 が掛かった」ことと同じで、入れ替えなければ何も起きない。②あとは、照合に引っかかった行だけが補助ビットを入れ替えるように回路を組めばいい。<br>ここが肝心なところで、<strong>箱を通るのは4つの行ではなく、たった1つの状態</strong>だ。4行の表は、その1つが持っている<strong>持ち物</strong>にすぎない。だから通る回数も1回きりで、照合が4回行われるわけではない。出てきたとき、持ち物の表のうち<strong>照合に引っかかった行の符号だけ</strong>が書き換わっている。<br>回路の中身は<strong>電話帳と探す番号</strong>であって、当たりの行の名前ではない。「3番を反転せよ」と書いた場所はどこにもなく、それでも当たりの行だけが −1 を受け取る――これが<strong>位相キックバック</strong>だ。ちなみに、あらかじめ当たりが |11⟩ だと分かっている場合にこれを組み立てると、ちょうど「両方が1のときだけ半回転させる」という一手に化ける。</div>
       </div>
+
 
 
       <div class="dialogue-scene">
@@ -878,52 +881,51 @@
 </script>
 <script>
 (function(){
-  // 図: 位相キックバック（当たりを知らないまま当たりだけに −1）
+  // 図: 位相キックバック（通るのは1つの状態、通る回数も1回）
   var svg = document.getElementById('kb-svg');
-  var g = document.getElementById('kb-rows');
+  var g = document.getElementById('kb-token');
   if (!svg || !g) return;
   var ns = 'http://www.w3.org/2000/svg';
   var CA = '#2f7a6b', CR = '#b5504a';
   var NAMES = ['|00⟩', '|01⟩', '|10⟩', '|11⟩'];
-  var Y = [232, 262, 292, 322];
   var HIT = 3;
-  var X0 = 74, X1 = 316, XOUT = 236;
+  var TW = 92, TH = 116, TY = 218;
+  var X0 = 8, X1 = 272, XOUT = 244;
   function el(name, attrs, parent) {
     var e = document.createElementNS(ns, name);
     for (var k in attrs) e.setAttribute(k, attrs[k]);
     (parent || g).appendChild(e);
     return e;
   }
-  var dots = [], signs = [], notes = [];
+  var box = el('g', {});
+  el('rect', {x: 0, y: 0, width: TW, height: TH, rx: 8, fill: '#fdfaf3', stroke: '#6b7480', 'stroke-width': 1.6}, box);
+  var ttl = el('text', {x: TW / 2, y: 16, 'class': 'strong', 'text-anchor': 'middle', 'font-size': 11}, box);
+  ttl.textContent = '1つの状態';
+  var sub = el('text', {x: TW / 2, y: 30, 'class': 'label', 'text-anchor': 'middle', 'font-size': 9.5}, box);
+  sub.textContent = '（持ち物の表）';
+  var vals = [];
   for (var i = 0; i < 4; i++) {
-    var t = el('text', {x: 60, y: Y[i] + 4, 'class': 'label', 'text-anchor': 'end'});
-    t.textContent = NAMES[i];
-    dots.push(el('circle', {cx: X0, cy: Y[i], r: 8, fill: '#dfe3e9', stroke: '#6b7480', 'stroke-width': 1.2}));
-    var sg = el('text', {x: 330, y: Y[i] + 5, 'class': 'strong', 'text-anchor': 'middle', 'font-size': 15});
-    signs.push(sg);
-    var nt = el('text', {x: 250, y: Y[i] - 10, 'class': 'label', 'text-anchor': 'start', 'font-size': 10});
-    notes.push(nt);
+    var n = el('text', {x: 12, y: 48 + i * 17, 'class': 'label', 'text-anchor': 'start', 'font-size': 10}, box);
+    n.textContent = NAMES[i];
+    vals.push(el('text', {x: TW - 12, y: 48 + i * 17, 'class': 'label', 'text-anchor': 'end', 'font-size': 10}, box));
   }
-  var T_MOVE = 2.6, T_HOLD = 2.0, TOTAL = T_MOVE + T_HOLD;
+  var count = document.getElementById('kb-count');
+  function setVals(flipped) {
+    for (var i = 0; i < 4; i++) {
+      var hit = (i === HIT) && flipped;
+      vals[i].textContent = (hit ? '−' : '＋') + '0.5';
+      vals[i].setAttribute('fill', hit ? CR : CA);
+      vals[i].setAttribute('font-weight', hit ? '900' : '700');
+    }
+  }
+  var T_MOVE = 3.2, T_HOLD = 2.0, TOTAL = T_MOVE + T_HOLD;
   function draw(t) {
     var u = Math.min(1, t / T_MOVE);
     var x = X0 + (X1 - X0) * u;
-    for (var i = 0; i < 4; i++) {
-      dots[i].setAttribute('cx', x.toFixed(1));
-      var passed = x > XOUT;
-      var hit = (i === HIT);
-      dots[i].setAttribute('fill', passed && hit ? '#f4e6e4' : '#dfe3e9');
-      dots[i].setAttribute('stroke', passed && hit ? CR : '#6b7480');
-      if (passed) {
-        signs[i].textContent = hit ? '−' : '＋';
-        signs[i].setAttribute('fill', hit ? CR : CA);
-        notes[i].textContent = hit ? '照合〇 → 入れ替えた' : '照合× → そのまま';
-        notes[i].setAttribute('fill', hit ? CR : 'var(--muted)');
-      } else {
-        signs[i].textContent = '';
-        notes[i].textContent = '';
-      }
-    }
+    box.setAttribute('transform', 'translate(' + x.toFixed(1) + ',' + TY + ')');
+    var passed = x > XOUT;
+    setVals(passed);
+    count.textContent = '箱を通った回数 ' + (passed ? '1' : '0');
   }
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var raf = null, running = false, t0 = null;
