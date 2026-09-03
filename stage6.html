@@ -198,40 +198,43 @@
         </div>
       </div>
 
+
       <div class="diagram-box">
-        <svg id="cz-svg" class="qc-svg" viewBox="0 0 372 344" width="100%" role="img" aria-label="ひとつの行だけを反転させる仕組みのアニメーション。上段に4つの行の矢印が時計の針のように描かれ、2つの量子ビットが弱くつながっているため、両方が1の11の行だけエネルギーがずれて矢印が余分に回る。待ち時間の目盛りが進み、余分な回転がちょうど半回転になったところで止めると、11の行の矢印だけが正反対を向く。下段は、狙う行を変えるには、その行のビットの並びに合わせてXゲートを置く位置を決めればよいことを示す回路図">
-          <text class="strong" x="186" y="14" text-anchor="middle">ひとつの行だけを反転させる仕組み</text>
-          <text class="label" x="186" y="32" text-anchor="middle">2つの量子ビットは弱くつながっていて、<tspan class="accent">両方が |1⟩ のときだけ</tspan>エネルギーが少しずれる</text>
-          <g id="cz-clocks"></g>
-          <text id="cz-time" class="label" x="186" y="176" text-anchor="middle">余分に回った角度 0°</text>
-          <line x1="46" y1="186" x2="326" y2="186" stroke="var(--line)" stroke-width="3"/>
-          <line id="cz-bar" x1="46" y1="186" x2="46" y2="186" stroke="#2f7a6b" stroke-width="3"/>
-          <text class="label" x="46" y="200" text-anchor="start">待ちはじめ</text>
-          <text class="label" x="326" y="200" text-anchor="end">ちょうど半回転で止める</text>
-          <line x1="16" y1="216" x2="356" y2="216" stroke="var(--line)" stroke-width="1"/>
-          <text class="strong" x="186" y="234" text-anchor="middle">狙う行を変えるには ― 照合ではなく、ビットの並びで決める</text>
-          <!-- 回路図 -->
-          <text class="label" x="30" y="262" text-anchor="end">1桁目</text>
-          <text class="label" x="30" y="298" text-anchor="end">2桁目</text>
-          <line x1="36" y1="258" x2="240" y2="258" stroke="#8892a1" stroke-width="1.6"/>
-          <line x1="36" y1="294" x2="240" y2="294" stroke="#8892a1" stroke-width="1.6"/>
-          <circle cx="150" cy="258" r="5" fill="#2f7a6b"/>
-          <circle cx="150" cy="294" r="5" fill="#2f7a6b"/>
-          <line x1="150" y1="258" x2="150" y2="294" stroke="#2f7a6b" stroke-width="1.8"/>
-          <text class="label" x="150" y="316" text-anchor="middle">この操作＝|11⟩ を反転</text>
-          <rect x="96" y="282" width="24" height="24" fill="#f4e6e4" stroke="#b5504a" stroke-width="1.4"/>
-          <text class="strong" x="108" y="299" text-anchor="middle" fill="#b5504a">X</text>
-          <rect x="180" y="282" width="24" height="24" fill="#f4e6e4" stroke="#b5504a" stroke-width="1.4"/>
-          <text class="strong" x="192" y="299" text-anchor="middle" fill="#b5504a">X</text>
-          <text class="label" x="252" y="252" text-anchor="start">2桁目に X を</text>
-          <text class="label" x="252" y="266" text-anchor="start">はさむと、狙いが</text>
-          <text class="label" x="252" y="280" text-anchor="start">|11⟩ から |10⟩ へ</text>
-          <text class="label" x="252" y="294" text-anchor="start">移る（X は 0 と 1</text>
-          <text class="label" x="252" y="308" text-anchor="start">の入れ替え）</text>
-          <text class="label" x="186" y="336" text-anchor="middle">狙う行の 0 の桁に X を置く。どの行でも同じやり方で作れる</text>
+        <svg id="kb-svg" class="qc-svg" viewBox="0 0 372 364" width="100%" role="img" aria-label="当たりを知らないまま当たりの行だけにマイナス1を付ける仕組みの図。上段では補助ビットの中身を棒で表し、0と1を入れ替えると全部の矢印が正反対になり、その枝にマイナス1が掛かることを示す。下段では4つの行が同じ照合の回路をいっせいに通り、照合に引っかかった行だけが補助ビットを入れ替えるため、その行だけ符号がマイナスになる。回路には電話帳と探す番号が入っているだけで、当たりの行を名指しした場所はない">
+          <text class="strong" x="186" y="14" text-anchor="middle">当たりを知らないまま、当たりだけに −1 を付ける</text>
+          <text class="label" x="186" y="32" text-anchor="middle">探す番号は分かっている。分からないのは「<tspan class="accent">どの行がそれを持つか</tspan>」</text>
+          <!-- ① 補助ビットの仕掛け -->
+          <text class="strong" x="186" y="54" text-anchor="middle">① 補助ビットの仕掛け ― 入れ替えると符号が変わる</text>
+          <text class="label" x="80" y="72" text-anchor="middle">補助ビット |−⟩</text>
+          <line x1="46" y1="112" x2="114" y2="112" stroke="var(--line)" stroke-width="1.2"/>
+          <rect x="56" y="86" width="16" height="26" fill="#2f7a6b"/>
+          <rect x="88" y="112" width="16" height="26" fill="#b5504a"/>
+          <text class="label" x="46" y="152" text-anchor="start">|0⟩上</text>
+          <text class="label" x="114" y="152" text-anchor="end">|1⟩下</text>
+          <path d="M 130 108 L 176 108 M 168 103 L 176 108 L 168 113" stroke="#6b7480" stroke-width="1.8" fill="none"/>
+          <text class="label" x="153" y="98" text-anchor="middle">0と1を</text>
+          <text class="label" x="153" y="128" text-anchor="middle">入れ替える</text>
+          <text class="label" x="256" y="72" text-anchor="middle">入れ替えた後 ＝ −|−⟩</text>
+          <line x1="222" y1="112" x2="290" y2="112" stroke="var(--line)" stroke-width="1.2"/>
+          <rect x="232" y="112" width="16" height="26" fill="#b5504a"/>
+          <rect x="264" y="86" width="16" height="26" fill="#2f7a6b"/>
+          <text class="label" x="222" y="152" text-anchor="start">|0⟩下</text>
+          <text class="label" x="290" y="152" text-anchor="end">|1⟩上</text>
+          <text class="accent" x="186" y="170" text-anchor="middle">全部の矢印が正反対 ＝ その行に −1 が掛かる（入れ替えなければ何も起きない）</text>
+          <line x1="16" y1="182" x2="356" y2="182" stroke="var(--line)" stroke-width="1"/>
+          <!-- ② 4行いっせいに -->
+          <text class="strong" x="186" y="200" text-anchor="middle">② 同じ回路を、4つの行いっせいに通す</text>
+          <g id="kb-rows"></g>
+          <rect x="150" y="214" width="86" height="126" rx="8" fill="#eef2f7" stroke="var(--line)" stroke-width="1.4"/>
+          <text class="label" x="193" y="248" text-anchor="middle">照合の回路</text>
+          <text class="label" x="193" y="264" text-anchor="middle">電話帳と</text>
+          <text class="label" x="193" y="278" text-anchor="middle">探す番号が</text>
+          <text class="label" x="193" y="292" text-anchor="middle">入っている</text>
+          <text class="label" x="186" y="356" text-anchor="middle">回路はどの行にも同じ。「3番を反転せよ」と書いた場所はどこにもない</text>
         </svg>
-        <div class="diagram-caption">「当たりの行だけ反転する」の中身。<strong>照合も探索も行われていない</strong>。①2つの量子ビットは弱くつながっていて、<strong>両方が |1⟩ のときだけ</strong>エネルギーが少しずれる。前の旅で見た<strong>矢印の時計法則</strong>――矢印はエネルギーに応じた速さで回る――により、|11⟩ の矢印だけが他より余分に回っていく。②余分な回転が<strong>ちょうど半回転（180°）</strong>になった瞬間に止めれば、|11⟩ だけが正反対を向き、他の3行はそのまま。これが「1行だけの反転」の正体で、装置がやっているのは<strong>正しい時間だけ待つこと</strong>だけだ。<br>狙う行を変えるのも簡単で、<strong>その行で 0 になっている桁に X（0と1の入れ替え）をはさむ</strong>だけ。たとえば |10⟩ を狙うなら2桁目にXを置き、反転させてから元に戻す。ここでも比較は起きていない――<strong>狙う行のビットの並びが、そのまま回路の形になる</strong>だけだ。<br>では、当たりが「どれ」か分からない本物の探索ではどうするのか。そこでXの置き場所の代わりを務めるのが、STAGE5で見た<strong>位相キックバック</strong>だ。照合の結果を書き込む先を |−⟩ にしておくと、「照合に引っかかった行だけ反転する」が自動的に起きる。当たりの番号を知らなくても、照合の手順さえ回路にできれば、この図と同じことが実現できる。</div>
+        <div class="diagram-caption">当たりが「どれ」か分からないまま、当たりの行だけに −1 を付ける仕組み。鍵は<strong>補助ビットを1個だけ足しておく</strong>ことだ。①その補助ビットを |−⟩――|0⟩ が上向き、|1⟩ が下向きの状態――にしておくと、<strong>0と1を入れ替えたとたん、全部の矢印が正反対</strong>になる。これは「その行全体に −1 が掛かった」ことと同じで、入れ替えなければ何も起きない。②あとは、照合に引っかかった行だけが補助ビットを入れ替えるように回路を組むだけ。回路の中身は<strong>電話帳と探す番号</strong>であって、当たりの行の名前ではない。<strong>「3番を反転せよ」と書いた場所はどこにもなく</strong>、どの行にもまったく同じ処理が行われる――それでも、照合に引っかかった行だけが −1 を受け取る。これが<strong>位相キックバック</strong>で、探さずに当たりへ印を付ける正体だ。ちなみに、あらかじめ当たりが |11⟩ だと分かっている場合にこれを組み立てると、ちょうど「両方が1のときだけ半回転させる」という一手に化ける。</div>
       </div>
+
 
       <div class="dialogue-scene">
         <div class="dialog-row right">
@@ -875,51 +878,52 @@
 </script>
 <script>
 (function(){
-  // 図: ひとつの行だけを反転させる仕組み（エネルギーのずれ→余分な回転→半回転で止める）
-  var svg = document.getElementById('cz-svg');
-  var g = document.getElementById('cz-clocks');
+  // 図: 位相キックバック（当たりを知らないまま当たりだけに −1）
+  var svg = document.getElementById('kb-svg');
+  var g = document.getElementById('kb-rows');
   if (!svg || !g) return;
   var ns = 'http://www.w3.org/2000/svg';
   var CA = '#2f7a6b', CR = '#b5504a';
   var NAMES = ['|00⟩', '|01⟩', '|10⟩', '|11⟩'];
-  var CX = [66, 146, 226, 306], CY = 108, R = 26;
+  var Y = [232, 262, 292, 322];
+  var HIT = 3;
+  var X0 = 74, X1 = 316, XOUT = 236;
   function el(name, attrs, parent) {
     var e = document.createElementNS(ns, name);
     for (var k in attrs) e.setAttribute(k, attrs[k]);
     (parent || g).appendChild(e);
     return e;
   }
-  var hands = [];
+  var dots = [], signs = [], notes = [];
   for (var i = 0; i < 4; i++) {
-    var t = el('text', {x: CX[i], y: 64, 'class': i === 3 ? 'strong' : 'label', 'text-anchor': 'middle'});
+    var t = el('text', {x: 60, y: Y[i] + 4, 'class': 'label', 'text-anchor': 'end'});
     t.textContent = NAMES[i];
-    el('circle', {cx: CX[i], cy: CY, r: R, fill: '#eef2f7', stroke: 'var(--line)', 'stroke-width': 1.2});
-    var h = el('path', {stroke: i === 3 ? CR : CA, 'stroke-width': 2.4, fill: 'none', 'stroke-linecap': 'round'});
-    hands.push(h);
+    dots.push(el('circle', {cx: X0, cy: Y[i], r: 8, fill: '#dfe3e9', stroke: '#6b7480', 'stroke-width': 1.2}));
+    var sg = el('text', {x: 330, y: Y[i] + 5, 'class': 'strong', 'text-anchor': 'middle', 'font-size': 15});
+    signs.push(sg);
+    var nt = el('text', {x: 250, y: Y[i] - 10, 'class': 'label', 'text-anchor': 'start', 'font-size': 10});
+    notes.push(nt);
   }
-  var note = el('text', {x: 306, y: 150, 'class': 'label', 'text-anchor': 'middle', fill: CR});
-  note.textContent = '余分に回る';
-  var timeTxt = document.getElementById('cz-time');
-  var bar = document.getElementById('cz-bar');
-  function setHand(i, ang) {
-    var x = CX[i] + (R - 6) * Math.sin(ang);
-    var y = CY - (R - 6) * Math.cos(ang);
-    var bx = CX[i] + (R - 13) * Math.sin(ang - 0.34);
-    var by = CY - (R - 13) * Math.cos(ang - 0.34);
-    var cx2 = CX[i] + (R - 13) * Math.sin(ang + 0.34);
-    var cy2 = CY - (R - 13) * Math.cos(ang + 0.34);
-    hands[i].setAttribute('d', 'M ' + CX[i] + ' ' + CY + ' L ' + x.toFixed(1) + ' ' + y.toFixed(1) +
-      ' M ' + bx.toFixed(1) + ' ' + by.toFixed(1) + ' L ' + x.toFixed(1) + ' ' + y.toFixed(1) +
-      ' L ' + cx2.toFixed(1) + ' ' + cy2.toFixed(1));
-  }
-  var T_ROT = 3.4, T_HOLD = 2.2, TOTAL = T_ROT + T_HOLD + 0.5;
+  var T_MOVE = 2.6, T_HOLD = 2.0, TOTAL = T_MOVE + T_HOLD;
   function draw(t) {
-    var u = t < T_ROT ? t / T_ROT : 1;
-    var ang = Math.PI * u;
-    for (var i = 0; i < 3; i++) setHand(i, 0);
-    setHand(3, ang);
-    timeTxt.textContent = '余分に回った角度 ' + Math.round(u * 180) + '°' + (t >= T_ROT ? '（ここで止める → |11⟩ だけ正反対）' : '');
-    bar.setAttribute('x2', (46 + 280 * u).toFixed(1));
+    var u = Math.min(1, t / T_MOVE);
+    var x = X0 + (X1 - X0) * u;
+    for (var i = 0; i < 4; i++) {
+      dots[i].setAttribute('cx', x.toFixed(1));
+      var passed = x > XOUT;
+      var hit = (i === HIT);
+      dots[i].setAttribute('fill', passed && hit ? '#f4e6e4' : '#dfe3e9');
+      dots[i].setAttribute('stroke', passed && hit ? CR : '#6b7480');
+      if (passed) {
+        signs[i].textContent = hit ? '−' : '＋';
+        signs[i].setAttribute('fill', hit ? CR : CA);
+        notes[i].textContent = hit ? '照合〇 → 入れ替えた' : '照合× → そのまま';
+        notes[i].setAttribute('fill', hit ? CR : 'var(--muted)');
+      } else {
+        signs[i].textContent = '';
+        notes[i].textContent = '';
+      }
+    }
   }
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var raf = null, running = false, t0 = null;
@@ -930,7 +934,7 @@
   }
   function start() { if (running || reduced) return; running = true; raf = requestAnimationFrame(tick); }
   function stop() { running = false; if (raf) cancelAnimationFrame(raf); }
-  draw(reduced ? T_ROT : 0);
+  draw(reduced ? T_MOVE : 0);
   if (!reduced && 'IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (es) {
       es.forEach(function (e) { e.isIntersecting ? start() : stop(); });
