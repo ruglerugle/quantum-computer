@@ -143,23 +143,7 @@
           </div>
           <div class="dialog-bubble">その通りの準備でいい。ここから2手を繰り返す。<br><strong>【第1手・反転】</strong>オラクルに聞いて、<strong>当たりの行の矢印だけを正反対の向きにする</strong>。前回の位相キックバックがそのまま使える。当たりを名指しできなくても、<strong>重ね合わせの全候補を箱に通せば、照合に引っかかった行だけが反転する</strong>――照合の手順さえあれば、この操作は組めるんだ。</div>
         </div>
-        <div class="dialog-row right">
-          <div class="dialog-character">
-            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name student">うさ美</div>
-          </div>
-          <div class="dialog-bubble">でも、向きを変えただけでは長さは変わりません。2乗すれば向きは消えるので、いま測っても当たる確率は N分の1 のまま。<strong>目印を付けただけ</strong>ですね。……いえ、待ってください。箱は<strong>当たりの行だけを狙って</strong>反転できたわけですよね。だったら、どの行を反転したのかを教えてもらえば、それで終わりなのでは？</div>
-        </div>
-        <div class="dialog-row">
-          <div class="dialog-character">
-            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name mentor">ねこ博士</div>
-          </div>
-          <div class="dialog-bubble">教えられないんだ、2つの理由で。第一に、箱のどこにも「当たりは◯番」と計算する部分がない。反転は<strong>行ごと</strong>に「この行は照合に引っかかったか」で起きるだけで、当たりの番号はどこにも書き出されない。教えたくても、教える中身を箱は持っていないんだ。第二に、きみが言った通り、印は<strong>向き（位相）</strong>で書かれている――いわば<strong>見えないインク</strong>だ。測っても確率に現れない以上、外から読む方法がない。<br>できる唯一のことは、この見えない印を、干渉で<strong>長さ</strong>という見える形に変換していくこと――それだけなんだ。</div>
-        </div>
       </div>
-
-
 
       <div class="diagram-box">
         <svg id="kb-svg" class="qc-svg" viewBox="0 0 372 378" width="100%" role="img" aria-label="当たりを知らないまま当たりの行だけにマイナス1を付ける仕組みの図。上段は補助ビットの仕掛けで、0と1を入れ替えると全部の矢印が正反対になり、その行にマイナス1が掛かることを示す。下段では、箱を通るのは4つの行ではなく1つの状態だけで、その状態が持つ4行の表を抱えたまま回路を1回だけ通り、出てくると当たりの行の符号だけがマイナスに書き換わっている。4つが別々に通るのではないことを注記している">
@@ -196,6 +180,23 @@
           <text class="label" x="186" y="372" text-anchor="middle">4つが別々に通るのではない。持ち物の表が書き換わるだけ</text>
         </svg>
         <div class="diagram-caption">当たりが「どれ」か分からないまま、当たりの行だけに −1 を付ける仕組み。①補助ビットを1個だけ足して |−⟩――|0⟩ が上向き、|1⟩ が下向き――にしておくと、<strong>0と1を入れ替えたとたん、全部の矢印が正反対</strong>になる。これは「その行全体に −1 が掛かった」ことと同じで、入れ替えなければ何も起きない。②あとは、照合に引っかかった行だけが補助ビットを入れ替えるように回路を組めばいい。<br>ここが肝心なところで、<strong>箱を通るのは4つの行ではなく、たった1つの状態</strong>だ。4行の表は、その1つが持っている<strong>持ち物</strong>にすぎない。だから通る回数も1回きりで、照合が4回行われるわけではない。出てきたとき、持ち物の表のうち<strong>照合に引っかかった行の符号だけ</strong>が書き換わっている。<br>回路の中身は<strong>電話帳と探す番号</strong>であって、当たりの行の名前ではない。「3番を反転せよ」と書いた場所はどこにもなく、それでも当たりの行だけが −1 を受け取る――これが<strong>位相キックバック</strong>だ。ちなみに、あらかじめ当たりが |11⟩ だと分かっている場合にこれを組み立てると、ちょうど「両方が1のときだけ半回転させる」という一手に化ける。</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">でも、向きを変えただけでは長さは変わりません。2乗すれば向きは消えるので、いま測っても当たる確率は N分の1 のまま。<strong>目印を付けただけ</strong>ですね。……いえ、待ってください。箱は<strong>当たりの行だけを狙って</strong>反転できたわけですよね。だったら、どの行を反転したのかを教えてもらえば、それで終わりなのでは？</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">教えられないんだ、2つの理由で。第一に、箱のどこにも「当たりは◯番」と計算する部分がない。反転は<strong>行ごと</strong>に「この行は照合に引っかかったか」で起きるだけで、当たりの番号はどこにも書き出されない。教えたくても、教える中身を箱は持っていないんだ。第二に、きみが言った通り、印は<strong>向き（位相）</strong>で書かれている――いわば<strong>見えないインク</strong>だ。測っても確率に現れない以上、外から読む方法がない。<br>できる唯一のことは、この見えない印を、干渉で<strong>長さ</strong>という見える形に変換していくこと――それだけなんだ。</div>
+        </div>
       </div>
 
 
@@ -265,7 +266,7 @@
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">いい比較だね。違いは3つある。<br>第一に、<strong>設備の数</strong>。CPU並列は候補の数だけ物理的な機械が要る。候補が2¹²⁸個なら、宇宙の原子を全部使ってもコアが足りない。量子の側は、候補が2倍になっても量子ビットが<strong>1個増えるだけ</strong>。なぜそんなに安いのか――候補たちが「N台の機械」ではなく、<strong>1つの波のN個の成分</strong>だからだ。二重スリットを思い出してごらん。電子1個がスリット板を1回通ると、左の道筋と右の道筋の<strong>両方</strong>が変換された。板の中に「左担当」「右担当」の部品はない。箱は、いわば<strong>2ⁿ本スリットの板</strong>なんだ。1つの波が1回通れば、全成分が各自の照合結果どおりに変換される。成分ごとの処理を装置がやっているのではなく、<strong>波に働く自然法則が勝手に分配してくれる</strong>。<br>第二に、<strong>読み出し</strong>。ここはCPU並列の圧勝だ。N台のコアは全結果を全部読める。量子の表は1行しか読めない。<br>第三に、<strong>干渉</strong>。コアたちの結果は独立で、打ち消し合えない。波の成分は打ち消し合える。読み出しで負けているぶんを、この唯一の武器で取り返す――それが第2手の反復だった、というわけだ。<br>さて、候補が4個のときだけは、きみの計算の通り1回で完璧に決まる。もっと多いと1回では届かない。<strong>候補8個（量子ビット3個）ではどうなるか、続けて確かめてごらん。</strong></div>
+          <div class="dialog-bubble">いい比較だね。違いは3つある。<br>第一に、<strong>設備の数</strong>。CPU並列は候補の数だけ物理的な機械が要る。候補が2¹²⁸個なら、宇宙の原子を全部使ってもコアが足りない。量子の側は、候補が2倍になっても量子ビットが<strong>1個増えるだけ</strong>。なぜそんなに安いのか――候補たちが「N台の機械」ではなく、<strong>1つの波のN個の成分</strong>だからだ。さっき言ったとおり、成分ごとの処理を装置がやっているのではなく、法則のほうが勝手に分配してくれるからね。<br>第二に、<strong>読み出し</strong>。ここはCPU並列の圧勝だ。N台のコアは全結果を全部読める。量子の表は1行しか読めない。<br>第三に、<strong>干渉</strong>。コアたちの結果は独立で、打ち消し合えない。波の成分は打ち消し合える。読み出しで負けているぶんを、この唯一の武器で取り返す――それが第2手の反復だった、というわけだ。<br>さて、4個のときは1回で決まったが、多くなると1回では届かない。<strong>候補8個（量子ビット3個）ではどうなるか、続けて確かめてごらん。</strong></div>
         </div>
       </div>
 
@@ -338,7 +339,7 @@
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">そこに気づけば十分だ。順に片づけよう。<br><strong>一度きりの調べものなら、並べ替えは損</strong>になる。全部の行を読んで並べ替える手間は、端から順に照合していく手間より大きい。1件調べるためだけに並べ替えるくらいなら、最初から端から見たほうが速い。<br><strong>何度も引くなら、並べ替えたほうが勝つ</strong>。並べ替えの手間を最初に一度だけ払えば、あとは1件あたり20回で済む。これは古典の完勝で、世の中のデータベースはみなこれをやっている。「量子コンピュータはデータベース検索が速い」という宣伝を聞いたら、この点は割り引いて聞いたほうがいいよ。<br>ついでに、量子の側の言い分も言っておこう。<strong>オラクルは、行どうしを比べない</strong>。1つの行を渡されて「照合に引っかかるか」を答えるだけだ。並べ替えというのは行どうしの大小を使う作業だから、この箱にとって<strong>並び順は最初から関係がない</strong>。だから重ね合わせにそのまま通せるんだ。</div>
+          <div class="dialog-bubble">そこが分かれ目だ。<strong>一度きりの調べものなら、並べ替えは損</strong>になる。全部の行を読んで並べ替える手間のほうが、端から順に照合していく手間より大きいからね。逆に<strong>何度も引くなら、並べ替えたほうが勝つ</strong>。手間を最初に一度だけ払えば、あとは1件あたり20回で済む。これは古典の完勝で、世の中のデータベースはみなこれをやっている。<br>ついでに、量子の側の言い分も言っておこう。<strong>オラクルは、行どうしを比べない</strong>。1つの行を渡されて「照合に引っかかるか」を答えるだけだ。並べ替えというのは行どうしの大小を使う作業だから、この箱にとって<strong>並び順は最初から関係がない</strong>。だから重ね合わせにそのまま通せるんだ。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
