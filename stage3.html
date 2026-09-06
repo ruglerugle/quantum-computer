@@ -12,14 +12,14 @@
   gtag('js', new Date());
   gtag('config', 'G-9RTQCP2HXM');
 </script>
-<title>STAGE3 量子ビットを組み立てる ― 量子コンピュータはなぜ速いのか</title>
-<meta name="description" content="超伝導量子ビットをゼロから組み立てる。電気の振り子回路から出発し、なぜ普通の回路では階段が見えないのか（抵抗と、熱の環境への手がかり漏れ）、なぜ振り子の等時性が邪魔になり、ジョセフソン接合がそれをどう壊すのか、ゲート＝共鳴パルスと測定＝手がかりの小窓まで、飛躍なしで積み上げる。">
+<title>STAGE3 アダマールゲート ― 量子コンピュータはなぜ速いのか</title>
+<meta name="description" content="量子計算の主役アダマールゲート（H）の正体は「和と差を作る装置」。条件分岐に見えるマイナスの正体を掛け算のルールから解き、Hを2回当てると打ち消し合いで元に戻ること、途中で測定すると干渉が壊れることまで、道筋の計算で確かめる。">
 <link rel="canonical" href="https://ruglerugle.github.io/quantum-computer/stage3.html">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="量子コンピュータはなぜ速いのか">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:title" content="STAGE3 量子ビットを組み立てる ― 量子コンピュータはなぜ速いのか">
-<meta property="og:description" content="電気の振り子回路から超伝導量子ビットまで、部品の役割を1つずつ積み上げて組み立てる。">
+<meta property="og:title" content="STAGE3 アダマールゲート ― 量子コンピュータはなぜ速いのか">
+<meta property="og:description" content="Hの正体は「和と差を作る装置」。マイナスは条件分岐ではなく、差の式の引き算だった。">
 <meta property="og:url" content="https://ruglerugle.github.io/quantum-computer/stage3.html">
 <meta property="og:image" content="https://ruglerugle.github.io/quantum-computer/images/ogp.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -28,11 +28,11 @@
 <style>
   .qc-svg .label{fill:var(--muted);font-size:11px;font-weight:700}
   .qc-svg .strong{fill:var(--ink);font-size:12px;font-weight:900}
-  .qc-svg .accent{fill:#2f8a8f;font-size:11px;font-weight:900}
-  .anim-ctrl{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:10px;flex-wrap:wrap}
-  .anim-ctrl .btn{padding:.4rem .95rem;font-size:13px;font-weight:900}
+  .qc-svg .accent{fill:#b98a2e;font-size:11px;font-weight:900}
+  .anim-ctrl{display:flex;align-items:center;gap:10px;justify-content:center;margin-top:10px;flex-wrap:wrap}
+  .anim-ctrl input[type=range]{flex:1;max-width:280px;min-width:140px;accent-color:#b98a2e}
+  .anim-ctrl .btn{padding:.35rem .9rem;font-size:12px}
   .anim-ctrl .ctrl-label{font-size:11px;color:var(--muted);font-weight:700}
-  .anim-ctrl input[type=range]{flex:1;max-width:280px;min-width:140px;accent-color:#2f8a8f}
   .readout{display:flex;flex-wrap:wrap;gap:4px 16px;justify-content:center;margin-top:8px;font-size:12px;font-weight:700;color:var(--ink)}
   .readout b{font-weight:900;font-variant-numeric:tabular-nums;color:inherit}
 </style>
@@ -42,11 +42,11 @@
   <header class="game-header">
     <div class="brand">
       <div class="brand-title"><a class="head-reset home-badge" href="index.html" title="トップへ" aria-label="トップへ">💠</a> <span>量子コンピュータはなぜ速いのか</span></div>
-      <div class="brand-sub">STAGE 3 ― 量子ビットを組み立てる ―</div>
+      <div class="brand-sub">STAGE 3 ― アダマールゲート ―</div>
     </div>
     <div class="head-progress-wrap">
-      <div class="head-progress-label" id="progress-label">クリア 0 / 8</div>
-      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+      <div class="head-progress-label" id="progress-label">クリア 0 / 9</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="9" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
     </div>
     <div class="header-actions">
       <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
@@ -66,13 +66,13 @@
 
     <main class="main-area">
       <div class="chapter-head">
-        <span class="chapter-badge">STAGE 3</span><span class="chapter-title">量子ビットを組み立てる</span>
-        <div class="chapter-sub">実機の中身</div>
+        <span class="chapter-badge">STAGE 3</span><span class="chapter-title">アダマールゲート</span>
+        <div class="chapter-sub">和と差を作る主役</div>
       </div>
 
       <div class="mission-box">
         <div class="mission-label">🎯 ミッション</div>
-        <div class="mission-text">量子力学の旅で手に入れた2つの法則（閉じ込め＝エネルギーの階段、矢印の時計法則）を使って、チップの上に量子ビットを組み立てよう。部品ひとつひとつが「なぜ要るのか」を、義務教育の理科とこの旅の知識だけで説明できれば合格。</div>
+        <div class="mission-text">量子計算の主役・アダマールゲート（H）の正体を、前のステージの掛け算のルールから「和と差を作る装置」として導こう。Hを2回当てると打ち消し合いで元に戻ること、途中で測定すると干渉が壊れることまで、自分の手で計算できれば合格。</div>
         <span class="mission-status" id="mission-status">未達成</span>
       </div>
 
@@ -82,121 +82,120 @@
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">ここまでで計算のルールはそろった。今日は少し寄り道して、チップの上に量子ビットを実際に組み立ててみよう。いちばん普及している<strong>超伝導方式</strong>だ。<br>出発点は、素朴な電気回路。部品は2つで、<strong>電気をためる部品（コンデンサ）</strong>と、<strong>電流を流し続けようとする部品（コイル）</strong>を輪にする。すると、たまった電気がどっと流れ、流れすぎて反対側にたまり、また戻る――<strong>電気が行ったり来たりする振り子</strong>ができあがる。理科の振り子の、電気版だよ。</div>
+          <div class="dialog-bubble">前のステージで、ゲートは「2列の対応表」で完全に決まり、当て方は「掛けて足す」の1つだけ、と確かめた。今日はその道具立てで、この旅を通じていちばん働く主役を紹介しよう。<strong>アダマールゲート</strong>、記号では H だ。対応表はこうだよ。<br>・<strong>|0⟩ の行き先</strong>：|0⟩ の矢印と |1⟩ の矢印が、どちらも長さ×0.71（√2分の1倍）で<strong>同じ向き</strong>の状態。これが |+⟩ だね。<br>・<strong>|1⟩ の行き先</strong>：|0⟩ の矢印は長さ×0.71でそのままの向き、<strong>|1⟩ の矢印は長さ×0.71で正反対の向き</strong>。これが |−⟩ だ。<br>つまり H は、はっきりした0や1を「五分五分の重ね合わせ」に変えるゲート。そして |0⟩ から作った |+⟩ と |1⟩ から作った |−⟩ では、<strong>向きの付き方が違う</strong>。ここに、あとで効いてくる仕掛けが隠れている。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">読めてきました。<a href="https://quantum-mechanics.habatakijuku.com/stage6.html" target="_blank" rel="noopener" style="color:#2f8a8f;text-decoration:underline">量子力学の旅</a>でやった話が使えますね。電子は<strong>波</strong>で、井戸に閉じ込められた波は、ちょうど収まる振動パターンしか生き残れない――だから<strong>エネルギーはとびとびの階段</strong>になるんでした（ギターの弦と同じ選別です）。この振り子回路は、電流の波を小さな輪の中に<strong>閉じ込めて</strong>いる。だったら同じことが起きて、階段が現れるはず。<br>……でも、それなら変です。スマホにもラジオにも振動する回路は入っているのに、<strong>階段の話なんて聞いたことがありません</strong>。ふつうの回路は、どう見ても連続的になめらかに動いています。なぜ実験室の回路にだけ階段が見えるんですか？</div>
-        </div>
-        <div class="dialog-row">
-          <div class="dialog-character">
-            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name mentor">ねこ博士</div>
-          </div>
-          <div class="dialog-bubble">最高の疑問だ。答えは「ふつうの回路では、階段を隠す敵が2ついる」。<br><strong>敵その1は、電気抵抗</strong>。ふつうの金属では、電子は進むたびに金属の原子にぶつかって、振動のエネルギーはあっという間に熱になって逃げる。あの階段の選別は「波が<strong>何度も往復して</strong>自分自身と干渉する」ことで起きるのだった。数回の往復で擦り切れてしまう波には、選別が働く暇がない。<br><strong>敵その2</strong>は――これは、きみが前の旅でいちばんよく知っている敵だよ。まわりの温かい世界は、飛び回る粒子と電磁波の嵐だ。それが回路に絶えずぶつかると、何が起きるか。</div>
-        </div>
-        <div class="dialog-row right">
-          <div class="dialog-character">
-            <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name student">うさ美</div>
-          </div>
-          <div class="dialog-bubble"><strong>手がかり</strong>ですね。ぶつかった粒子の一つひとつが、回路の状態の手がかりを持ち去っていく。手がかりが漏れ続ければ道筋の区別がついて、干渉は死ぬ――<strong>デコヒーレンス</strong>です。階段の選別も重ね合わせも、干渉があってこそなのに、温かい環境はそれを絶え間なく壊し続ける。<br>だから<strong>冷やす</strong>んですね。冷やせば嵐そのものが静まる。</div>
+          <div class="dialog-bubble">気持ち悪いところがあります。X や Z は「入れ替える」「反転する」と一言で言えたのに、H は「0が入ってきたら両方そのまま、1が入ってきたら片方に−」……まるでゲートが入力を見て<strong>条件分岐</strong>しているみたいです。ゲートは掛けて足すだけの機械のはずなのに、H だけ「もし〜なら」で動いているんですか？</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="images/catThink.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">その通り。だから実機は、絶対零度よりわずか100分の1度ほど高いだけの温度（約−273.14℃）まで冷やされている。<br>そして冷やすと、敵その1にも思わぬ贈り物が届く。<strong>超伝導</strong>だ。ある種の金属は、極低温で<strong>電気抵抗が完全に、本当にゼロ</strong>になる。このとき金属の中では、電子たちが2個ずつペアを組み、全体が足並みをそろえて<strong>たった1つの波</strong>として流れるようになる。<br>――正直に断っておくと、<strong>「なぜ冷やすとペアを組むのか」は、この旅では説明しない</strong>。それだけで丸ごと一つの旅になる大学レベルの難問で、発見（1911年）から理論の完成（1957年）まで半世紀かかったほどだ。今日は「実験で完全に確立した事実」として借りてくる。借り物はこの1つだけだよ。</div>
+          <div class="dialog-bubble">その気持ち悪さは正しい。そして答えは「分岐はしていない」だ。確かめよう。一般の入力（|0⟩ の矢印 a、|1⟩ の矢印 b）に、前のステージの<strong>掛けて足すルール</strong>で H の2列を当ててごらん。<br>a×（|0⟩ の行き先）＋ b×（|1⟩ の行き先）を行ごとに整理すると――<br>・新しい |0⟩ の矢印 ＝ a×0.71 ＋ b×0.71 ＝ <strong>(a＋b)×0.71</strong><br>・新しい |1⟩ の矢印 ＝ a×0.71 − b×0.71 ＝ <strong>(a−b)×0.71</strong><br>H の正体は、これで全部だ。<strong>和と差を作る装置</strong>――どんな入力にも、常にこの同じ2行の式を当てているだけ。「もし〜なら」はどこにもない。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">分かりました、そこは事実として受け取ります。<br>整理すると――冷やしたことで、②環境の嵐が静まって手がかりの漏れが止まり、①超伝導で抵抗が消えて、電流の波が擦り減らずに<strong>何億回でも往復できる</strong>ようになった。閉じ込めの選別が働く条件がそろったから、ついに<strong>電流の波の階段</strong>が現れる。ここまでは、量子力学の旅で解いた井戸の中の電子と同じ筋書きです。<br>では、その階段の<strong>間隔</strong>はどうなっていますか？ 井戸の階段は上の段ほど間隔が開いていく形でした。入れ物が違えば、並び方も違うはずです。</div>
+          <div class="dialog-bubble">なるほど……！ 代入して確かめます。|0⟩ は（a=1, b=0）だから、和＝0.71、差＝0.71で両方プラス――|+⟩ です。|1⟩ は（a=0, b=1）だから、和＝0.71、差＝<strong>−0.71</strong>――|−⟩ です。<br>つまりマイナスは「1のときだけ発動する分岐」ではなくて、<strong>差の式 (a−b) が最初から持っている引き算</strong>なんですね。|1⟩ を入れたとき（a=0）に、たまたま引き算の項だけが残るから、−が「見えた」だけ。同じ式が、どんな重ね合わせを入れても動く。すっきりしました。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">いい質問だね。実は、この振り子回路の階段は、<strong>全段が同じ間隔</strong>なんだ。理由は、理科で習ったあの性質――<strong>振り子の等時性</strong>だよ。振り子は、揺れが大きくても小さくても、1往復にかかる時間が同じだった。電気の振り子も同じで、揺れの大小によらずリズムがただ1つ。リズムが1種類しかない入れ物では、階段は同じ高さで積み上がる。<br>そして、それでは困る。<strong>1段目に上げる操作が、2段目・3段目に上げる操作と同じ</strong>になってしまう。下2段だけを量子ビットとして使いたいのに、全部の段が同じ切符で乗れてしまうんだ。</div>
+          <div class="dialog-bubble">その通り。では、この主役の腕前が現れる最初のお題だ。<strong>|0⟩ に H を2回続けて当てると、最後はどんな状態になるか</strong>――計算で答えを出してごらん。</div>
         </div>
-        <div class="dialog-row right">
-          <div class="dialog-character">
-            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name student">うさ美</div>
-          </div>
-          <div class="dialog-bubble">なら、<strong>等時性をわざと壊せばいい</strong>はずです。ブランコは、小さく揺れるときと大きく漕ぐときで1往復の感じが変わります。「揺れの大きさでリズムが変わる振り子」に作り替えれば、段差が不揃いになって、下2段だけを狙えるはずです。</div>
-        </div>
-        <div class="dialog-row">
-          <div class="dialog-character">
-            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name mentor">ねこ博士</div>
-          </div>
-          <div class="dialog-bubble">まさにそれをやる部品が、この方式の心臓部<strong>ジョセフソン接合</strong>だ。2枚の超伝導体で、ごく薄い絶縁の膜を挟んである。ふつうなら電気は絶縁膜を通れないが、超伝導の<strong>波</strong>は膜のむこうにしみ出して通り抜ける（波は壁際でぷつりとは消えない）。この通り道には妙な性質があって、<strong>流れる電流が大きいほど、通りにくくなる</strong>。<br>つまり、コイルの代わりにこれを入れた振り子は、<strong>揺れが大きいほどリズムが変わる</strong>――きみの言った「等時性を壊した振り子」そのものだ。階段の間隔は不揃いになり、いちばん下の段差にぴったりの操作は、上の段には効かない。<strong>下2段だけが選び出せる</strong>。これが |0⟩ と |1⟩、この回路の名はトランズモンだ。</div>
-        </div>
-      </div>
-      <div class="diagram-box">
-        <svg id="ladder-svg" class="qc-svg" viewBox="0 0 372 232" width="100%" role="img" aria-label="エネルギーの階段の比較。左はただの振動回路で段の間隔がすべて同じため、1段目を狙ったエネルギーで上の段まで抜けてしまう。右はジョセフソン接合を入れた回路で段の間隔が不揃いになり、下2段だけを選んで|0⟩と|1⟩にできる">
-          <text class="strong" x="186" y="16" text-anchor="middle">エネルギーの階段 ― 下2段だけを選べるようにする</text>
-          <g id="ladder-body"></g>
-        </svg>
-        <div class="diagram-caption">縦方向がエネルギー。左の「ただの振動回路」は段の間隔がすべて同じなので、1段目に上げるためのエネルギーが2段目・3段目へのはしごにもなってしまい、2つの状態を選び出せない。右はコイルの代わりに<strong>ジョセフソン接合</strong>を入れた回路（トランズモン）。段の間隔が不揃いになるため、<strong>いちばん下の段差にぴったり合わせたエネルギーは、下2段の行き来しか起こせない</strong>。こうして無限にある段の中から |0⟩ と |1⟩ の2段だけが「使える状態」として切り出される。</div>
       </div>
 
       <div class="dialogue-scene">
         <div class="dialog-row right">
           <div class="dialog-character">
-            <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name student">うさ美</div>
-          </div>
-          <div class="dialog-bubble">次はゲートです。「1段目の段差にぴったりの操作」と言いますが、その<strong>操作の実体</strong>は何ですか。段差は「エネルギーの差」で、操作は……何をどう合わせるんですか。</div>
-        </div>
-        <div class="dialog-row">
-          <div class="dialog-character">
-            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name mentor">ねこ博士</div>
-          </div>
-          <div class="dialog-bubble">ここで、量子力学の旅のもうひとつの収穫――<strong>矢印の時計法則</strong>（状態の矢印は、そのエネルギーに比例した速さで回る。シュレーディンガー方程式の心臓部だったね）が主役になる。|0⟩ の矢印と |1⟩ の矢印は、エネルギーが違うぶん<strong>回る速さが違う</strong>のだった。だから2つの状態のあいだには、「段差に比例した<strong>リズムの差</strong>」がある。この回路では、そのリズムは1秒に数十億回――スマホの電波に近い<strong>マイクロ波</strong>の速さだ。<br>そこで、<strong>そのリズムとぴったり同じ周波数で振動する電波</strong>を回路に当てる。すると、電波の押しのタイミングが、2つの矢印のリズムの差と毎回そろう――ブランコを、揺れに合わせて押すのと同じだ。押しが積み重なって、|0⟩ と |1⟩ のあいだの乗り移りがどんどん進む。<strong>共鳴</strong>だね。<br>逆にリズムがずれた電波は、押すたびに向きが食い違って、押しが<strong>自分どうしで打ち消し合う</strong>。効かない。――「ぴったりだけが効く」の正体も、結局は干渉なんだ。</div>
-        </div>
-        <div class="dialog-row right">
-          <div class="dialog-character">
             <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">「乗り移りが<strong>進む</strong>」なら、進み具合は当てた時間で変わるはずです。……ということは、<strong>電波を当てる時間の長さで、矢印の混ざり具合を自由に選べる</strong>。途中で止めれば |0⟩ と |1⟩ が五分五分（H の混ぜ方）、ちょうど乗り移り切るまで当てれば入れ替え（X）。ゲートの正体は、<strong>長さを精密に決めた電波パルスを1発撃つこと</strong>ですか。</div>
+          <div class="dialog-bubble">1回目で |0⟩ が五分五分になって、2回目でもっと混ざる……いえ、待ってください。混ぜるものがもう混ざっているのだから、そう単純ではないですね。ちゃんと計算してみます。</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
             <div class="dialog-avatar mentor"><img src="images/catThink.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">その通り、自力でゲートの設計思想までたどり着いたね。実機ではパルス1発が数十ナノ秒（1億分の数秒）。H と X は、同じつまみの<strong>止め位置の違い</strong>にすぎない。CNOT のような2量子ビットのゲートは、隣り合う2つの回路を配線でつないで、結合を一瞬だけ働かせるパルスを撃つ。<br>そして、ここが大事な点だ。<strong>パルスは回路の波全体に働く</strong>。矢印の表は波の成分帳簿だから、|0⟩ 成分と |1⟩ 成分を「順番に」処理する余地は、そもそも存在しない。装置に「成分を1つずつ触るボタン」は無いんだ。あとのステージで効いてくるから、覚えておいてほしい。</div>
+          <div class="dialog-bubble">いい着眼だ。計算の前に、いま導いた和と差の式を「配る」絵で言い直しておくと手が動かしやすい。H は<strong>倍率の装置</strong>だと思うといい。「入ってきた矢印の<strong>0.71倍</strong>を、|0⟩ 行と |1⟩ 行のそれぞれに配る」――長さ1の矢印が入れば0.71ずつ、長さ0.71の矢印が入ればその0.71倍が配られる。<br>向きも式の通りだ。|0⟩ 行に配る分は<strong>和 (a＋b)</strong> の項だから、いつもそのままの向き。|1⟩ 行に配る分は<strong>差 (a−b)</strong> の項だから、<strong>|1⟩ から来た分だけが引き算＝正反対の向き</strong>になる。マイナスがつくのは、この1か所だけだよ。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">配り方は分かりました。でも最後に、行き先が同じものが2つずつ届きますよね。それは<strong>足していい</strong>んですか。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">足していい。そこで前の旅の足し算ルールの前半、<strong>「区別がつかない道筋は、矢印を足してから2乗」</strong>がそのまま効くんだ。|0⟩ から出発して最後に |1⟩ にたどり着く道筋は2本ある。「途中で |0⟩ を経由する道筋」と「途中で |1⟩ を経由する道筋」だね。1回目の H のあと、きみはどちらを経由したかを知らないし、その手がかりは宇宙のどこにも残っていない。<strong>終わり方まで含めて区別がつかない</strong>。だから2乗する前に、矢印のまま足す。</div>
+        </div>
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">分かりました。では計算します。<br>さきほどの「0.71倍を配る」というのは、<strong>拡大コピー機と同じ</strong>ですね。0.71倍のコピー機に2回通したら、倍率は足し算ではなく<strong>掛け算</strong>で0.71×0.71＝0.5倍になる。<br>1回目の H のあと、|0⟩ の矢印も |1⟩ の矢印も長さ0.71で同じ向き。ここから2回目です。<br>まず<strong>途中 |0⟩ を経由した道筋</strong>。長さ0.71の矢印に0.71倍がかかるので、|0⟩ 行にも |1⟩ 行にも<strong>0.5</strong>ずつ、どちらもそのままの向きで届きます。<br>次に<strong>途中 |1⟩ を経由した道筋</strong>。同じく0.5ずつですが、こちらは入り口が |1⟩ なので、|1⟩ 行に届く分だけが<strong>正反対の向き</strong>になる。<br>最後に、行き先が同じものどうしを足します。|0⟩ 行に届いたのは0.5と0.5で、どちらも同じ向きだから 0.5＋0.5＝<strong>1</strong>。|1⟩ 行に届いたのは0.5と、正反対の0.5……<strong>足すとゼロ</strong>！ 消えました。つまり2回の H で、状態はぴったり |0⟩ に戻る。</div>
         </div>
       </div>
       <div class="diagram-box">
-        <svg id="rabi-svg" class="qc-svg" viewBox="0 0 372 216" width="100%" role="img" aria-label="マイクロ波パルスの長さと矢印の混ざり具合の関係を示すシミュレータ。パルスを当てる時間を伸ばすと、|0⟩の矢印が縮み|1⟩の矢印が伸びて、五分五分を経て完全に入れ替わる">
-          <text class="strong" x="186" y="16" text-anchor="middle">パルスを当てる時間が、矢印の混ざり具合を決める</text>
-          <g id="rabi-body"></g>
+        <svg id="path-svg" class="qc-svg" viewBox="0 0 372 370" width="100%" role="img" aria-label="アダマールゲートを2回当てたときの4本の道筋を1本ずつ数えた表。Hは0.71倍を配る装置で、マイナスがつくのは|1⟩に当てたときの|1⟩行だけ。4本の道筋の値はいずれも0.71かける0.71で0.5になり、|1⟩行へ向かう2本のうち1本だけが正反対の向きになるため、足すとゼロになる">
+          <text class="strong" x="186" y="16" text-anchor="middle">4本の道筋を、かけ算で1本ずつ数える</text>
+          <g id="path-body"></g>
         </svg>
-        <div class="readout">
-          <span style="color:#2f5a9e">|0⟩の矢印 <b id="rb-a0">1.00</b></span>
-          <span style="color:#b5504a">|1⟩の矢印 <b id="rb-a1">0.00</b></span>
-          <span>0が出る確率 <b id="rb-p0">100%</b></span>
-          <span>1が出る確率 <b id="rb-p1">0%</b></span>
+        <div class="diagram-caption">上段が H のルール。H は<strong>「入ってきた矢印の0.71倍を、それぞれの行に配る」倍率の装置</strong>で、<strong>マイナスがつくのは |1⟩ に当てたときの |1⟩ 行、この1か所だけ</strong>。<br>中段は、|0⟩ から H を2回通したときの4本の道筋。倍率は続けて通すと<strong>掛け算</strong>になるので（0.71倍のコピー機を2回通すのと同じ）、どの道筋も 0.71×0.71＝<strong>0.5</strong>。ただし4本目だけは、上段の「1か所のマイナス」を拾うので<strong>正反対の向き</strong>になる。右端の矢印がその向きだ。<br>下段は、行き先が同じものどうしの足し算。|0⟩ 行には同じ向きが2本届いて<strong>強め合って1.00</strong>、|1⟩ 行には正反対が2本届いて<strong>打ち消し合ってゼロ</strong>。マイナス1個の置き場所だけが、この結果を作っている。</div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。いま、きみは量子コンピュータの心臓部をその手で動かした。和と差の式で機械的に検算しても同じだよ。1回目のあとは a＝b＝0.71だから、2回目の和は (0.71＋0.71)×0.71＝1、差は (0.71−0.71)×0.71＝<strong>0</strong>――道筋の数え上げと式の一撃が、同じ答えを出す。<br>決定的だったのは、<strong>|1⟩ にたどり着く2本の矢印が正反対を向いていて、打ち消し合った</strong>ことだね。<br>あのマイナス1個は飾りではないよ。もし向きがなくて長さだけを足していたら、|0⟩ 行も |1⟩ 行も 0.5＋0.5＝1 になる。確率は長さの2乗だから、合計は 1＋1＝2 ――読み出せば必ずどちらか一方が出るのだから、これは起こりえない。<strong>打ち消し合いは H のおまけの性質ではなく、H がユニタリであるための条件そのもの</strong>なんだ。確率だけを足していく世界には、決して作れない技だよ。</div>
         </div>
+      </div>
+
+      <div class="dialogue-scene">
+        <div class="dialog-row right">
+          <div class="dialog-character">
+            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name student">うさ美</div>
+          </div>
+          <div class="dialog-bubble">確かめたいことがあります。もし1回目の H のあとで<strong>測定してしまったら</strong>、どうなりますか。測定すれば状態は |0⟩ か |1⟩ のどちらかに決まってしまうから、2回目の H は、その決まった状態に当たることになりますよね。</div>
+        </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通りになる。1回目の H のあとで測ると、五分五分だから0か1が出る。仮に0が出たとしよう。状態は |0⟩ になり、2回目の H は |+⟩ を作る。1が出た場合は状態が |1⟩ になり、2回目の H が作るのは |−⟩ ――|1⟩ の矢印が正反対を向いた、あの状態だ。たどり着く状態は違う。でも前回確かめた通り、<strong>向きは2乗すると消える</strong>から、どちらを読んでも五分五分。だから最終結果は<strong>50%対50%</strong>。測らずに通したときは<strong>100%で0</strong>だったのに、途中で覗いただけで結果が変わる。この差こそが、量子コンピュータが計算の途中でぜったいに中身を覗けない理由であり、同時に、<strong>速さの源</strong>でもあるんだ。</div>
+        </div>
+      </div>
+
+      <div class="diagram-box">
+        <svg id="hh-svg" class="qc-svg" viewBox="0 0 372 288" width="100%" role="img" aria-label="アダマールゲートを2回当てたときの道筋の図。|0⟩から出発し、途中で|0⟩を経由する道筋と|1⟩を経由する道筋の2本が、最後の|1⟩で正反対の向きの矢印になって打ち消し合い、|0⟩では同じ向きで強め合う様子を示す。途中で測定する版では、くじで決まった結果に応じて|+⟩か|−⟩に至り、どちらも読み出しは五分五分になる">
+          <text class="strong" x="186" y="16" text-anchor="middle">H を2回：道筋の矢印を足すと、|1⟩ が消える</text>
+          <g id="hh-body"></g>
+        </svg>
         <div class="anim-ctrl">
-          <span class="ctrl-label">パルスの時間</span>
-          <input type="range" id="rb-slider" min="0" max="100" step="1" value="0" aria-label="マイクロ波パルスを当てる時間を変える">
-          <button type="button" class="btn" id="rb-h">Hの長さ</button>
-          <button type="button" class="btn" id="rb-x">Xの長さ</button>
+          <button type="button" class="btn" id="hh-play">⏸ 一時停止</button>
+          <button type="button" class="btn" id="hh-mode">🔬 途中で測定する版に切替</button>
         </div>
-        <div class="diagram-caption">スライダーが「段差にぴったりの周波数のマイクロ波を当て続けた時間」。|0⟩ から出発して、当てるほど波は上の段へ移っていき、矢印の表が連続的に書き換わる。<strong>途中（4分の1周）で止めれば五分五分＝Hにあたる混ぜ方、半周ぶん当てれば完全な入れ替え＝X</strong>。さらに当て続けると1周して元に戻る。ゲートの正体は「パルスの長さの設計」であり、H と X は同じつまみの止め位置の違いにすぎない。実機ではこの1周が数十ナノ秒で回る。</div>
+        <div class="diagram-caption">左から右へ、|0⟩ を出発した状態が2回の H を通る。中央が1回目の H のあとの状態、右端が2回目のあと。<strong>右端の |1⟩ には2本の道筋が届き、その矢印は正反対を向いている</strong>ので、足すと長さゼロ――確率0で、絶対に1は出ない。|0⟩ には同じ向きの矢印が2本届いて強め合い、確率100%になる。「途中で測定する版」に切り替えると、測定のたびに五分五分のくじで0か1が決まり、片方の道筋だけが残る。結果が0なら2回目の H は |+⟩ を、1なら |−⟩（|1⟩ の矢印だけ正反対）を作る――たどり着く状態は出た目で違うが、向きは2乗すると消えるから、どちらも読み出しは50%対50%。打ち消し合いはもう起きない。<strong>同じ2回のHでも、干渉が使えるかどうかで結果がまるで違う</strong>。</div>
       </div>
 
       <div class="dialogue-scene">
@@ -205,71 +204,63 @@
             <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">最後は測定です。「読み出すと0か1が出る」の実物は、何をしているんですか。</div>
+          <div class="dialog-bubble">……あっ、前回の宿題が解けます！ 「|+⟩ と |−⟩ は読み出しでは区別できないが、混ぜる操作をすれば区別できる」という約束。<strong>H を当てればいい</strong>んですね。|+⟩ は |0⟩ に H を当てたものだから、もう一度 H を当てれば |0⟩ に戻って、測れば確実に0。|−⟩ は |1⟩ に H を当てたものだから、H をもう一度当てれば |1⟩ に戻って、確実に1。<strong>100%の確信で見分けられる</strong>！</div>
         </div>
         <div class="dialog-row">
           <div class="dialog-character">
-            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-avatar mentor"><img src="images/catThink.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name mentor">ねこ博士</div>
           </div>
-          <div class="dialog-bubble">量子ビットの隣に、読み出し専用の<strong>小さなマイクロ波の空洞</strong>を付けておく。空洞は「決まった音程で鳴る笛」のようなもので、決まった周波数の電波だけがよく響く。<br>ここで面白いのは、<strong>隣の量子ビットが |0⟩ か |1⟩ かで、この笛の音程がごくわずかに変わる</strong>ことだ。コップに水を注ぐと、量で音程が変わるのと似ている――空洞の波と量子ビットの波は隣どうしで押し合っていて、相手の状態が「入れ物の事情」を少し変えるからだ。<br>そこで弱い電波を空洞に通して、音程の変化を読み取れば0か1かが分かる。そして――前の旅の言葉で言えば、その電波に<strong>手がかり</strong>が乗って外の世界へ出た瞬間、道筋の区別がついて、状態は出た方に確定する。測定装置とは、<strong>手がかりの漏れ口を、わざと1か所だけ作ってある小窓</strong>なんだよ。ふだんは全力で密閉している箱の、読みたいときだけ開ける窓だ。</div>
+          <div class="dialog-bubble">約束を果たせたね。ここで、量子アルゴリズムの設計図が見えてくる。読み出しでは「矢印の長さ」しか見えない。でも知りたい答えが<strong>向き</strong>に隠れていることは、いくらでもある。そのとき使う手はいつも同じだ――<strong>読む前に、向きの違いが長さの違いに化けるようなゲートを当てる</strong>。H はその変換を行う道具で、量子アルゴリズムはたいてい「H で重ね合わせを作り、計算し、H で干渉させて読む」という形をしている。この骨格は、これから先のステージで何度も出てくるよ。</div>
         </div>
         <div class="dialog-row right">
           <div class="dialog-character">
-            <div class="dialog-avatar student"><img src="images/rabbitThink.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-avatar student"><img src="images/rabbit.webp" width="300" height="386" alt=""></div>
             <div class="dialog-name student">うさ美</div>
           </div>
-          <div class="dialog-bubble">組み立ての全体を、部品の「なぜ」ごとにまとめます。<br>①<strong>振り子回路</strong>――電流の波の入れ物。<br>②<strong>冷却</strong>――環境の嵐を静めて手がかりの漏れを止め（前の旅のデコヒーレンス対策）、超伝導で抵抗を消して波が何億回も往復できるようにする。これで法則1が働き、<strong>階段</strong>が現れる。<br>③<strong>ジョセフソン接合</strong>――等時性を壊して段差を不揃いにし、<strong>下2段だけ</strong>を |0⟩ |1⟩ として切り出す。<br>④<strong>ゲート</strong>――法則2より、段差＝リズムの差。ぴったりのリズムの電波パルスで乗り移りを起こし、<strong>当てる時間</strong>で混ざり具合を決める。<br>⑤<strong>測定</strong>――隣の笛の音程の変化として、手がかりをわざと1か所から外に出す。<br>……ぜんぶ、波と干渉と手がかりの言葉だけで組み上がりました。</div>
-        </div>
-        <div class="dialog-row">
-          <div class="dialog-character">
-            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
-            <div class="dialog-name mentor">ねこ博士</div>
-          </div>
-          <div class="dialog-bubble">よくまとまったね。方式は超伝導だけではないことも添えておこう。電磁場の罠に浮かべた<strong>イオン</strong>のエネルギーの段を使い、レーザー光のパルスで操る方式。レーザーのピンセットで原子を1個ずつ並べる<strong>中性原子</strong>方式。光そのものを使う方式。役者は違っても、<strong>「とびとびの2段を選ぶ・波の重ね合わせを保つ・共鳴パルスで操る」</strong>という骨組みはぜんぶ同じだ。<br>そして気づいているね――この機械は、何十億個の電子の波を、光子1個にも乱されないよう守り続けなければならない。その戦いの全貌は旅の最後に。次のステージでは量子ビットを2個に増やして、この旅の主役級の現象を作ってもらう。</div>
+          <div class="dialog-bubble">整理します。H の正体は<strong>和と差を作る装置</strong>で、マイナスは差の式の引き算――入力を見た条件分岐ではない。そしてHを2回当てると元に戻るのは、いらない行の矢印が<strong>正反対を向いて打ち消し合う</strong>から。この打ち消し合いは、確率だけの世界には決して作れない――<strong>量子コンピュータが持っていて、ふつうのコンピュータが持っていない武器は、これ</strong>なんですね。</div>
         </div>
       </div>
 
       <div class="formula-box">
-        <span class="step">【量子ビットの組み立て ― 部品と「なぜ」の対応表】</span>
-        <span class="step">・<strong>振り子回路</strong>（電気をためる部品＋流し続ける部品）＝電流の波の入れ物</span>
-        <span class="step">・<strong>冷却（約−273.14℃）</strong>：①環境の嵐を静めて<span class="nw">手がかりの漏れ（デコヒーレンス）</span>を止める ②<strong>超伝導</strong>で抵抗ゼロに（電子がペアを組み1つの波になる――理由は大学レベルのため事実として借用）。波が何億回も往復でき、<span class="nw">閉じ込め＝階段</span>の選別が働く</span>
-        <span class="step">・振り子の<strong>等時性</strong>のせいで階段は等間隔になり、下2段を選べない → <strong>ジョセフソン接合</strong>（電流が大きいほど通りにくい）が等時性を壊し、段差を不揃いに → 下2段が |0⟩ |1⟩（トランズモン）</span>
-        <span class="step">・<strong>ゲート</strong>＝時計法則より段差はリズムの差（数ギガヘルツ）。ぴったりのリズムのマイクロ波パルスで共鳴させ、<strong>当てる時間</strong>で混ざり具合を設計（H と X は止め位置の違い、1発数十ナノ秒）。ずれたリズムは押しが打ち消し合って効かない</span>
-        <span class="step">・パルスは<strong>波全体</strong>に働く。成分を1つずつ触る手段は存在しない</span>
-        <span class="step">・<strong>測定</strong>＝隣の空洞（決まった音程の笛）の音程が量子ビットの状態でわずかに変わる。その変化として<strong>手がかりをわざと1か所から外へ出す</strong>小窓</span>
-        <span class="step">・他方式（イオン・中性原子・光）も骨組みは同じ：とびとびの2段＋波の重ね合わせ＋共鳴パルス</span>
+        <span class="step">【アダマールゲート H ― 和と差を作る主役】</span>
+        <span class="step">・対応表：|0⟩ → 長さ×0.71が2本、同じ向き（＝|+⟩）／ |1⟩ → 長さ×0.71が2本、|1⟩ 側だけ正反対（＝|−⟩）</span>
+        <span class="step">・掛けて足すルールで一般式にすると、入力（a, b）に対して<br class="wbr"><strong>新しい |0⟩ の矢印＝(a＋b)×0.71、新しい |1⟩ の矢印＝(a−b)×0.71</strong>。<br class="wbr">H は<strong>和と差を作る装置</strong>で、マイナスは差の式の引き算。入力による条件分岐ではない</span>
+        <span class="step">・<strong>H を2回 → 元に戻る</strong>。理由：いらない行に届く2本の道筋の矢印が正反対で<span class="nw">打ち消し合う</span>。この打ち消しは H がユニタリであるための条件そのもの</span>
+        <span class="step">・途中で測定して手がかりを残すと道筋の区別がつき、打ち消しが起きず50%対50%になる</span>
+        <span class="step">・|+⟩ と |−⟩ は読み出しでは区別できないが、H を当てれば |0⟩ と |1⟩ に戻って100%見分けられる</span>
+        <span class="step">・量子アルゴリズムの骨格：<strong>H で重ね合わせを作る → 計算する → H で干渉させて読む</strong></span>
       </div>
 
       <div class="quiz-head">確認クイズ</div>
       <div class="quiz-card" data-quiz>
-        <p class="quiz-q">Q1. 量子ビットを絶対零度近くまで冷やす理由として正しいのは？</p>
+        <p class="quiz-q">Q1. H が |1⟩ に当たったときだけマイナスが現れるのはなぜ？</p>
         <div class="choice-list">
-          <button class="choice-btn">環境の嵐を静めて手がかりの漏れ（デコヒーレンス）を止め、さらに超伝導で抵抗を消して、波が何億回も往復して自分と干渉できるようにするため</button>
-          <button class="choice-btn">冷たいほど電子の動きが遅くなり、計算を観察しやすくなるため</button>
-          <button class="choice-btn">回路が熱で溶けるのを防ぐため</button>
+          <button class="choice-btn">H が入力を調べて、1のときだけ向きを反転する仕組みになっているから</button>
+          <button class="choice-btn">|1⟩ は |0⟩ よりエネルギーが高く、その分が向きに現れるから</button>
+          <button class="choice-btn">H は常に「新しい |1⟩ の矢印＝(a−b)×0.71」という差の式を当てており、|1⟩（a=0, b=1）を入れると引き算の項だけが残るから</button>
         </div>
-        <div class="quiz-explain" hidden>正解！ 温かい環境は粒子と電磁波の嵐で、ぶつかるたびに手がかりを持ち去って干渉を殺す。また、ふつうの金属では抵抗が波をすぐ擦り減らしてしまい、閉じ込めの選別（＝階段）が働く暇がない。冷却はこの2つの敵を同時に黙らせる。</div>
+        <div class="quiz-explain" hidden>正解！ H は入力を見て場合分けなどしていない。「和 (a＋b)×0.71 と差 (a−b)×0.71 を作る」という同じ式をどんな入力にも当てるだけで、マイナスは差の式が最初から持っている引き算だ。</div>
       </div>
 
       <div class="quiz-card" data-quiz>
-        <p class="quiz-q">Q2. ジョセフソン接合が果たしている役割は？</p>
+        <p class="quiz-q">Q2. |0⟩ にアダマールゲート H を2回続けて当てると、確実に |0⟩ に戻る。その理由は？</p>
         <div class="choice-list">
-          <button class="choice-btn">回路の電気抵抗をゼロにする</button>
-          <button class="choice-btn">回路を外の雑音から遮断する</button>
-          <button class="choice-btn">振り子の等時性を壊して階段の間隔を不揃いにし、下2段だけを選び出せるようにする</button>
+          <button class="choice-btn">|1⟩ にたどり着く2本の道筋の矢印が正反対を向いていて、足すとゼロになるから</button>
+          <button class="choice-btn">H は確率を50%対50%にするゲートなので、2回当てれば平均されて0に落ち着くから</button>
+          <button class="choice-btn">量子ビットは放っておくと |0⟩ に戻る性質があるから</button>
         </div>
-        <div class="quiz-explain" hidden>正解！ 等時性のままだと階段が等間隔で、1段目に上げる操作が上の段への操作と同じになってしまう。接合は「電流が大きいほど通りにくい」性質でリズムを揺れの大きさに依存させ、いちばん下の段差だけを固有のものにする。抵抗ゼロは超伝導の仕事だ。</div>
+        <div class="quiz-explain" hidden>正解！ |0⟩ 行には同じ向きの矢印が2本届いて強め合い（0.5＋0.5＝1）、|1⟩ 行には正反対の矢印が2本届いて打ち消し合う（0.5と、正反対の0.5で0）。確率だけを足す世界では、この「ゼロにする」技は絶対に使えない。</div>
       </div>
 
       <div class="quiz-card" data-quiz>
-        <p class="quiz-q">Q3. 測定（読み出し）の実物は？</p>
+        <p class="quiz-q">Q3. 1回目の H のあとで測定してから2回目の H を当てると、最終結果はどうなる？</p>
         <div class="choice-list">
-          <button class="choice-btn">回路に電流計をつないで、流れる電流を直接読む</button>
-          <button class="choice-btn">隣の空洞（決まった音程の笛）の音程が状態でわずかに変わるのを、弱い電波で読み、手がかりをわざと外へ出す</button>
-          <button class="choice-btn">回路を常温に戻して、状態を確認する</button>
+          <button class="choice-btn">測定しない場合と同じく、100%で0が出る</button>
+          <button class="choice-btn">50%で0、50%で1になる</button>
+          <button class="choice-btn">100%で1が出る</button>
         </div>
-        <div class="quiz-explain" hidden>正解！ 空洞の波と量子ビットの波は押し合っていて、相手が|0⟩か|1⟩かで笛の音程がわずかにずれる。その変化を乗せた電波が外に出た瞬間、手がかりが漏れて状態は確定する。測定装置は「手がかりの漏れ口を1か所だけわざと作った小窓」だ。</div>
+        <div class="quiz-explain" hidden>正解！ 測定すると手がかりが残り、2本の道筋は区別がついてしまうので干渉できない。0が出ても1が出ても、そこに H を当てれば五分五分。覗いた瞬間に打ち消し合いが失われる――これが、量子計算の途中を覗いてはいけない理由だ。</div>
       </div>
 
       <div class="stage-nav">
@@ -287,64 +278,15 @@
 
 <script>
 (function(){
-  // 図1: エネルギーの階段（等間隔 vs トランズモン）静的
-  var g = document.getElementById('ladder-body');
-  if (!g) return;
+  // 図2: H×2 の道筋アニメ。干渉あり／途中測定ありの2モードを切り替える
+  var svg = document.getElementById('hh-svg');
+  var g = document.getElementById('hh-body');
+  if (!svg || !g) return;
   var ns = 'http://www.w3.org/2000/svg';
-  var CA = '#2f8a8f', CN = '#b5504a', C0 = '#2f5a9e';
-  function el(name, attrs) {
-    var e = document.createElementNS(ns, name);
-    for (var k in attrs) e.setAttribute(k, attrs[k]);
-    g.appendChild(e);
-    return e;
-  }
-  function txt(x, y, cls, content, anchor) {
-    var t = el('text', {x: x, y: y, 'class': cls, 'text-anchor': anchor || 'middle'});
-    t.textContent = content;
-    return t;
-  }
-  var LX = 96, RX = 276, W = 110, BOT = 190;
-  txt(LX, 40, 'strong', 'ただの振動回路');
-  txt(LX, 56, 'label', '段の間隔がすべて同じ');
-  var stepsL = [0, 34, 68, 102];
-  stepsL.forEach(function (dy, i) {
-    var y = BOT - dy;
-    el('line', {x1: LX - W / 2, y1: y, x2: LX + W / 2, y2: y, stroke: i < 2 ? C0 : 'var(--muted)', 'stroke-width': i < 2 ? 2.4 : 1.6});
-  });
-  for (var i = 0; i < 3; i++) {
-    var y1 = BOT - stepsL[i] - 4, y2 = BOT - stepsL[i + 1] + 4;
-    el('line', {x1: LX + W / 2 - 14, y1: y1, x2: LX + W / 2 - 14, y2: y2, stroke: CN, 'stroke-width': 1.8});
-    el('path', {d: 'M ' + (LX + W / 2 - 18) + ' ' + (y2 + 6) + ' L ' + (LX + W / 2 - 14) + ' ' + y2 + ' L ' + (LX + W / 2 - 10) + ' ' + (y2 + 6), fill: 'none', stroke: CN, 'stroke-width': 1.8});
-  }
-  var w1 = txt(LX, 72, 'label', '同じ段差で上まで抜けてしまう');
-  w1.style.fill = CN; w1.style.fontWeight = '900';
+  var C0 = '#2f5a9e', C1 = '#b5504a', CG = '#8a5a2a';
+  var X = [62, 186, 310], Y = [88, 164];
+  var R2 = Math.SQRT1_2;
 
-  txt(RX, 40, 'strong', 'ジョセフソン接合入り');
-  txt(RX, 56, 'label', '段の間隔が不揃い');
-  var stepsR = [0, 40, 72, 98, 118];
-  stepsR.forEach(function (dy, i) {
-    var y = BOT - dy;
-    el('line', {x1: RX - W / 2, y1: y, x2: RX + W / 2, y2: y, stroke: i < 2 ? C0 : 'var(--muted)', 'stroke-width': i < 2 ? 2.6 : 1.6});
-  });
-  txt(RX - W / 2 - 8, BOT + 4, 'strong', '|0⟩', 'end');
-  txt(RX - W / 2 - 8, BOT - stepsR[1] + 4, 'strong', '|1⟩', 'end');
-  el('line', {x1: RX, y1: BOT - 6, x2: RX, y2: BOT - stepsR[1] + 6, stroke: CA, 'stroke-width': 2.6});
-  el('path', {d: 'M ' + (RX - 5) + ' ' + (BOT - stepsR[1] + 12) + ' L ' + RX + ' ' + (BOT - stepsR[1] + 6) + ' L ' + (RX + 5) + ' ' + (BOT - stepsR[1] + 12), fill: 'none', stroke: CA, 'stroke-width': 2.2});
-  el('path', {d: 'M ' + (RX - 5) + ' ' + (BOT - 12) + ' L ' + RX + ' ' + (BOT - 6) + ' L ' + (RX + 5) + ' ' + (BOT - 12), fill: 'none', stroke: CA, 'stroke-width': 2.2});
-  txt(RX + 8, BOT - stepsR[1] / 2 + 4, 'accent', 'この段差に共鳴', 'start');
-  var xm = txt(RX + W / 2 - 22, BOT - (stepsR[1] + stepsR[2]) / 2, 'label', '×届かない');
-  xm.style.fill = CN; xm.style.fontWeight = '900';
-  txt(186, BOT + 26, 'label', '縦方向＝エネルギー。太い2本が「使う段」');
-})();
-</script>
-
-<script>
-(function(){
-  // 図2: パルス時間と矢印の混ざり（共鳴）インタラクティブ
-  var g = document.getElementById('rabi-body');
-  if (!g) return;
-  var ns = 'http://www.w3.org/2000/svg';
-  var C0 = '#2f5a9e', C1 = '#b5504a', CA = '#2f8a8f';
   function el(name, attrs, parent) {
     var e = document.createElementNS(ns, name);
     for (var k in attrs) e.setAttribute(k, attrs[k]);
@@ -357,71 +299,224 @@
     return t;
   }
   var defs = el('defs', {});
-  [['rb-a0m', C0], ['rb-a1m', C1]].forEach(function (p) {
-    var m = el('marker', {id: p[0], viewBox: '0 0 8 8', refX: 7, refY: 4, markerWidth: 5.5, markerHeight: 5.5, markerUnits: 'userSpaceOnUse', orient: 'auto'}, defs);
+  [['hh-a0', C0], ['hh-a1', C1]].forEach(function (p) {
+    var m = el('marker', {id: p[0], viewBox: '0 0 8 8', refX: 7, refY: 4, markerWidth: 5, markerHeight: 5, markerUnits: 'userSpaceOnUse', orient: 'auto'}, defs);
     el('path', {d: 'M0 0 L8 4 L0 8 z', fill: p[1]}, m);
   });
-  var px0 = 24, pw = 120, py = 84;
-  txt(px0 + pw / 2, 44, 'label', 'マイクロ波パルス');
-  var pulseBox = el('rect', {x: px0, y: py - 26, height: 52, width: 4, fill: '#2f8a8f', opacity: .08});
-  var pulse = el('path', {fill: 'none', stroke: CA, 'stroke-width': 1.8});
-  var durTxt = txt(px0 + pw / 2, py + 46, 'accent', '当てた時間: 0');
-  var cx = 210, R = 26, rowY = [68, 132];
+
+  // 列見出し
+  txt(X[0], 44, 'label', '出発');
+  txt((X[0] + X[1]) / 2, 44, 'accent', '1回目の H');
+  txt((X[1] + X[2]) / 2, 44, 'accent', '2回目の H');
+  txt(X[2], 44, 'label', '結果');
+  // 出発→中央の道筋
+  el('line', {x1: X[0] + 24, y1: Y[0], x2: X[1] - 24, y2: Y[0], stroke: C0, 'stroke-width': 1.6, 'stroke-dasharray': '4 3', opacity: .45});
+  el('line', {x1: X[0] + 24, y1: Y[0], x2: X[1] - 24, y2: Y[1], stroke: C1, 'stroke-width': 1.6, 'stroke-dasharray': '4 3', opacity: .45});
+  // 中央→右端の道筋4本
+  var links = [];
+  [0, 1].forEach(function (m) {
+    [0, 1].forEach(function (f) {
+      links.push({m: m, f: f, line: el('line', {x1: X[1] + 24, y1: Y[m], x2: X[2] - 24, y2: Y[f], stroke: f === 0 ? C0 : C1, 'stroke-width': 1.6, 'stroke-dasharray': '4 3', opacity: .45})});
+    });
+  });
+  // ノード
+  var nodes = [];
+  [0, 1, 2].forEach(function (c) {
+    [0, 1].forEach(function (r) {
+      var circ = el('circle', {cx: X[c], cy: Y[r], r: 22, fill: 'var(--paper2)', stroke: 'var(--line)'});
+      var arr = el('line', {stroke: r === 0 ? C0 : C1, 'stroke-width': 3, 'marker-end': 'url(#' + (r === 0 ? 'hh-a0' : 'hh-a1') + ')'});
+      var lab = txt(X[c], Y[r] + 36, 'accent', '');
+      lab.style.fill = r === 0 ? C0 : C1;
+      nodes.push({circ: circ, arr: arr, lab: lab});
+    });
+  });
+  // 行ラベル（左端）
   [0, 1].forEach(function (i) {
-    el('circle', {cx: cx, cy: rowY[i], r: R, fill: 'var(--paper2)', stroke: 'var(--line)'});
-    var t = txt(cx - R - 8, rowY[i] + 4, 'strong', i === 0 ? '|0⟩' : '|1⟩', 'end');
+    var t = txt(14, Y[i] + 4, 'strong', i === 0 ? '|0⟩' : '|1⟩', 'start');
     t.style.fill = i === 0 ? C0 : C1;
   });
-  var ar0 = el('line', {stroke: C0, 'stroke-width': 3, 'marker-end': 'url(#rb-a0m)'});
-  var ar1 = el('line', {stroke: C1, 'stroke-width': 3, 'marker-end': 'url(#rb-a1m)'});
-  var bx = 286, bw = 30, bh = 96, by = 160;
-  [0, 1].forEach(function (i) {
-    el('rect', {x: bx + i * 44, y: by - bh, width: bw, height: bh, fill: 'none', stroke: 'var(--line)'});
-    txt(bx + i * 44 + bw / 2, by + 14, 'label', i === 0 ? '0' : '1');
-  });
-  var bar0 = el('rect', {x: bx + 1, width: bw - 2, fill: C0, opacity: .85});
-  var bar1 = el('rect', {x: bx + 45, width: bw - 2, fill: C1, opacity: .85});
-  txt(bx + 37, 44, 'label', '長さの2乗＝確率');
-  txt(186, 200, 'label', '25＝Hの止め位置（五分五分）／ 50＝X（入れ替え）／ 100＝1周して元通り');
+  var measMark = txt(X[1], 220, 'strong', '📏 ここで測定');
+  measMark.setAttribute('opacity', 0);
+  var sumTxt = txt(186, 236, 'label', '');
+  var sumTxt2 = txt(186, 252, 'label', '');
+  var modeTxt = txt(186, 268, 'strong', '');
 
-  var slider = document.getElementById('rb-slider');
-  var roA0 = document.getElementById('rb-a0'), roA1 = document.getElementById('rb-a1');
-  var roP0 = document.getElementById('rb-p0'), roP1 = document.getElementById('rb-p1');
-
-  function draw() {
-    var t = slider ? parseFloat(slider.value) : 0;
-    var th = t / 100 * 2 * Math.PI;
-    var a0 = Math.cos(th / 2), a1 = Math.sin(th / 2);
-    var L = R - 5;
-    ar0.setAttribute('x1', cx); ar0.setAttribute('y1', rowY[0]);
-    ar0.setAttribute('x2', cx + a0 * L); ar0.setAttribute('y2', rowY[0]);
-    ar0.setAttribute('opacity', Math.abs(a0) < 0.03 ? 0 : 1);
-    ar1.setAttribute('x1', cx); ar1.setAttribute('y1', rowY[1]);
-    ar1.setAttribute('x2', cx + a1 * L); ar1.setAttribute('y2', rowY[1]);
-    ar1.setAttribute('opacity', Math.abs(a1) < 0.03 ? 0 : 1);
-    var p0 = a0 * a0, p1 = a1 * a1;
-    bar0.setAttribute('y', by - bh * p0); bar0.setAttribute('height', Math.max(bh * p0, 0.5));
-    bar1.setAttribute('y', by - bh * p1); bar1.setAttribute('height', Math.max(bh * p1, 0.5));
-    var len = Math.max(4, pw * t / 100);
-    pulseBox.setAttribute('width', len);
-    var d = '';
-    for (var x = 0; x <= len; x += 2) {
-      var y = py - Math.sin(x / 4.2) * 18;
-      d += (x === 0 ? 'M ' : 'L ') + (px0 + x).toFixed(1) + ' ' + y.toFixed(1) + ' ';
-    }
-    pulse.setAttribute('d', d);
-    durTxt.textContent = '当てた時間: ' + Math.round(t);
-    if (roA0) roA0.textContent = (a0 < -0.001 ? '−' : '') + Math.abs(a0).toFixed(2);
-    if (roA1) roA1.textContent = (a1 < -0.001 ? '−' : '') + Math.abs(a1).toFixed(2);
-    if (roP0) roP0.textContent = Math.round(p0 * 100) + '%';
-    if (roP1) roP1.textContent = Math.round(p1 * 100) + '%';
+  function setNode(c, r, v, show) {
+    var n = nodes[c * 2 + r];
+    var L = 16;
+    var sgn = v < 0 ? -1 : 1;
+    n.arr.setAttribute('x1', X[c]); n.arr.setAttribute('y1', Y[r]);
+    n.arr.setAttribute('x2', X[c] + sgn * Math.min(Math.abs(v), 1) * L);
+    n.arr.setAttribute('y2', Y[r]);
+    n.arr.setAttribute('opacity', (show && Math.abs(v) > 0.02) ? 1 : 0);
+    n.circ.setAttribute('opacity', show ? 1 : .3);
+    n.lab.textContent = show ? ((v < -0.001 ? '−' : '') + Math.abs(v).toFixed(2)) : '';
   }
-  if (slider) slider.addEventListener('input', draw);
-  var bh1 = document.getElementById('rb-h');
-  if (bh1) bh1.addEventListener('click', function () { slider.value = 25; draw(); });
-  var bx1 = document.getElementById('rb-x');
-  if (bx1) bx1.addEventListener('click', function () { slider.value = 50; draw(); });
-  draw();
+
+  var mode = 'interfere';
+  var t = 0, running = false, raf = null, auto = true;
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) auto = false;
+  // 途中測定モードの測定結果。周回ごとに五分五分のくじで引き直す
+  var outcome = Math.random() < 0.5 ? 0 : 1;
+  var lastCycle = -1;
+
+  function draw(phase) {
+    setNode(0, 0, 1, true);
+    setNode(0, 1, 0, true);
+    var showMid = phase >= 1;
+    var showEnd = phase >= 3;
+    if (mode === 'interfere') {
+      setNode(1, 0, R2, showMid);
+      setNode(1, 1, R2, showMid);
+      links.forEach(function (k) { k.line.setAttribute('opacity', phase >= 2 ? .85 : .18); });
+      setNode(2, 0, 1, showEnd);
+      setNode(2, 1, 0, showEnd);
+      sumTxt.textContent = phase >= 2 ? '|0⟩へ 0.50 と 0.50 → 足して 1.00（強め合い）' : '';
+      sumTxt2.textContent = phase >= 2 ? '|1⟩へ 0.50 と −0.50 → 足して 0（打ち消し合い）' : '';
+      modeTxt.textContent = '干渉あり：結果は 0 が100%、1 は絶対に出ない';
+      modeTxt.style.fill = CG;
+    } else {
+      // 測定で状態が1つに決まり、残った道筋だけが2回目の H を通る
+      var collapsed = phase >= 2;
+      setNode(1, 0, collapsed ? (outcome === 0 ? 1 : 0) : R2, showMid);
+      setNode(1, 1, collapsed ? (outcome === 1 ? 1 : 0) : R2, showMid);
+      links.forEach(function (k) {
+        k.line.setAttribute('opacity', collapsed ? (k.m === outcome ? .85 : .08) : .18);
+      });
+      setNode(2, 0, showEnd ? R2 : 0, showEnd);
+      setNode(2, 1, showEnd ? (outcome === 1 ? -R2 : R2) : 0, showEnd);
+      sumTxt.textContent = phase === 2
+        ? '測定：五分五分のくじで ' + outcome + ' が出た'
+        : phase >= 3
+          ? (outcome === 0
+            ? '結果0 → 2回目の H は |+⟩ を作る'
+            : '結果1 → 2回目の H は |−⟩（|1⟩ が正反対）')
+          : '';
+      sumTxt2.textContent = phase === 2
+        ? '状態は |' + outcome + '⟩ に決まり、もう一方の道筋は消える'
+        : phase >= 3 ? '読み出しは 0 と 1 が50%ずつ' : '';
+      modeTxt.textContent = '途中で測定：どちらが出ても、読み出しは 0 と 1 が50%ずつ';
+      modeTxt.style.fill = C1;
+    }
+    measMark.setAttribute('opacity', (mode === 'measure' && phase >= 1) ? 1 : 0);
+  }
+
+  function loop() {
+    if (!running) return;
+    if (auto) {
+      t += 0.016;
+      var cyc = Math.floor(t / 4.8);
+      if (cyc !== lastCycle) { lastCycle = cyc; outcome = Math.random() < 0.5 ? 0 : 1; }
+      draw(Math.floor((t % 4.8) / 1.2));
+    }
+    raf = requestAnimationFrame(loop);
+  }
+  var playBtn = document.getElementById('hh-play');
+  function setBtn() { if (playBtn) playBtn.textContent = auto ? '⏸ 一時停止' : '▶ 自動再生'; }
+  if (playBtn) playBtn.addEventListener('click', function () {
+    auto = !auto; setBtn();
+    if (!auto) draw(3);
+  });
+  setBtn();
+  var modeBtn = document.getElementById('hh-mode');
+  if (modeBtn) modeBtn.addEventListener('click', function () {
+    mode = (mode === 'interfere') ? 'measure' : 'interfere';
+    modeBtn.textContent = (mode === 'interfere') ? '🔬 途中で測定する版に切替' : '✨ 干渉する版に戻す';
+    draw(auto ? Math.floor((t % 4.8) / 1.2) : 3);
+  });
+  draw(reduced ? 3 : 0);
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) {
+      if (es[0].isIntersecting && !running) { running = true; loop(); }
+      else if (!es[0].isIntersecting && running) { running = false; if (raf) cancelAnimationFrame(raf); }
+    }, {threshold: 0.15}).observe(svg);
+  } else { running = true; loop(); }
+})();
+</script>
+
+<script>
+(function(){
+  // 図: H×2 の4本の道筋を、倍率のかけ算として1本ずつ並べた表（静的）
+  var g = document.getElementById('path-body');
+  if (!g) return;
+  var ns = 'http://www.w3.org/2000/svg';
+  var C0 = '#2f5a9e', C1 = '#b5504a';
+
+  function el(name, attrs, parent) {
+    var e = document.createElementNS(ns, name);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    (parent || g).appendChild(e);
+    return e;
+  }
+  function txt(x, y, cls, content, anchor) {
+    var t = el('text', {x: x, y: y, 'class': cls, 'text-anchor': anchor || 'start'});
+    t.textContent = content;
+    return t;
+  }
+  var defs = el('defs', {});
+  [['p-ah0', C0], ['p-ah1', C1]].forEach(function (p) {
+    var m = el('marker', {id: p[0], viewBox: '0 0 8 8', refX: 7, refY: 4, markerWidth: 5, markerHeight: 5, markerUnits: 'userSpaceOnUse', orient: 'auto'}, defs);
+    el('path', {d: 'M0 0 L8 4 L0 8 z', fill: p[1]}, m);
+  });
+
+  // 上段: H のルール（マイナスは1か所だけ）
+  txt(14, 36, 'label', 'H のルール ― 0.71倍を配る。マイナスは1か所だけ');
+  [
+    {x: 14, head: '|0⟩ に H を当てる', a: '＋0.71', b: '＋0.71', note: 'どちらもそのままの向き', warn: false},
+    {x: 190, head: '|1⟩ に H を当てる', a: '＋0.71', b: '−0.71', note: '|1⟩ 行だけ正反対の向き', warn: true}
+  ].forEach(function (p) {
+    el('rect', {x: p.x, y: 44, width: 168, height: 90, rx: 6,
+      fill: p.warn ? '#fbe9e8' : 'var(--paper2)', stroke: p.warn ? '#e79a97' : 'var(--line)'});
+    txt(p.x + 10, 62, 'strong', p.head);
+    var l0 = txt(p.x + 10, 82, 'label', '|0⟩ 行へ ' + p.a);
+    l0.style.fill = C0; l0.style.fontWeight = '900';
+    var l1 = txt(p.x + 10, 100, 'label', '|1⟩ 行へ ' + p.b);
+    l1.style.fill = C1; l1.style.fontWeight = '900';
+    var nt = txt(p.x + 10, 118, 'label', p.note);
+    if (p.warn) { nt.style.fill = C1; nt.style.fontWeight = '900'; }
+  });
+
+  // 中段: 4本の道筋
+  txt(14, 152, 'label', '|0⟩ から H を2回 ― 道筋は4本');
+  var ROWS = [
+    {via: '|0⟩', mul: '0.71 × 0.71', res: '＝ ＋0.50', to: '|0⟩ 行へ', dest: 0, minus: false},
+    {via: '|1⟩', mul: '0.71 × 0.71', res: '＝ ＋0.50', to: '|0⟩ 行へ', dest: 0, minus: false},
+    {via: '|0⟩', mul: '0.71 × 0.71', res: '＝ ＋0.50', to: '|1⟩ 行へ', dest: 1, minus: false},
+    {via: '|1⟩', mul: '0.71 ×（−0.71）', res: '＝ −0.50', to: '|1⟩ 行へ', dest: 1, minus: true}
+  ];
+  ROWS.forEach(function (r, i) {
+    var y = 160 + i * 30, base = y + 17;
+    var col = r.dest === 0 ? C0 : C1;
+    el('rect', {x: 14, y: y, width: 344, height: 26, rx: 5,
+      fill: r.dest === 0 ? '#e9eff8' : '#fbe9e8', stroke: r.minus ? '#e79a97' : 'var(--line)',
+      'stroke-width': r.minus ? 1.6 : 1});
+    txt(24, base, 'label', '経由 ' + r.via);
+    txt(92, base, 'label', r.mul);
+    var rs = txt(190, base, 'label', r.res);
+    rs.style.fill = col; rs.style.fontWeight = '900';
+    var ts = txt(252, base, 'label', r.to);
+    ts.style.fill = col; ts.style.fontWeight = '900';
+    // 右端: 届いた矢印の向き（右＝そのまま、左＝正反対）
+    var x1 = r.minus ? 344 : 312, x2 = r.minus ? 312 : 344;
+    el('line', {x1: x1, y1: base - 4, x2: x2, y2: base - 4, stroke: col, 'stroke-width': 2.4,
+      'marker-end': 'url(#' + (r.dest === 0 ? 'p-ah0' : 'p-ah1') + ')'});
+  });
+
+  // 下段: 行き先ごとの合計
+  txt(14, 294, 'label', '行き先ごとに足す');
+  [
+    {x: 14, head: '|0⟩ 行：0.5 ＋ 0.5', sub: '＝ 1.00　強め合い', dest: 0},
+    {x: 190, head: '|1⟩ 行：0.5 と −0.5', sub: '＝ 0　打ち消し合い', dest: 1}
+  ].forEach(function (p) {
+    var col = p.dest === 0 ? C0 : C1;
+    el('rect', {x: p.x, y: 302, width: 168, height: 56, rx: 6,
+      fill: p.dest === 0 ? '#e9eff8' : '#fbe9e8', stroke: 'var(--line)'});
+    var h = txt(p.x + 10, 320, 'strong', p.head);
+    h.style.fill = col;
+    var s = txt(p.x + 10, 340, 'label', p.sub);
+    s.style.fill = col; s.style.fontWeight = '900';
+  });
 })();
 </script>
 </body>
