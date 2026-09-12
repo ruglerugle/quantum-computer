@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ruglerugle.github.io/quantum-computer/sitemap.xml
+Sitemap: https://quantum-mechanics.habatakijuku.com/quantum-computer/sitemap.xml
