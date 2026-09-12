@@ -18,24 +18,22 @@
     1: [1, 2, 0],
     2: [2, 0, 1],
     3: [2, 0, 1],
-    4: [0, 2, 1],
-    5: [1, 0, 2],
-    6: [2, 1, 0],
-    7: [0, 2, 1],
-    8: [1, 0, 2],
-    9: [2, 0, 1]
+    4: [1, 0, 2],
+    5: [2, 1, 0],
+    6: [0, 2, 1],
+    7: [1, 0, 2],
+    8: [2, 0, 1]
   };
 
   var STAGES = [
     { n: 1, file: "stage1.html", title: "量子ビットとは何か", sub: "0と1の重ね合わせ" },
     { n: 2, file: "stage2.html", title: "量子ゲート", sub: "2列の対応表と掛け算" },
     { n: 3, file: "stage3.html", title: "アダマールゲート", sub: "和と差を作る主役" },
-    { n: 4, file: "stage4.html", title: "量子ビットを組み立てる", sub: "実機の中身" },
-    { n: 5, file: "stage5.html", title: "もつれを作る", sub: "2量子ビットとCNOT" },
-    { n: 6, file: "stage6.html", title: "並列計算の神話", sub: "ドイチュのアルゴリズム" },
-    { n: 7, file: "stage7.html", title: "グローバーの探索", sub: "振幅増幅" },
-    { n: 8, file: "stage8.html", title: "ショアの因数分解", sub: "暗号を破る周期発見" },
-    { n: 9, file: "stage9.html", title: "最大の敵と誤り訂正", sub: "デコヒーレンスと現在地" }
+    { n: 4, file: "stage4.html", title: "もつれを作る", sub: "2量子ビットとCNOT" },
+    { n: 5, file: "stage5.html", title: "並列計算の神話", sub: "ドイチュのアルゴリズム" },
+    { n: 6, file: "stage6.html", title: "グローバーの探索", sub: "振幅増幅" },
+    { n: 7, file: "stage7.html", title: "ショアの因数分解", sub: "暗号を破る周期発見" },
+    { n: 8, file: "stage8.html", title: "最大の敵と誤り訂正", sub: "デコヒーレンスと現在地" }
   ];
 
   function getCleared() {

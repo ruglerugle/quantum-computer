@@ -35,6 +35,8 @@
   .anim-ctrl .ctrl-label{font-size:11px;color:var(--muted);font-weight:700}
   .readout{display:flex;flex-wrap:wrap;gap:4px 16px;justify-content:center;margin-top:8px;font-size:12px;font-weight:700;color:var(--ink)}
   .readout b{font-weight:900;font-variant-numeric:tabular-nums;color:inherit}
+  .sister-link{font-size:12px;font-weight:700;color:var(--muted);background:var(--paper2);border:1px dashed var(--line);border-radius:8px;padding:7px 12px;margin:6px 0 14px}
+  .sister-link a{color:#b98a2e;font-weight:800}
 </style>
 </head>
 <body>
@@ -45,8 +47,8 @@
       <div class="brand-sub">STAGE 3 ― アダマールゲート ―</div>
     </div>
     <div class="head-progress-wrap">
-      <div class="head-progress-label" id="progress-label">クリア 0 / 9</div>
-      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="9" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
+      <div class="head-progress-label" id="progress-label">クリア 0 / 8</div>
+      <div class="head-progress" role="progressbar" aria-label="クリア済みステージ数" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0"><div class="head-progress-fill" id="progress-fill" style="width:0%"></div></div>
     </div>
     <div class="header-actions">
       <button class="head-reset" id="btn-reset-all">🔄 最初から</button>
@@ -220,7 +222,16 @@
           </div>
           <div class="dialog-bubble">整理します。H の正体は<strong>和と差を作る装置</strong>で、マイナスは差の式の引き算――入力を見た条件分岐ではない。そしてHを2回当てると元に戻るのは、いらない行の矢印が<strong>正反対を向いて打ち消し合う</strong>から。この打ち消し合いは、確率だけの世界には決して作れない――<strong>量子コンピュータが持っていて、ふつうのコンピュータが持っていない武器は、これ</strong>なんですね。</div>
         </div>
+        <div class="dialog-row">
+          <div class="dialog-character">
+            <div class="dialog-avatar mentor"><img src="images/cat.webp" width="300" height="386" alt=""></div>
+            <div class="dialog-name mentor">ねこ博士</div>
+          </div>
+          <div class="dialog-bubble">その通り。――ところで、この H や X を、実物の装置はどうやって起こしているのか。チップの上に量子ビットをどう組み立てるのかも含めて、それはそれで丸ごと一つの旅になる話だから、実機がどう作られているかは続編の旅に譲ろう。この旅では、このまま速さの正体を追いかける。次のステージでは、量子ビットの数を増やすよ。</div>
+        </div>
       </div>
+
+      <div class="sister-link">🔧 実機の中身（超伝導回路・ジョセフソン接合・共鳴パルスによるゲートの実体）をじっくり学びたい人は、続編の旅「<a href="https://ruglerugle.github.io/quantum-hardware/" target="_blank" rel="noopener">量子コンピュータはどう作るのか</a>」へ</div>
 
       <div class="formula-box">
         <span class="step">【アダマールゲート H ― 和と差を作る主役】</span>
