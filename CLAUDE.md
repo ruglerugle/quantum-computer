@@ -1,7 +1,9 @@
 # このリポジトリについて
 
 「量子コンピュータはなぜ速いのか」を、中身の計算の仕組みから理解する学習クエストサイト。
-量子ビット（矢印の一覧表）→ 量子ゲート（2列の対応表＝行列と「掛けて足す」）→ アダマールゲート（和と差・H×2の打ち消し）→ 量子ビットを組み立てる（超伝導実機）→ もつれとCNOT → ドイチュのアルゴリズム → グローバーの探索 → ショアの因数分解 → デコヒーレンスと誤り訂正、の全9ステージ。
+量子ビット（矢印の一覧表）→ 量子ゲート（2列の対応表＝行列と「掛けて足す」）→ アダマールゲート（和と差・H×2の打ち消し）→ もつれとCNOT → ドイチュのアルゴリズム → グローバーの探索 → ショアの因数分解 → デコヒーレンスと誤り訂正、の全8ステージ。
+**2026-09-12に旧STAGE4「量子ビットを組み立てる（超伝導実機）」を削除し、実機の解説は続編 quantum-hardware（ https://quantum-mechanics.habatakijuku.com/quantum-hardware/ ）に全面委譲した。**
+振り子回路・超伝導・ジョセフソン接合・トランズモン・共鳴パルス・笛の読み出し・希釈冷凍機は本サイトでは扱わない（STAGE3末尾に続編への誘導リンクがある）。
 公開URL（予定）: https://ruglerugle.github.io/quantum-computer/
 
 **このサイトの主役は「速さの正体＝干渉の設計、を自分の手で確かめること」**。
@@ -93,7 +95,8 @@
 # ファイル構成
 - `design-system.css` — quest-template由来の共通デザイン。配色は `:root` の変数で管理（回路基板の紺×金）
 - `js/progress.js` — 進捗管理・クイズ判定。**クイズの正解は `ANSWERS`**。localStorageキーは `quantumComputerQuestProgress_v5`、グローバルは `QC`
-- `stage1.html` 〜 `stage9.html` — 各ステージ。`index.html`（表紙）、`complete.html`（クリア画面）
+- `stage1.html` 〜 `stage8.html` — 各ステージ。`index.html`（表紙）、`complete.html`（クリア画面）。
+  `stage9.html` は旧構成からの meta refresh リダイレクトスタブ（→ stage8.html）
 - `images/` — キャラ画像はWebP（幅300px程度、decoherence-questから流用）。`<img>` には `width`/`height` 属性を必ず付ける。
   favicon.png は流用。ogp.png は未作成
 - 図はSVGで手書きし、JSでアニメーションさせる場合は IntersectionObserver でビューポート内のみ再生し、
